@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,17 +6,10 @@ import {Router} from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  now: Date = new Date();
-  constructor(private readonly router: Router) {
-    setInterval(() => {
-      this.now = new Date();
-    }, 1000);
+  constructor() {
   }
 
   ngOnInit(): void {
   }
-
-  onBackClicked() {
-    this.router.navigate(['']);
-  }
 }
+
