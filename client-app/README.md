@@ -3,11 +3,15 @@ This is a full-stack web application for our System's Design class for local sof
 
 ---
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
+# Development Notes:
 
-## Development server
+## Front end development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` in the client-app folder for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## API development server
+
+Run `npm start` in the express-api folder to run the API dev server. Api requests can be made to `http://localhost:3000/`.
 
 ## Code scaffolding
 
