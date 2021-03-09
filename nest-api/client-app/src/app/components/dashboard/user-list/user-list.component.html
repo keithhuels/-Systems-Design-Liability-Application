@@ -1,5 +1,0 @@
-<div>Users:</div>
-<div *ngFor="let user of users" class="d-flex justify-content-between">
-  <span>{{user.name}}</span>
-  <span [classList]="getStatusClasses(user)"> {{ getUserStatus(user) }} </span>
-</div>
