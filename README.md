@@ -11,7 +11,7 @@ Run `npm start` in the client-app folder for a dev server. Navigate to `http://l
 
 ## API development server
 
-Run `npm start` in the express-api folder to run the API dev server. Api requests can be made to `http://localhost:3000/`.
+Run `npm start` in the nest-api folder to run the API dev server. Api requests can be made to `http://localhost:3000/`.
 
 ## Code scaffolding
 
