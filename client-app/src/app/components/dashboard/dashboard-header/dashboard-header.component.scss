@@ -1,5 +1,10 @@
 :host {
   padding: 5px;
   background: #9ed5ab;
-  width: 100vw;
+  height: 50px;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 3;
 }

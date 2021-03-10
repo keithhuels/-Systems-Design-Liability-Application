@@ -8,6 +8,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserListComponent } from './components/dashboard/user-list/user-list.component';
 import { UserDetailComponent } from './components/dashboard/user-detail/user-detail.component';
 import { DashboardHeaderComponent } from './components/dashboard/dashboard-header/dashboard-header.component';
+import { DefaultUserDetailComponent } from './components/dashboard/default-user-detail/default-user-detail.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DashboardHeaderComponent } from './components/dashboard/dashboard-heade
     DashboardComponent,
     UserListComponent,
     UserDetailComponent,
-    DashboardHeaderComponent
+    DashboardHeaderComponent,
+    DefaultUserDetailComponent
   ],
   imports: [
     BrowserModule,
