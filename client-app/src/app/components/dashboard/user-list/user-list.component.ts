@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 export enum UserStatus {
   LoggedIn,
@@ -6,7 +7,8 @@ export enum UserStatus {
 }
 
 interface User {
-  name: string;
+  firstName: string;
+  lastName: string;
   id: number;
   status: UserStatus
 }
@@ -17,33 +19,15 @@ interface User {
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  users: User[] = [
-    {
-      id: 0,
-      name: 'John',
-      status: UserStatus.LoggedIn
-    },
-    {
-      id: 1,
-      name: 'Bob',
-      status: UserStatus.LoggedOut
-    },
-    {
-      id: 2,
-      name: 'Alice',
-      status: UserStatus.LoggedOut
-    },{
-      id: 3,
-      name: 'Jane',
-      status: UserStatus.LoggedOut
-
-    },
-
-  ]
-  constructor() { }
+  users2: any;
+  users: User[];
+  constructor(private readonly http: HttpClient) { }
 
   ngOnInit(): void {
+    this.http.get<User[]>("http://localhost:3000/users").subscribe((res) => this.users = res);
   }
+
+
 
   getUserStatus(user: User) {
     let status: string;
@@ -62,5 +46,9 @@ export class UserListComponent implements OnInit {
       classes.push('active');
     }
     return classes.join(' ')
+  }
+
+  getUserName(user: User) {
+    return `${user.firstName} ${user.lastName}`;
   }
 }
