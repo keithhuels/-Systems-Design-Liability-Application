@@ -19,15 +19,12 @@ interface User {
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  users2: any;
   users: User[];
   constructor(private readonly http: HttpClient) { }
 
   ngOnInit(): void {
     this.http.get<User[]>("http://localhost:3000/users").subscribe((res) => this.users = res);
   }
-
-
 
   getUserStatus(user: User) {
     let status: string;
