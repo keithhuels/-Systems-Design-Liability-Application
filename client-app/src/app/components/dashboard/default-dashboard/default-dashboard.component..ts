@@ -1,0 +1,25 @@
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+
+@Component({
+  selector: "app-default-dashboard",
+  templateUrl: "./default-dashboard.component.html",
+  styleUrls: ["./default-dashboard.component.scss"],
+})
+export class DefaultDashboardComponent implements OnInit {
+  constructor(private readonly router: Router) {}
+
+  ngOnInit(): void {}
+
+  onSignInClick() {
+    this.router.navigate(["dashboard", "signin"]);
+  }
+
+  onGuestAccessClick() {
+    this.router.navigate(["dashboard", "guest"]);
+  }
+
+  onSignUpClick() {
+    this.router.navigate(["dashboard", "signup"]);
+  }
+}

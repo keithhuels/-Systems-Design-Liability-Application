@@ -1,9 +1,10 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
-import { DefaultUserDetailComponent } from "./components/dashboard/default-user-detail/default-user-detail.component";
+import { DefaultDashboardComponent } from "./components/dashboard/default-dashboard/default-dashboard.component.";
+import { GuestAccessComponent } from "./components/dashboard/guest-access/guest-access.component.";
+import { SigninComponent } from "./components/dashboard/signin/signin.component";
 import { SignupComponent } from "./components/dashboard/signup/signup.component";
-import { UserDetailComponent } from "./components/dashboard/user-detail/user-detail.component";
 import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 
 const routes: Routes = [
@@ -17,11 +18,15 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        component: DefaultUserDetailComponent,
+        component: DefaultDashboardComponent,
       },
       {
-        path: "user/:id",
-        component: UserDetailComponent,
+        path: "signin",
+        component: SigninComponent,
+      },
+      {
+        path: "guest",
+        component: GuestAccessComponent,
       },
       {
         path: "signup",
