@@ -9,6 +9,7 @@ import { UserListComponent } from './components/dashboard/user-list/user-list.co
 import { UserDetailComponent } from './components/dashboard/user-detail/user-detail.component';
 import { DashboardHeaderComponent } from './components/dashboard/dashboard-header/dashboard-header.component';
 import { DefaultUserDetailComponent } from './components/dashboard/default-user-detail/default-user-detail.component';
+import { SignupComponent } from './components/dashboard/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DefaultUserDetailComponent } from './components/dashboard/default-user-
     UserListComponent,
     UserDetailComponent,
     DashboardHeaderComponent,
-    DefaultUserDetailComponent
+    DefaultUserDetailComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
