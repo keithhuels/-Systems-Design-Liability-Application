@@ -2,16 +2,16 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-signin",
-  templateUrl: "./signin.component.html",
-  styleUrls: ["./signin.component.scss"],
+  selector: "app-adminlogin",
+  templateUrl: "./adminlogin.component.html",
+  styleUrls: ["./adminlogin.component.scss"],
 })
-export class SigninComponent implements OnInit {
+export class AdminloginComponent implements OnInit {
   constructor(private readonly router: Router) {}
 
   ngOnInit(): void {}
 
   onBackClick() {
-    this.router.navigate(["dashboard"]);
+    this.router.navigate([""]);
   }
 }

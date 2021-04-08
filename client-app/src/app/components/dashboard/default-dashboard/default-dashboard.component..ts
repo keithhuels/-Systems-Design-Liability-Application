@@ -16,7 +16,7 @@ export class DefaultDashboardComponent implements OnInit {
   }
 
   onGuestAccessClick() {
-    this.router.navigate(["dashboard", "guest"]);
+    this.router.navigate(["dashboard", "form"]);
   }
 
   onSignUpClick() {

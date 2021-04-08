@@ -11,6 +11,7 @@ import { DashboardHeaderComponent } from './components/dashboard/dashboard-heade
 import { DefaultDashboardComponent } from './components/dashboard/default-dashboard/default-dashboard.component.';
 import { SignupComponent } from './components/dashboard/signup/signup.component';
 import { SigninComponent } from './components/dashboard/signin/signin.component';
+import { AdminloginComponent } from './components/dashboard/adminlogin/adminlogin.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SigninComponent } from './components/dashboard/signin/signin.component'
     DashboardHeaderComponent,
     DefaultDashboardComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    AdminloginComponent
   ],
   imports: [
     BrowserModule,

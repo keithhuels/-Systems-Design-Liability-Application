@@ -16,7 +16,7 @@ h2 {
   margin-top: 20px;
 }
 
-h3{
+h3 {
   text-align: center;
 }
 
@@ -25,33 +25,32 @@ h3{
   background-color: #0c7e25;
   color: white;
   border-radius: 1rem;
-  width: 20rem;
-  height: 7rem;
-  font-size: 25px;
+  width: 40rem;
+  height: 5rem;
+  font-size: 35px;
 }
-
 
 .separator {
   display: flex;
   align-items: center;
   text-align: center;
-  margin-top:60px;
+  margin-top: 60px;
   font-size: 2rem;
 }
 
 .separator::before,
 .separator::after {
-  content: '';
+  content: "";
   flex: 1;
   border-bottom: 1px solid #000;
 }
 
 .separator:not(:empty)::before {
-  margin-right: .25em;
+  margin-right: 0.25em;
 }
 
 .separator:not(:empty)::after {
-  margin-left: .25em;
+  margin-left: 0.25em;
 }
 
 .signInButtons {
@@ -59,10 +58,10 @@ h3{
   text-align: center;
 }
 
-
 .signUp {
   text-decoration: underline;
   font-size: 40px;
   text-align: center;
   margin-top: 60px;
+  cursor: pointer;
 }

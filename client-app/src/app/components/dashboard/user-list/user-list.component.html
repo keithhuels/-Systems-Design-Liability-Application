@@ -3,5 +3,9 @@
 </div>
 <div *ngFor="let user of users" class="d-flex justify-content-between">
   <span>{{ user.name }}</span>
-  <span [classList]="getStatusClasses(user)"> {{ getUserStatus(user) }} </span>
+  <span class="inactive" [classList]="getStatusClasses(user)"> {{ getUserStatus(user) }} </span>
+  
+  <!-- this needs to be conditional on LoggedIn -->
+  <span class="endTime">End Time:</span> 
+
 </div>

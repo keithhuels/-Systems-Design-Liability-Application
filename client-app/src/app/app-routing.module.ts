@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { AdminloginComponent } from "./components/dashboard/adminlogin/adminlogin.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { DefaultDashboardComponent } from "./components/dashboard/default-dashboard/default-dashboard.component.";
 import { GuestAccessComponent } from "./components/dashboard/guest-access/guest-access.component.";
@@ -12,6 +13,7 @@ const routes: Routes = [
     path: "",
     component: LandingPageComponent,
   },
+
   {
     path: "dashboard",
     component: DashboardComponent,
@@ -25,12 +27,16 @@ const routes: Routes = [
         component: SigninComponent,
       },
       {
-        path: "guest",
+        path: "form",
         component: GuestAccessComponent,
       },
       {
         path: "signup",
         component: SignupComponent,
+      },
+      {
+        path: "adminlogin",
+        component: AdminloginComponent,
       },
     ],
   },
