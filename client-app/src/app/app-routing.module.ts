@@ -20,8 +20,9 @@ const routes: Routes = [
         component: DefaultUserDetailComponent
       },
       {
-        path: 'user/:id',
-        component: UserDetailComponent
+        path: 'login/:id',
+        component: UserDetailComponent,
+
       }
     ]
   },
