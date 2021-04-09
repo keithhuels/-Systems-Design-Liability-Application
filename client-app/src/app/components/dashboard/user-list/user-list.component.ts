@@ -26,7 +26,7 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get<User[]>('http://localhost:3000/users').subscribe((res) => this.users = res);
+    this.http.get<User[]>('users').subscribe((res) => this.users = res);
   }
 
   getUserStatus(user: User) {
@@ -56,6 +56,6 @@ export class UserListComponent implements OnInit {
 
   onUserClicked(user: User) {
     console.log(user._id);
-    this.http.get<User>(`http://localhost:3000/users/${user._id}`).subscribe((res) => console.log(res));
+    this.http.get<User>(`users/${user._id}`).subscribe((res) => console.log(res));
   }
 }
