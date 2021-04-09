@@ -9,11 +9,14 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
+  private API_URL = 'http://localhost:3000';
 
   constructor() {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('Requestin', request);
-    return next.handle(request);
+    const apiRequest = request.clone({
+      url: `${(this.API_URL)}/${request.url}`
+    });
+    return next.handle(apiRequest);
   }
 }

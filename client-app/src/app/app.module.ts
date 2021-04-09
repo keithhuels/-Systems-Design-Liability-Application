@@ -9,7 +9,8 @@ import { UserListComponent } from './components/dashboard/user-list/user-list.co
 import { UserDetailComponent } from './components/dashboard/user-detail/user-detail.component';
 import { DashboardHeaderComponent } from './components/dashboard/dashboard-header/dashboard-header.component';
 import { DefaultUserDetailComponent } from './components/dashboard/default-user-detail/default-user-detail.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {ApiInterceptor} from './interceptors/api.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,13 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
