@@ -9,6 +9,7 @@ import { UserListComponent } from './components/dashboard/user-list/user-list.co
 import { UserDetailComponent } from './components/dashboard/user-detail/user-detail.component';
 import { DashboardHeaderComponent } from './components/dashboard/dashboard-header/dashboard-header.component';
 import { DefaultUserDetailComponent } from './components/dashboard/default-user-detail/default-user-detail.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DefaultUserDetailComponent } from './components/dashboard/default-user-
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,14 @@
 .active {
   color: green;
 }
+
+.add-btn {
+  position: absolute;
+  bottom: 15px;
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,5 +1,10 @@
 <div>Users:</div>
-<div *ngFor="let user of users" class="d-flex justify-content-between">
-  <span>{{user.name}}</span>
-  <span [classList]="getStatusClasses(user)"> {{ getUserStatus(user) }} </span>
+<div *ngFor="let user of users" class="">
+  <div (click)="onUserClicked(user)" class="d-flex justify-content-between">
+    <span>{{getUserName(user)}}</span>
+    <span [classList]="getStatusClasses(user)"> {{ getUserStatus(user) }} </span>
+  </div>
+</div>
+<div class="btn-container">
+  <div class="add-btn btn-dark btn"> New User? Sign up here!</div>
 </div>
