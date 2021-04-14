@@ -1,23 +1,27 @@
 .page-cover {
-  background: #9ed5ab;
+  background: #0c7e25;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  color:white;
 }
 
 .title {
   font-size: 3.5rem;
+  color:white;
 }
 
 .enter {
   font-size: 1.2rem;
+  color:white;
 }
 
 .adminButton {
-  margin-top: 30rem;
+  margin-top: 10rem;
   font-size: 40px;
   cursor: pointer;
+  color:white;
 }

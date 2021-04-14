@@ -16,4 +16,7 @@ export class SignupComponent implements OnInit {
   onLiabilityClick() {
     this.router.navigate(["dashboard", "form"]);
   }
+  onCreateClick() {
+    this.router.navigate(["dashboard"]);
+  }
 }

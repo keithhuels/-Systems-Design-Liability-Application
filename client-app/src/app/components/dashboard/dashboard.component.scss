@@ -1,7 +1,7 @@
 .user-list {
   overflow: auto;
   overflow-x: hidden;
-  padding-top: 2px;
+  padding-top: 50px;
   border-right: 1px solid black;
   margin: 50px 0 0 0;
   height: calc(100vh - 50px);
@@ -17,7 +17,7 @@
 }
 
 .detail {
-  top: 100px;
+  top: 140px;
   bottom: 0;
   transform: none;
   visibility: visible;

@@ -14,4 +14,9 @@ export class SigninComponent implements OnInit {
   onBackClick() {
     this.router.navigate(["dashboard"]);
   }
+
+  onSignInClick() {
+    //authenticate user
+    this.router.navigate(["dashboard", "logtime"]);
+  }
 }

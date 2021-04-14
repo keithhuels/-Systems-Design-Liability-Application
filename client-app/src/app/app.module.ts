@@ -12,6 +12,11 @@ import { DefaultDashboardComponent } from './components/dashboard/default-dashbo
 import { SignupComponent } from './components/dashboard/signup/signup.component';
 import { SigninComponent } from './components/dashboard/signin/signin.component';
 import { AdminloginComponent } from './components/dashboard/adminlogin/adminlogin.component';
+import { LogexerciseComponent } from './components/dashboard/logexercise/logexercise.component';
+import { SignoutComponent } from './components/dashboard/signout/signout.component';
+import { LogtimeComponent } from './components/dashboard/logtime/logtime.component';
+import { AdminlookupComponent } from './components/dashboard/adminlookup/adminlookup.component';
+import { AdminlogoutComponent } from './components/dashboard/adminlogout/adminlogout.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,12 @@ import { AdminloginComponent } from './components/dashboard/adminlogin/adminlogi
     DefaultDashboardComponent,
     SignupComponent,
     SigninComponent,
-    AdminloginComponent
+    AdminloginComponent,
+    LogexerciseComponent,
+    SignoutComponent,
+    LogtimeComponent,
+    AdminlookupComponent,
+    AdminlogoutComponent
   ],
   imports: [
     BrowserModule,

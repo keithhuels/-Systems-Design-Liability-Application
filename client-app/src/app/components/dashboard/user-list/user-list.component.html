@@ -1,11 +1,13 @@
+<div class="userList">
 <div class="userListHeader">
   <h1>Users:</h1>
 </div>
-<div *ngFor="let user of users" class="d-flex justify-content-between">
+<div *ngFor="let user of users" class="usersInList">
   <span>{{ user.name }}</span>
   <span class="inactive" [classList]="getStatusClasses(user)"> {{ getUserStatus(user) }} </span>
   
-  <!-- this needs to be conditional on LoggedIn -->
-  <span class="endTime">End Time:</span> 
+ <!-- endtime based on data in log time -->
+  <span *ngIf='checkedLoggedIn(user)' class="endTime">End Time: 6:00pm</span> 
 
+</div>
 </div>

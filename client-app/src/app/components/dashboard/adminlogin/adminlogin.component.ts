@@ -14,4 +14,8 @@ export class AdminloginComponent implements OnInit {
   onBackClick() {
     this.router.navigate([""]);
   }
+
+  onHelpClick() {
+    //contextualhelplink
+  }
 }
