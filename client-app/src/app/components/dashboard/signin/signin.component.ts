@@ -16,7 +16,10 @@ export class SigninComponent implements OnInit {
   }
 
   onSignInClick() {
-    //authenticate user
+    //authenticate user, if user is authenticated, send to log time page
     this.router.navigate(["dashboard", "logtime"]);
   }
+   // onNeedHelpClick() {
+  //   this.router.navigate()
+  // }
 }

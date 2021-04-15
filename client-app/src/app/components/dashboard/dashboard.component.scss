@@ -5,6 +5,8 @@
   border-right: 1px solid black;
   margin: 50px 0 0 0;
   height: calc(100vh - 50px);
+  flex: 0 0 40%;
+  max-width: 40%;
 }
 
 .app-content {
@@ -21,4 +23,6 @@
   bottom: 0;
   transform: none;
   visibility: visible;
+  flex: 0 0 60%;
+  max-width: 60%;
 }

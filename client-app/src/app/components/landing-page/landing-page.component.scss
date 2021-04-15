@@ -6,22 +6,30 @@
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  color:white;
+  color: white;
 }
 
 .title {
   font-size: 3.5rem;
-  color:white;
+  color: white;
 }
 
 .enter {
   font-size: 1.2rem;
-  color:white;
+  color: white;
 }
 
 .adminButton {
   margin-top: 10rem;
   font-size: 40px;
   cursor: pointer;
-  color:white;
+  color: white;
+}
+
+.helpButton {
+  text-align: center;
+  text-decoration: underline;
+  position:absolute;
+  bottom: 0;
+  margin-bottom: 1rem;
 }

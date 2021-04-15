@@ -14,4 +14,7 @@ export class LogexerciseComponent implements OnInit {
   onBackClick() {
     this.router.navigate(["dashboard"]);
   }
+   // onNeedHelpClick() {
+  //   this.router.navigate()
+  // }
 }

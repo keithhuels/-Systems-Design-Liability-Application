@@ -5,7 +5,7 @@ import { AdminlogoutComponent } from "./components/dashboard/adminlogout/adminlo
 import { AdminlookupComponent } from "./components/dashboard/adminlookup/adminlookup.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { DefaultDashboardComponent } from "./components/dashboard/default-dashboard/default-dashboard.component.";
-import { GuestAccessComponent } from "./components/dashboard/guest-access/guest-access.component.";
+import { LiabilityFormComponent } from "./components/dashboard/liabilityForm/liabilityForm.component.";
 import { LogexerciseComponent } from "./components/dashboard/logexercise/logexercise.component";
 import { LogtimeComponent } from "./components/dashboard/logtime/logtime.component";
 import { SigninComponent } from "./components/dashboard/signin/signin.component";
@@ -33,15 +33,15 @@ const routes: Routes = [
       },
       {
         path: "form",
-        component: GuestAccessComponent,
-      },
-      {
-        path: "signup",
-        component: SignupComponent,
+        component: LiabilityFormComponent,
       },
       {
         path: "logtime",
         component: LogtimeComponent,
+      },
+      {
+        path: "signup",
+        component: SignupComponent,
       },
       {
         path: "signout",

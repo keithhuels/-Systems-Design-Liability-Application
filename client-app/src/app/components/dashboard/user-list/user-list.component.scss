@@ -1,10 +1,9 @@
-
 .active {
   color: green;
 }
 
 .userListHeader {
-  padding-top: 4rem;
+
   display: block;
   font-family: Lucida;
   margin-left: 40%;
@@ -12,16 +11,22 @@
 
 h1 {
   text-decoration: underline;
-}
 
+}
 
 .inactive {
   color: lightgray;
 }
 
-.usersInList{
-display:flex;
-justify-content: space-between;
-font-size: 12px;
-margin-bottom: 4px;
+.usersInList {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.helpButton {
+  margin-top: 2.5rem;
+  text-align: left;
+  text-decoration: underline;
 }

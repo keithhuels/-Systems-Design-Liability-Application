@@ -15,6 +15,9 @@ export class DefaultDashboardComponent implements OnInit {
     this.router.navigate(["dashboard", "signin"]);
   }
 
+  onSignOutClick() {
+    this.router.navigate(["dashboard", "signout"]);
+  }
   onGuestAccessClick() {
     this.router.navigate(["dashboard", "form"]);
   }
@@ -22,4 +25,7 @@ export class DefaultDashboardComponent implements OnInit {
   onSignUpClick() {
     this.router.navigate(["dashboard", "signup"]);
   }
+  // onNeedHelpClick() {
+  //   this.router.navigate()
+  // }
 }

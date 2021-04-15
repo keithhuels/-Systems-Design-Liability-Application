@@ -27,7 +27,7 @@ h1 {
 
 .signIn {
   text-align: center;
-  margin-top: 10rem;
+  margin-top: 5rem;
 }
 
 .button {
@@ -37,10 +37,16 @@ h1 {
   width: 35rem;
   height: 4rem;
   font-size: 35px;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 #username,
 #password {
   font-size: 2rem;
+}
+
+.helpButton {
+  text-align: center;
+  text-decoration: underline;
+  
 }

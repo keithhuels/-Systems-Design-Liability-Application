@@ -1,3 +1,44 @@
 <div class="backButton" (click)="onBackClick()">< Back</div>
+<div class="signIn">
+  <h1>Please Sign Out</h1>
+  <form name="message">
+    <div>
+      <label class="textBoxLabel" for="username">Username</label>
+      <input
+        class="textBox"
+        id="username"
+        type="text"
+        value=""
+        name="username"
+      />
+    </div>
 
-<p>signout works!</p>
+    <br style="clear: both" />
+
+    <label class="textBoxLabel" for="password">Password</label>
+    <input class="textBox" id="password" type="text" value="" name="password" />
+  </form>
+
+  <!-- will need (click) functions to authenticate user, change log in status on user list component, and take you to time log page -->
+  <button class="button" (click)="openModal('custom-modal-2')">
+    Log Exercise and/or Log Out
+  </button>
+ 
+  <jw-modal id="custom-modal-2">
+    <h1 style="height: 100px">EXERCISE LOGGING</h1>
+    <p>EXERCISE LOGGGING</p>
+    <img
+    class="bike"
+    src="../../../assets/images/bike.jpeg"
+    alt="bike."
+  />
+    <button
+      class="acceptFormAndClose"
+      (click)="logAndCloseModal('custom-modal-2')"
+    >
+      Log Exercises and Sign Out
+    </button>
+  </jw-modal>
+
+  <div class="helpButton">Need Help?</div>
+</div>

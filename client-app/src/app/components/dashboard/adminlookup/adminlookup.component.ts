@@ -11,5 +11,7 @@ export class AdminlookupComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+ // onNeedHelpClick() {
+  //   this.router.navigate()
+  // }
 }

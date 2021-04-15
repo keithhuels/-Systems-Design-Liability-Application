@@ -18,4 +18,8 @@ export class LandingPageComponent implements OnInit {
   onAdminClick() {
     this.router.navigate(["dashboard", "adminlogin"]);
   }
+
+  // onNeedHelpClick() {
+  //   this.router.navigate()
+  // }
 }

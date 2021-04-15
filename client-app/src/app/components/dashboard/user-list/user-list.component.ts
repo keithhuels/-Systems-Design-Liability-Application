@@ -81,7 +81,7 @@ export class UserListComponent implements OnInit {
     },
     {
       id: 0,
-      name: "John",
+      name: "John@yahoo.com",
       status: UserStatus.LoggedIn,
     },
     {

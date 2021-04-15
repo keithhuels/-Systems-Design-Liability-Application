@@ -36,15 +36,7 @@
       name="email"
       placeholder="Your Email"
     />
-    <br style="clear: both" />
-    <input
-      class="textBox"
-      id="emailagain"
-      type="text"
-      value=""
-      name="emailagain"
-      placeholder="Re-enter Email"
-    />
+
     <br style="clear: both" />
     <input
       class="textBox"
@@ -65,10 +57,11 @@
     />
   </form>
   <div class="liabilityButton" (click)="onLiabilityClick()">
-    <u>Sign Liability Waiver</u>
+    <u>Accept Liability Waiver</u>
     (required)
   </div>
 
-  <!-- will need (click) functionsto add user to user list as logged out -->
-  <button class="button" (click)='onCreateClick()'>Create Account</button>
+  <!-- will need (click) functions to add user to user list and set as logged out -->
+  <button class="button" (click)="onCreateClick()">Create Account</button>
+  <div class="helpButton">Need Help?</div>
 </div>
