@@ -1,7 +1,19 @@
-import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+  Patch,
+  Post,
+  ValidationPipe
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('users')
 export class UsersController {
@@ -9,11 +21,14 @@ export class UsersController {
   }
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
+  create(@Body(new ValidationPipe()) createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
 
   @Get()
+  @ApiResponse({
+    status: 201,
+  })
   findAll() {
     return this.usersService.findAll();
   }
@@ -21,7 +36,7 @@ export class UsersController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     try {
-      return this.usersService.findOne(id);
+      return this.usersService.findOneById(id);
     } catch (err) {
       return HttpStatus.BAD_REQUEST;
     }
