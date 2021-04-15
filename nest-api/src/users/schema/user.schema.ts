@@ -1,5 +1,5 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from "mongoose";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
 export type UserDocument = User & Document;
 
@@ -19,11 +19,14 @@ export class User {
 
   @Prop()
   status: UserStatus;
+
+  @Prop()
+  passwordHash: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
 
 export enum UserStatus {
   LoggedIn,
-  LoggedOut
+  LoggedOut,
 }
