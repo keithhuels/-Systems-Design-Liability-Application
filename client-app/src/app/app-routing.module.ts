@@ -6,7 +6,6 @@ import { AdminlookupComponent } from "./components/dashboard/adminlookup/adminlo
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { DefaultDashboardComponent } from "./components/dashboard/default-dashboard/default-dashboard.component.";
 import { LiabilityFormComponent } from "./components/dashboard/liabilityForm/liabilityForm.component.";
-import { LogexerciseComponent } from "./components/dashboard/logexercise/logexercise.component";
 import { LogtimeComponent } from "./components/dashboard/logtime/logtime.component";
 import { SigninComponent } from "./components/dashboard/signin/signin.component";
 import { SignoutComponent } from "./components/dashboard/signout/signout.component";
