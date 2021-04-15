@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { ModalService } from "./../_modal/modal.service";
+import { ModalService } from "../modal/modal.service";
 
 @Component({
   selector: "app-liabilityForm",

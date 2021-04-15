@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalService } from './../_modal/modal.service';
+import { ModalService } from '../modal/modal.service';
+import {MDCSlider} from '@material/slider'
 
 @Component({
   selector: 'app-signout',
   templateUrl: './signout.component.html',
   styleUrls: ['./signout.component.scss']
 })
+// const slider = new MDCSlider(document.querySelector('.mdc-slider'));
 export class SignoutComponent implements OnInit {
 
   constructor(private readonly router: Router, private modalService: ModalService) { }

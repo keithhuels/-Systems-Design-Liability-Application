@@ -4,6 +4,7 @@ label {
 }
 h1 {
   color: #0c7e25;
+  text-align: center;
 }
 
 .backButton {
@@ -39,7 +40,30 @@ h1 {
   font-size: 35px;
   margin-top: 4rem;
 }
+.mdc-slider {
+  width: 9rem;
+  color: green;
+}
 
+.weightAndRepetitions {
+  display: flex;
+  margin-left: 20rem;
+}
+
+.weightAndReps {
+  width: 9rem;
+}
+
+.logExerciseAndClose {
+  background-color: #0c7e25;
+  color: white;
+  border-radius: 1rem;
+  width: 35rem;
+  height: 4rem;
+  font-size: 35px;
+  margin-top: 4rem;
+  margin-left: 10rem;
+}
 #username,
 #password {
   font-size: 2rem;
@@ -49,4 +73,23 @@ h1 {
   text-align: center;
   text-decoration: underline;
   margin-top: 50px;
+}
+
+.equipment {
+  width: 8rem;
+  height: 10rem;
+  margin-left: 20px;
+  border-left: 3px solid black;
+}
+
+.bike {
+  width: 8rem;
+  height: 8rem;
+  margin-left: 20px;
+}
+
+.sliders {
+  display: flex;
+  margin-left: 2rem;
+  margin-top: 2rem;
 }

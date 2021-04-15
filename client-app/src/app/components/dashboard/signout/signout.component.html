@@ -19,25 +19,268 @@
     <input class="textBox" id="password" type="text" value="" name="password" />
   </form>
 
-  <!-- will need (click) functions to authenticate user, change log in status on user list component, and take you to time log page -->
+  <!-- will need (click) functions to authenticate user, change log in status on user list component to signed out, and open exercise log modal-->
   <button class="button" (click)="openModal('custom-modal-2')">
     Log Exercise and/or Log Out
   </button>
- 
+
   <jw-modal id="custom-modal-2">
-    <h1 style="height: 100px">EXERCISE LOGGING</h1>
-    <p>EXERCISE LOGGGING</p>
-    <img
-    class="bike"
-    src="../../../assets/images/bike.jpeg"
-    alt="bike."
-  />
-    <button
-      class="acceptFormAndClose"
-      (click)="logAndCloseModal('custom-modal-2')"
-    >
-      Log Exercises and Sign Out
-    </button>
+    <div class="exerciseModal">
+      <h1 style="height: 100px">EXERCISE LOGGING</h1>
+
+      <img class="bike" src="../../../assets/images/bike.jpeg" alt="bike." />
+      <img
+        class="equipment"
+        src="../../../assets/images/treadmill.jpeg"
+        alt="bike."
+      />
+      <img
+        class="equipment"
+        src="../../../assets/images/weights.jpeg"
+        alt="weights"
+      />
+      <img
+        class="equipment"
+        src="../../../assets/images/rower.jpeg"
+        alt="rower"
+      />
+      <img
+        class="equipment"
+        src="../../../assets/images/punchbag.jpeg"
+        alt="punchbag."
+      />
+      <img
+        class="equipment"
+        src="../../../assets/images/jumprope.jpeg"
+        alt="jumprope."
+      />
+      <div class="sliders">
+        <div class="mdc-slider mdc-slider--discrete">
+          <input
+            class="mdc-slider__input"
+            type="range"
+            min="0"
+            max="60"
+            value="0"
+            name="volume"
+            step="10"
+            aria-label="Discrete slider demo"
+          />
+          <div class="mdc-slider__track">
+            <div class="mdc-slider__track--inactive"></div>
+            <div class="mdc-slider__track--active">
+              <div class="mdc-slider__track--active_fill"></div>
+            </div>
+          </div>
+          <div class="mdc-slider__thumb">
+            <div
+              class="mdc-slider__value-indicator-container"
+              aria-hidden="true"
+            >
+              <div class="mdc-slider__value-indicator">
+                <span class="mdc-slider__value-indicator-text"> 0 min</span>
+              </div>
+            </div>
+            <div class="mdc-slider__thumb-knob"></div>
+          </div>
+        </div>
+
+        <div class="mdc-slider mdc-slider--discrete">
+          <input
+            class="mdc-slider__input"
+            type="range"
+            min="0"
+            max="60"
+            value="0"
+            name="volume"
+            step="10"
+            aria-label="Discrete slider demo"
+          />
+          <div class="mdc-slider__track">
+            <div class="mdc-slider__track--inactive"></div>
+            <div class="mdc-slider__track--active">
+              <div class="mdc-slider__track--active_fill"></div>
+            </div>
+          </div>
+          <div class="mdc-slider__thumb">
+            <div
+              class="mdc-slider__value-indicator-container"
+              aria-hidden="true"
+            >
+              <div class="mdc-slider__value-indicator">
+                <span class="mdc-slider__value-indicator-text"> 0 min</span>
+              </div>
+            </div>
+            <div class="mdc-slider__thumb-knob"></div>
+          </div>
+        </div>
+        <div class="mdc-slider mdc-slider--discrete">
+          <input
+            class="mdc-slider__input"
+            type="range"
+            min="0"
+            max="60"
+            value="0"
+            name="volume"
+            step="10"
+            aria-label="Discrete slider demo"
+          />
+          <div class="mdc-slider__track">
+            <div class="mdc-slider__track--inactive"></div>
+            <div class="mdc-slider__track--active">
+              <div class="mdc-slider__track--active_fill"></div>
+            </div>
+          </div>
+          <div class="mdc-slider__thumb">
+            <div
+              class="mdc-slider__value-indicator-container"
+              aria-hidden="true"
+            >
+              <div class="mdc-slider__value-indicator">
+                <span class="mdc-slider__value-indicator-text"> 0 min </span>
+              </div>
+            </div>
+            <div class="mdc-slider__thumb-knob"></div>
+          </div>
+        </div>
+        <div class="mdc-slider mdc-slider--discrete">
+          <input
+            class="mdc-slider__input"
+            type="range"
+            min="0"
+            max="60"
+            value="0"
+            name="volume"
+            step="10"
+            aria-label="Discrete slider demo"
+          />
+          <div class="mdc-slider__track">
+            <div class="mdc-slider__track--inactive"></div>
+            <div class="mdc-slider__track--active">
+              <div class="mdc-slider__track--active_fill"></div>
+            </div>
+          </div>
+          <div class="mdc-slider__thumb">
+            <div
+              class="mdc-slider__value-indicator-container"
+              aria-hidden="true"
+            >
+              <div class="mdc-slider__value-indicator">
+                <span class="mdc-slider__value-indicator-text"> 0 min</span>
+              </div>
+            </div>
+            <div class="mdc-slider__thumb-knob"></div>
+          </div>
+        </div>
+        <div class="mdc-slider mdc-slider--discrete">
+          <input
+            class="mdc-slider__input"
+            type="range"
+            min="0"
+            max="60"
+            value="0"
+            name="volume"
+            step="10"
+            aria-label="Discrete slider demo"
+          />
+          <div class="mdc-slider__track">
+            <div class="mdc-slider__track--inactive"></div>
+            <div class="mdc-slider__track--active">
+              <div class="mdc-slider__track--active_fill"></div>
+            </div>
+          </div>
+          <div class="mdc-slider__thumb">
+            <div
+              class="mdc-slider__value-indicator-container"
+              aria-hidden="true"
+            >
+              <div class="mdc-slider__value-indicator">
+                <span class="mdc-slider__value-indicator-text"> 0 min</span>
+              </div>
+            </div>
+            <div class="mdc-slider__thumb-knob"></div>
+          </div>
+        </div>
+        <div class="mdc-slider mdc-slider--discrete">
+          <input
+            class="mdc-slider__input"
+            type="range"
+            min="0"
+            max="60"
+            value="0"
+            name="volume"
+            step="10"
+            aria-label="Discrete slider demo"
+          />
+          <div class="mdc-slider__track">
+            <div class="mdc-slider__track--inactive"></div>
+            <div class="mdc-slider__track--active">
+              <div class="mdc-slider__track--active_fill"></div>
+            </div>
+          </div>
+          <div class="mdc-slider__thumb">
+            <div
+              class="mdc-slider__value-indicator-container"
+              aria-hidden="true"
+            >
+              <div class="mdc-slider__value-indicator">
+                <span class="mdc-slider__value-indicator-text"> 0 min</span>
+              </div>
+            </div>
+            <div class="mdc-slider__thumb-knob"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="weightAndRepetitions">
+        <form>
+          <input
+            class="weightAndReps"
+            id="weight"
+            type="text"
+            value=""
+            name="weight"
+            placeholder="Weight (lbs)"
+          />
+          <br style="clear: both" />
+          <input
+            class="weightAndReps"
+            id="reps"
+            type="text"
+            value=""
+            name="reps"
+            placeholder="Repetitions"
+          />
+        </form>
+        <form>
+          <input
+            class="weightAndReps"
+            id="weight"
+            type="text"
+            value=""
+            name="weight"
+            placeholder="Weight (lbs)"
+          />
+          <br style="clear: both" />
+          <input
+            class="weightAndReps"
+            id="reps"
+            type="text"
+            value=""
+            name="reps"
+            placeholder="Repititions"
+          />
+        </form>
+      </div>
+
+      <button
+        class="logExerciseAndClose"
+        (click)="logAndCloseModal('custom-modal-2')"
+      >
+        Log Exercises and Sign Out
+      </button>
+    </div>
+    <div></div>
   </jw-modal>
 
   <div class="helpButton">Need Help?</div>

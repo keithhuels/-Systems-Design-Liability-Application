@@ -48,10 +48,6 @@ const routes: Routes = [
         component: SignoutComponent,
       },
       {
-        path: "logexercise",
-        component: LogexerciseComponent,
-      },
-      {
         path: "adminlogin",
         component: AdminloginComponent,
       },

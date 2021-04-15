@@ -15,10 +15,14 @@ export class AdminloginComponent implements OnInit {
     this.router.navigate([""]);
   }
 
+  onLogInClick() {
+    this.router.navigate(["dashboard", "adminlookup"]);
+  }
+
   onHelpClick() {
     //contextualhelplink
   }
-   // onNeedHelpClick() {
+  // onNeedHelpClick() {
   //   this.router.navigate()
   // }
 }
