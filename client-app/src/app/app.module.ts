@@ -15,6 +15,7 @@ import { SignoutComponent } from "./components/dashboard/signout/signout.compone
 import { SignupComponent } from "./components/dashboard/signup/signup.component";
 import { UserListComponent } from "./components/dashboard/user-list/user-list.component";
 import { LandingPageComponent } from "./components/landing-page/landing-page.component";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { LandingPageComponent } from "./components/landing-page/landing-page.com
     AdminlogoutComponent,
     ModalComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

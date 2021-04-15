@@ -1,73 +1,74 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { AdminloginComponent } from "./components/dashboard/adminlogin/adminlogin.component";
-import { AdminlogoutComponent } from "./components/dashboard/adminlogout/adminlogout.component";
-import { AdminlookupComponent } from "./components/dashboard/adminlookup/adminlookup.component";
-import { DashboardComponent } from "./components/dashboard/dashboard.component";
-import { DefaultDashboardComponent } from "./components/dashboard/default-dashboard/default-dashboard.component.";
-import { LiabilityFormComponent } from "./components/dashboard/liabilityForm/liabilityForm.component.";
-import { LogtimeComponent } from "./components/dashboard/logtime/logtime.component";
-import { SigninComponent } from "./components/dashboard/signin/signin.component";
-import { SignoutComponent } from "./components/dashboard/signout/signout.component";
-import { SignupComponent } from "./components/dashboard/signup/signup.component";
-import { LandingPageComponent } from "./components/landing-page/landing-page.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AdminloginComponent} from './components/dashboard/adminlogin/adminlogin.component';
+import {AdminlogoutComponent} from './components/dashboard/adminlogout/adminlogout.component';
+import {AdminlookupComponent} from './components/dashboard/adminlookup/adminlookup.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {DefaultDashboardComponent} from './components/dashboard/default-dashboard/default-dashboard.component.';
+import {LiabilityFormComponent} from './components/dashboard/liabilityForm/liabilityForm.component.';
+import {LogtimeComponent} from './components/dashboard/logtime/logtime.component';
+import {SigninComponent} from './components/dashboard/signin/signin.component';
+import {SignoutComponent} from './components/dashboard/signout/signout.component';
+import {SignupComponent} from './components/dashboard/signup/signup.component';
+import {LandingPageComponent} from './components/landing-page/landing-page.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: LandingPageComponent,
   },
 
   {
-    path: "dashboard",
+    path: 'dashboard',
     component: DashboardComponent,
     children: [
       {
-        path: "",
+        path: '',
         component: DefaultDashboardComponent,
       },
       {
-        path: "signin",
+        path: 'signin',
         component: SigninComponent,
       },
       {
-        path: "form",
+        path: 'form',
         component: LiabilityFormComponent,
       },
       {
-        path: "logtime",
+        path: 'logtime',
         component: LogtimeComponent,
       },
       {
-        path: "signup",
+        path: 'signup',
         component: SignupComponent,
       },
       {
-        path: "signout",
+        path: 'signout',
         component: SignoutComponent,
       },
       {
-        path: "adminlogin",
+        path: 'adminlogin',
         component: AdminloginComponent,
       },
       {
-        path: "adminlookup",
+        path: 'adminlookup',
         component: AdminlookupComponent,
       },
       {
-        path: "adminlogout",
+        path: 'adminlogout',
         component: AdminlogoutComponent,
       },
     ],
   },
   {
-    path: "**",
-    redirectTo: "",
+    path: '**',
+    redirectTo: '',
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: "legacy" })],
+  imports: [RouterModule.forRoot(routes, {relativeLinkResolution: 'legacy'})],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
