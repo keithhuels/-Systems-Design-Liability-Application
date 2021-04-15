@@ -1,0 +1,62 @@
+input,
+label {
+  display: block;
+}
+h1 {
+  color: #0c7e25;
+}
+
+.backButton {
+  font-size: 2rem;
+  color: #0c7e25;
+  cursor: pointer;
+}
+
+.textBoxLabel {
+  font-size: 2rem;
+  margin-right: 26rem;
+  margin-bottom: 0%;
+}
+
+.textBox {
+  width: 35rem;
+  height: 4rem;
+  border-radius: 1rem;
+  margin: auto;
+}
+
+.signIn {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.button {
+  background-color: #0c7e25;
+  color: white;
+  border-radius: 1rem;
+  width: 35rem;
+  height: 4rem;
+  font-size: 35px;
+  margin-top: 4rem;
+}
+
+#username {
+  font-size: 2rem;
+}
+
+.helpButton {
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 15rem;
+}
+
+.logExerciseAndClose {
+  background-color: #0c7e25;
+  color: white;
+  border-radius: 1rem;
+  width: 35rem;
+  height: 4rem;
+  font-size: 35px;
+  margin-top: 4rem;
+  margin-left: 10rem;
+}

@@ -7,9 +7,10 @@
       <div class="col-3 user-list">
         <app-user-list></app-user-list>
       </div>
-      <div class="col-9 detail">
-        <router-outlet></router-outlet>
+      <div class="col-9 detail" [@routeFade]="prepareOutlet(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
       </div>
     </div>
   </div>
 </div>
+

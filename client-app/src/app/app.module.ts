@@ -1,16 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { UserListComponent } from './components/dashboard/user-list/user-list.component';
-import { UserDetailComponent } from './components/dashboard/user-detail/user-detail.component';
-import { DashboardHeaderComponent } from './components/dashboard/dashboard-header/dashboard-header.component';
-import { DefaultUserDetailComponent } from './components/dashboard/default-user-detail/default-user-detail.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ApiInterceptor} from './interceptors/api.interceptor';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { AdminloginComponent } from "./components/dashboard/adminlogin/adminlogin.component";
+import { AdminlogoutComponent } from "./components/dashboard/adminlogout/adminlogout.component";
+import { AdminlookupComponent } from "./components/dashboard/adminlookup/adminlookup.component";
+import { DashboardHeaderComponent } from "./components/dashboard/dashboard-header/dashboard-header.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { DefaultDashboardComponent } from "./components/dashboard/default-dashboard/default-dashboard.component.";
+import { LiabilityFormComponent } from "./components/dashboard/liabilityForm/liabilityForm.component.";
+import { ModalComponent } from "./components/dashboard/modal/modal.component";
+import { SigninComponent } from "./components/dashboard/signin/signin.component";
+import { SignoutComponent } from "./components/dashboard/signout/signout.component";
+import { SignupComponent } from "./components/dashboard/signup/signup.component";
+import { UserListComponent } from "./components/dashboard/user-list/user-list.component";
+import { LandingPageComponent } from "./components/landing-page/landing-page.component";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,22 +23,19 @@ import {ApiInterceptor} from './interceptors/api.interceptor';
     LandingPageComponent,
     DashboardComponent,
     UserListComponent,
-    UserDetailComponent,
+    LiabilityFormComponent,
     DashboardHeaderComponent,
-    DefaultUserDetailComponent
+    DefaultDashboardComponent,
+    SignupComponent,
+    SigninComponent,
+    AdminloginComponent,
+    SignoutComponent,
+    AdminlookupComponent,
+    AdminlogoutComponent,
+    ModalComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ApiInterceptor,
-      multi: true
-    }
-  ],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

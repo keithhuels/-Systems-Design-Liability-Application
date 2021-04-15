@@ -1,10 +1,35 @@
 :host {
   padding: 5px;
-  background: #9ed5ab;
-  height: 50px;
+  background: #0c7e25;
+  height: 140px;
   overflow: hidden;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 3;
+}
+
+.date {
+  font-size: 45px;
+  padding-left: 5rem;
+  color:white;
+}
+
+.header-title {
+  font-size: 30px;
+  padding-right: 2rem;
+}
+
+.btn-outline-dark {
+  color: white;
+  font-size: 30px;
+  font-weight: 400;
+  padding-bottom: 0.5rem;
+  border-width: 0.25rem;
+  border-radius: 1rem;
+  border-color: white;
+}
+
+.logo {
+  width: 30rem;
 }

@@ -1,0 +1,24 @@
+<div class="backButton" (click)="onBackClick()">< Back</div>
+<div class="signIn">
+  <form name="message">
+    <div>
+      <label class="textBoxLabel" for="username">Username</label>
+      <input
+        class="textBox"
+        id="username"
+        type="text"
+        value=""
+        name="username"
+      />
+    </div>
+
+    <br style="clear: both" />
+
+    <label class="textBoxLabel" for="password">Password</label>
+    <input class="textBox" id="password" type="text" value="" name="password" />
+  </form>
+
+  <!-- will need (click) function to authenticate as admin-->
+  <button class="button" (click)="onLogInClick()">Log In As Admin</button>
+  <div class="helpButton">Need Help?</div>
+</div>

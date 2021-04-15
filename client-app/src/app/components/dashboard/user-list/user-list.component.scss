@@ -2,13 +2,34 @@
   color: green;
 }
 
-.add-btn {
-  position: absolute;
-  bottom: 15px;
+.userListHeader {
+  display: block;
+  font-family: Lucida;
+  background-color: white;
+  margin-left: 10rem;
+}
+h1 {
+  text-decoration: underline;
 }
 
-.btn-container {
+.inactive {
+  color: lightgray;
+}
+.staticHeader {
+  position: sticky;
+  top: 40px;
+  background-color: white;
+}
+
+.usersInList {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.helpButton {
+  margin-top: 2.5rem;
+  text-align: left;
+  text-decoration: underline;
 }

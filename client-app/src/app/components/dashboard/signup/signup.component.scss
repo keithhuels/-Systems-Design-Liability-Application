@@ -1,0 +1,72 @@
+.backButton {
+  font-size: 2rem;
+  color: #0c7e25;
+  cursor: pointer;
+}
+
+.textBoxLabel {
+  font-size: 2rem;
+  margin-right: 26rem;
+  margin-bottom: 0%;
+}
+
+.textBoxFirst,
+.textBoxLast {
+  width: 17.5rem;
+  height: 4rem;
+  border-radius: 1rem;
+  margin: auto;
+}
+
+.textBox {
+  width: 35rem;
+  height: 4rem;
+  border-radius: 1rem;
+  margin: auto;
+}
+
+::placeholder {
+  color: lightgray;
+  font-size: 2rem;
+}
+
+#username,
+#password {
+  font-size: 2rem;
+}
+
+.signUp {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.liabilityButton {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.button {
+  background-color: #0c7e25;
+  color: white;
+  border-radius: 1rem;
+  width: 35rem;
+  height: 4rem;
+  font-size: 25px;
+  margin-top: 1rem;
+}
+
+#firstName,
+#lastName,
+#company,
+#email,
+#emailagain,
+#username,
+#password {
+  font-size: 2rem;
+}
+
+.helpButton {
+  margin-top: 4.25rem;
+  text-align: center;
+  text-decoration: underline;
+}

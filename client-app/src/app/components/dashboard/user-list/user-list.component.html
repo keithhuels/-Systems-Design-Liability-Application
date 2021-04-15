@@ -1,10 +1,21 @@
-<div>Users:</div>
-<div *ngFor="let user of users" class="">
-  <div (click)="onUserClicked(user)" class="d-flex justify-content-between">
-    <span>{{getUserName(user)}}</span>
-    <span [classList]="getStatusClasses(user)"> {{ getUserStatus(user) }} </span>
+<div class="userList">
+  <div class="staticHeader">
+    <div class="helpButton">Need Help?</div>
+    <div class="userListHeader">
+      <h1>Users:</h1>
+    </div>
   </div>
-</div>
-<div class="btn-container">
-  <div class="add-btn btn-dark btn"> New User? Sign up here!</div>
+  <div class="user">
+    <div *ngFor="let user of users" class="usersInList">
+      <span>{{ user.name }}</span>
+      <span class="inactive" [classList]="getStatusClasses(user)">
+        {{ getUserStatus(user) }}
+      </span>
+
+      <!-- endtime based on data in log time -->
+      <span *ngIf="checkedLoggedIn(user)" class="endTime"
+        >End Time: 6:00pm</span
+      >
+    </div>
+  </div>
 </div>

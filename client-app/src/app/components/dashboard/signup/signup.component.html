@@ -1,0 +1,65 @@
+<div class="backButton" (click)="onBackClick()">< Back</div>
+
+<div class="signUp">
+  <form name="message">
+    <input
+      class="textBoxFirst"
+      id="firstName"
+      type="text"
+      value=""
+      name="firstName"
+      placeholder="First Name"
+    />
+    <input
+      class="textBoxLast"
+      id="lastName"
+      type="text"
+      value=""
+      name="lastName"
+      placeholder="Last Name"
+    />
+    <br style="clear: both" />
+    <input
+      class="textBox"
+      id="company"
+      type="text"
+      value=""
+      name="company"
+      placeholder="Company Affiliation"
+    />
+    <br style="clear: both" />
+    <input
+      class="textBox"
+      id="email"
+      type="text"
+      value=""
+      name="email"
+      placeholder="Your Email"
+    />
+
+    <br style="clear: both" />
+    <input
+      class="textBox"
+      id="username"
+      type="text"
+      value=""
+      name="username"
+      placeholder="Username"
+    />
+    <br style="clear: both" />
+    <input
+      class="textBox"
+      id="password"
+      type="text"
+      value=""
+      name="password"
+      placeholder="Password"
+    />
+  </form>
+
+  <!-- will need (click) functions to add user to user list and set as logged out -->
+  <button class="button" (click)="onLiabilityClick()">
+    Read Liability Form and Create Account
+  </button>
+  <div class="helpButton">Need Help?</div>
+</div>

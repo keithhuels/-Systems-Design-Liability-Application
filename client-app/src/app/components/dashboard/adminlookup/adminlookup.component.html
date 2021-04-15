@@ -1,0 +1,35 @@
+<div class="backButton" (click)="onBackClick()">< Back</div>
+<div class="signIn">
+  <form name="message">
+    <div>
+      <label class="textBoxLabel" for="username">Username</label>
+      <input
+        class="textBox"
+        id="username"
+        type="text"
+        value=""
+        name="username"
+      />
+    </div>
+  </form>
+
+  <!-- opens lookup modal, displays logs for past <days> -->
+  <button class="button" (click)="openModal('custom-modal-2')">
+    Look Up User
+  </button>
+
+  <jw-modal id="custom-modal-2">
+    <h1 style="height: 100px">User Information</h1>
+    <h3>
+      <!-- populated by database data -->
+      THIS WILL BE POPULATED BY DATABASE DATA FOR SPECIFIC USER
+    </h3>
+    <button
+      class="logExerciseAndClose"
+      (click)="acceptAndCloseModal('custom-modal-2')"
+    >
+      Close
+    </button>
+  </jw-modal>
+  <div class="helpButton">Need Help?</div>
+</div>

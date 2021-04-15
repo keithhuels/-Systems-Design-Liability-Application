@@ -1,0 +1,25 @@
+<div class="backButton" (click)="onBackClick()">< Back</div>
+<div class="signIn">
+  <h1>Please Sign In</h1>
+  <form name="message">
+    <div>
+      <label class="textBoxLabel" for="username">Username</label>
+      <input
+        class="textBox"
+        id="username"
+        type="text"
+        value=""
+        name="username"
+      />
+    </div>
+
+    <br style="clear: both" />
+
+    <label class="textBoxLabel" for="password">Password</label>
+    <input class="textBox" id="password" type="text" value="" name="password" />
+  </form>
+
+  <!-- will need (click) functions to authenticate user, change log in status on user list component, and take you to time log page -->
+  <button class="button" (click)="onSignInClick()">Log In</button>
+  <div class="helpButton">Need Help?</div>
+</div>

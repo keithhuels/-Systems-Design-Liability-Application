@@ -2,22 +2,22 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-landing-page",
-  templateUrl: "./landing-page.component.html",
-  styleUrls: ["./landing-page.component.scss"],
+  selector: "app-signup",
+  templateUrl: "./signup.component.html",
+  styleUrls: ["./signup.component.scss"],
 })
-export class LandingPageComponent implements OnInit {
+export class SignupComponent implements OnInit {
   constructor(private readonly router: Router) {}
 
   ngOnInit(): void {}
-
-  onPageCoverClicked() {
+  onBackClick() {
     this.router.navigate(["dashboard"]);
   }
-
-  onAdminClick() {
-    this.router.navigate(["dashboard", "adminlogin"]);
+  onLiabilityClick() {
+    this.router.navigate(["dashboard", "form"]);
   }
+
+  //do not allow unless waiver is accepted
 
   // onNeedHelpClick() {
   //   this.router.navigate()

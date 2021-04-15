@@ -1,0 +1,26 @@
+<div class="backButton" (click)="onBackClick()">< Back</div>
+<div class="signIn">
+  <h1>How long are you going to be using the facility?</h1>
+  <form name="message">
+    <div>
+      <label class="textBoxLabel" for="hours"></label>
+      <input
+        class="textBox"
+        id="hours"
+        type="text"
+        value=""
+        name="hours"
+        placeholder='Hours'
+      />
+    </div>
+
+    <br style="clear: both" />
+
+    <label class="textBoxLabel" for="minutes"></label>
+    <input class="textBox" id="minutes" type="text" value="" name="minutes" placeholder="Minutes"/>
+  </form>
+
+  <!-- will need (click) functions to authenticate user, change log in status on user list component, and take you to time log page -->
+  <button class="button" (click)="onSubmitTimeClick()">Log Time</button>
+  <div class="helpButton">Need Help?</div>
+</div>
