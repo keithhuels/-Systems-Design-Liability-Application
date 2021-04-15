@@ -1,15 +1,21 @@
 <div class="userList">
-  <div class="helpButton">Need Help?</div>
-  <div class="userListHeader">
-    <h1>Users:</h1>
+  <div class="staticHeader">
+    <div class="helpButton">Need Help?</div>
+    <div class="userListHeader">
+      <h1>Users:</h1>
+    </div>
   </div>
-  <div *ngFor="let user of users" class="usersInList">
-    <span>{{ user.name }}</span>
-    <span class="inactive" [classList]="getStatusClasses(user)">
-      {{ getUserStatus(user) }}
-    </span>
+  <div class="user">
+    <div *ngFor="let user of users" class="usersInList">
+      <span>{{ user.name }}</span>
+      <span class="inactive" [classList]="getStatusClasses(user)">
+        {{ getUserStatus(user) }}
+      </span>
 
-    <!-- endtime based on data in log time -->
-    <span *ngIf="checkedLoggedIn(user)" class="endTime">End Time: 6:00pm</span>
+      <!-- endtime based on data in log time -->
+      <span *ngIf="checkedLoggedIn(user)" class="endTime"
+        >End Time: 6:00pm</span
+      >
+    </div>
   </div>
 </div>

@@ -18,8 +18,7 @@ interface User {
 })
 export class UserListComponent implements OnInit {
   users: User[] = [
-  
-      {
+    {
       id: 0,
       name: "John",
       status: UserStatus.LoggedIn,
@@ -179,7 +178,66 @@ export class UserListComponent implements OnInit {
       name: "Jane",
       status: UserStatus.LoggedOut,
     },
-    
+    {
+      id: 0,
+      name: "John",
+      status: UserStatus.LoggedIn,
+    },
+    {
+      id: 1,
+      name: "Bob",
+      status: UserStatus.LoggedOut,
+    },
+    {
+      id: 2,
+      name: "Alice",
+      status: UserStatus.LoggedOut,
+    },
+    {
+      id: 3,
+      name: "Jane",
+      status: UserStatus.LoggedOut,
+    },
+    {
+      id: 0,
+      name: "John",
+      status: UserStatus.LoggedIn,
+    },
+    {
+      id: 1,
+      name: "Bob",
+      status: UserStatus.LoggedOut,
+    },
+    {
+      id: 2,
+      name: "Alice",
+      status: UserStatus.LoggedOut,
+    },
+    {
+      id: 3,
+      name: "Jane",
+      status: UserStatus.LoggedOut,
+    },
+    {
+      id: 0,
+      name: "John",
+      status: UserStatus.LoggedIn,
+    },
+    {
+      id: 1,
+      name: "Bob",
+      status: UserStatus.LoggedOut,
+    },
+    {
+      id: 2,
+      name: "Alice",
+      status: UserStatus.LoggedOut,
+    },
+    {
+      id: 3,
+      name: "Jane",
+      status: UserStatus.LoggedOut,
+    },
   ];
   constructor() {}
 

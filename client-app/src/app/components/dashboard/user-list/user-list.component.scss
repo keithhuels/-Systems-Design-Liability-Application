@@ -3,19 +3,22 @@
 }
 
 .userListHeader {
-
   display: block;
   font-family: Lucida;
-  margin-left: 40%;
+  background-color: white;
+  margin-left: 10rem;
 }
-
 h1 {
   text-decoration: underline;
-
 }
 
 .inactive {
   color: lightgray;
+}
+.staticHeader {
+  position: sticky;
+  top: 10px;
+  background-color: white;
 }
 
 .usersInList {
