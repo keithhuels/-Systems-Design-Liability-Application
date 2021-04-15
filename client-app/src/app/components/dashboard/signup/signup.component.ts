@@ -18,10 +18,8 @@ export class SignupComponent implements OnInit {
   }
 
   //do not allow unless waiver is accepted
-  onCreateClick() {
-    this.router.navigate(["dashboard"]);
-  }
-   // onNeedHelpClick() {
+
+  // onNeedHelpClick() {
   //   this.router.navigate()
   // }
 }
