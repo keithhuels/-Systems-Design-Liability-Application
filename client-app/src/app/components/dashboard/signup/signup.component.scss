@@ -4,114 +4,122 @@
   cursor: pointer;
 }
 
-.textBoxLabel {
-  font-size: 2rem;
-  margin-right: 26rem;
-  margin-bottom: 0%;
+.usernamePassGroup {
+  display: flex;
+  justify-content: space-around;
 }
 
-.textBoxFirst,
-.textBoxLast {
-  width: 17.5rem;
-  height: 4rem;
-  border-radius: 1rem;
-  margin: auto;
-}
+jw-modal {
+  .textBoxLabel {
+    font-size: 2rem;
+    margin-right: 26rem;
+    margin-bottom: 0%;
+  }
 
-.textBox {
-  width: 35rem;
-  height: 4rem;
-  border-radius: 1rem;
-  margin: auto;
-}
+  .textBoxFirst,
+  .textBoxLast {
+    width: 17.5rem;
+    height: 4rem;
+    border-radius: 1rem;
+    margin: auto;
+  }
 
-::placeholder {
-  color: lightgray;
-  font-size: 2rem;
-}
+  .textBox {
+    width: 35rem;
+    height: 4rem;
+    border-radius: 1rem;
+    margin: auto;
+  }
 
-#username,
-#password {
-  font-size: 2rem;
-}
+  ::placeholder {
+    color: lightgray;
+    font-size: 2rem;
+  }
 
-.signUp {
+  #username,
+  #password {
+    font-size: 2rem;
+  }
+
+  .signUp {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .liabilityButton {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .button {
+    background-color: #0c7e25;
+    color: white;
+    border-radius: 1rem;
+    width: 35rem;
+    height: 4rem;
+    font-size: 25px;
+    margin-top: 1rem;
+  }
+
+  .button:disabled {
+    background-color: grey;
+  }
+
+  #firstName,
+  #lastName,
+  #company,
+  #email,
+  #emailagain,
+  #username,
+  #password {
+    font-size: 2rem;
+  }
+
+  .helpButton {
+    margin-top: 4.25rem;
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  .liability-waiver-link {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+
+  .backButton {
+    font-size: 2rem;
+    color: #0c7e25;
+    cursor: pointer;
+  }
+
+
+
+  .openModal,
+  .acceptFormAndClose {
+    background-color: #0c7e25;
+    color: white;
+    border-radius: 1rem;
+    width: 35rem;
+    height: 4rem;
+    font-size: 35px;
+    margin-top: 2rem;
+  }
+
+  .openModal {
+    margin-top: 12rem;
+  }
+
+  .acceptFormAndClose{
+    margin-left: 10rem;
+  }
+}
+jw-modal h1 {
   text-align: center;
-  margin-top: 2rem;
 }
 
-.liabilityButton {
-  font-size: 2rem;
-  cursor: pointer;
-}
-
-.button {
-  background-color: #0c7e25;
-  color: white;
-  border-radius: 1rem;
-  width: 35rem;
-  height: 4rem;
-  font-size: 25px;
-  margin-top: 1rem;
-}
-
-.button:disabled {
-  background-color: grey;
-}
-
-#firstName,
-#lastName,
-#company,
-#email,
-#emailagain,
-#username,
-#password {
-  font-size: 2rem;
-}
-
-.helpButton {
-  margin-top: 4.25rem;
-  text-align: center;
-  text-decoration: underline;
-}
-
-.liability-waiver-link {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-
-.backButton {
-  font-size: 2rem;
-  color: #0c7e25;
-  cursor: pointer;
-}
-
-h1 {
-  text-align: center;
-}
-
-p {
+jw-modal p {
   font-size: 20px;
-}
-
-.openModal,
-.acceptFormAndClose {
-  background-color: #0c7e25;
-  color: white;
-  border-radius: 1rem;
-  width: 35rem;
-  height: 4rem;
-  font-size: 35px;
-  margin-top: 2rem;
-}
-
-.openModal {
-  margin-top: 12rem;
-}
-
-.acceptFormAndClose{
-  margin-left: 10rem;
 }
 
 .helpButton {

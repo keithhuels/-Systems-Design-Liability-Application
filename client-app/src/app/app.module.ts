@@ -18,6 +18,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ApiInterceptor} from './interceptors/api.interceptor';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     AdminlogoutComponent,
     ModalComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: ApiInterceptor,

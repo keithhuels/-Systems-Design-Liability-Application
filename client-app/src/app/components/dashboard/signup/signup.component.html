@@ -3,74 +3,82 @@
 <div class="signUp">
   <h4>All Fields Are Required</h4>
   <form [formGroup]="form">
-    <input formControlName="firstName"
-      class="textBoxFirst"
-      id="firstName"
-      type="text"
-      value=""
-      name="firstName"
-      placeholder="First Name"
-    />
-    <input
-      formControlName="lastName"
-      class="textBoxLast"
-      id="lastName"
-      type="text"
-      value=""
-      name="lastName"
-      placeholder="Last Name"
-    />
-    <br style="clear: both" />
-    <input
-      formControlName="organization"
-      class="textBox"
-      id="company"
-      type="text"
-      value=""
-      name="company"
-      placeholder="Company Affiliation"
-    />
-    <br style="clear: both" />
-    <input
-      formControlName="email"
-      class="textBox"
-      id="email"
-      type="text"
-      value=""
-      name="email"
-      placeholder="Your Email"
-    />
+    <div class="row">
+      <mat-form-field class="col-6">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName"
+               id="firstName"
+               type="text"
+               name="firstName"
+               placeholder="First Name"
+        />
+        <mat-error *ngIf="form.controls['firstName'].invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName"
+               id="lastName"
+               type="text"
+               name="lastName"
+               placeholder="Last Name"
+        />
+        <mat-error *ngIf="form.controls['lastName'].invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
 
-    <br style="clear: both" />
-    <input
-      formControlName="username"
-      class="textBox"
-      id="username"
-      type="text"
-      value=""
-      name="username"
-      placeholder="Username"
-    />
-    <br style="clear: both" />
-    <input
-      formControlName="password"
-      class="textBox"
-      id="password"
-      type="text"
-      value=""
-      name="password"
-      placeholder="Password"
-    />
-    <br style="clear: both" />
-    <input type="checkbox" id="waiverAccepted" formControlName="waiverAccepted"/> I agree to the terms of the
+      <mat-form-field class="col-6">
+        <mat-label>Organization</mat-label>
+        <input matInput formControlName="organization"
+               id="organization"
+               type="text"
+               name="organization"
+               placeholder="Organization"
+        />
+        <mat-error *ngIf="form.controls['organization'].invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email"
+               id="email"
+               type="text"
+               name="email"
+               placeholder="user@example.com"
+        />
+        <mat-error *ngIf="form.controls['email'].invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="usernamePassGroup col-12">
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username"
+               id="username"
+               type="text"
+               name="username"
+               placeholder="Your username here"
+        />
+        <mat-error *ngIf="form.controls['username'].invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password"
+               id="password"
+               type="password"
+               name="password"
+        />
+        <mat-error *ngIf="form.controls['password'].invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+
+
+    <mat-checkbox color="primary" formControlName="waiverAccepted"></mat-checkbox> I agree to the terms of the
     <span (click)="onLiabilityClick()" class="liability-waiver-link">liability waiver</span>.
   </form>
 
-  {{ form.value | json}}
-  Valid: {{ form.valid | json}}
-  Touched: {{ form.touched | json}}
+<!--  {{ form.value | json}}-->
+<!--  Valid: {{ form.valid | json}}-->
+<!--  Touched: {{ form.touched | json}}-->
 
-  <button class="button" [disabled]="!form.valid" (click)="onCreateAccountClicked()">
+  <button mat-raised-button color="primary" class="button" [disabled]="!form.valid" (click)="onCreateAccountClicked()">
     Create Account
   </button>
 
@@ -100,8 +108,8 @@
       I HEREBY AFFIRM THAT I HAVE READ AND FULLY UNDERSTAND THE ABOVE
       STATEMENTS.
     </h5>
-    <button
-      class="acceptFormAndClose"
+    <button mat-raised-button color="warn"
+      class="acceptFormAndClose ml-auto"
       (click)="acceptAndCloseModal('custom-modal-2')"
     >
       Close
