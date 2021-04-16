@@ -22,6 +22,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatSliderModule } from "@angular/material/slider";
+
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AdminlogoutComponent,
     ModalComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatSliderModule],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: ApiInterceptor,
@@ -47,5 +49,4 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
   }],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

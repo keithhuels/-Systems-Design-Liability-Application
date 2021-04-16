@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalService } from '../modal/modal.service';
-import {MDCSlider} from '@material/slider'
+
 
 @Component({
   selector: 'app-signout',
