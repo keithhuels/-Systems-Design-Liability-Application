@@ -2,6 +2,7 @@
   font-size: 2rem;
   color: #0c7e25;
   cursor: pointer;
+  margin-top: 1rem;
 }
 
 .textBoxLabel {
@@ -16,6 +17,7 @@
   height: 4rem;
   border-radius: 1rem;
   margin: auto;
+  margin-bottom: 5px;
 }
 
 .textBox {
@@ -70,7 +72,7 @@
 }
 
 .helpButton {
-  margin-top: 4.25rem;
+  margin-top: 8rem;
   text-align: center;
   text-decoration: underline;
 }
@@ -78,8 +80,8 @@
 .liability-waiver-link {
   text-decoration: underline;
   cursor: pointer;
-}
 
+}
 
 .backButton {
   font-size: 2rem;
@@ -110,16 +112,20 @@ p {
   margin-top: 12rem;
 }
 
-.acceptFormAndClose{
+.acceptFormAndClose {
   margin-left: 10rem;
 }
 
+.liabilityText{
+font-size: 20px;
+margin-top: 1rem;
+}
+
 .helpButton {
-  margin-top: 18.25rem;
   text-align: center;
   text-decoration: underline;
 }
 
-h5{
+h5 {
   text-align: center;
 }

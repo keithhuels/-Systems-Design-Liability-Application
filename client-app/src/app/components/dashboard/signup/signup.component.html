@@ -62,19 +62,20 @@
       placeholder="Password"
     />
     <br style="clear: both" />
-    <input
-      type="checkbox"
-      id="waiverAccepted"
-      formControlName="waiverAccepted"
-    />
-    I agree to the terms of the
-    <span (click)="onLiabilityClick()" class="liability-waiver-link"
-      >liability waiver</span
-    >.
-  </form>
 
-  {{ form.value | json }}
-  Valid: {{ form.valid | json }} Touched: {{ form.touched | json }}
+    <div class="liabilityText">
+      <input
+        type="checkbox"
+        id="waiverAccepted"
+        formControlName="waiverAccepted"
+      />
+
+      I agree to the terms of the
+      <span (click)="onLiabilityClick()" class="liability-waiver-link"
+        >liability waiver</span
+      >.
+    </div>
+  </form>
 
   <button
     class="button"
@@ -115,7 +116,7 @@
     >
       Close
     </button>
-  </jw-modal>
 
-  <div class="helpButton">Need Help?</div>
+    <div class="helpButton">Need Help?</div>
+  </jw-modal>
 </div>

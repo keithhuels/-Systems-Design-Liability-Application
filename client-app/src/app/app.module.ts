@@ -19,6 +19,7 @@ import { SignupComponent } from "./components/dashboard/signup/signup.component"
 import { UserListComponent } from "./components/dashboard/user-list/user-list.component";
 import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 import { ApiInterceptor } from "./interceptors/api.interceptor";
+import { SliderComponent } from './components/dashboard/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ApiInterceptor } from "./interceptors/api.interceptor";
     AdminlookupComponent,
     AdminlogoutComponent,
     ModalComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,
