@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ModalService} from '../modal/modal.service';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../user-list/user-list.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-signup',
@@ -49,5 +50,9 @@ export class SignupComponent implements OnInit {
   // }
   acceptAndCloseModal(id: string) {
     this.modalService.close(id);
+  }
+
+  getErrorMessage() {
+    return 'This field must be filled out.';
   }
 }
