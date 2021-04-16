@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AdminloginComponent } from "./components/dashboard/adminlogin/adminlogin.component";
-import { AdminlogoutComponent } from "./components/dashboard/adminlogout/adminlogout.component";
 import { AdminlookupComponent } from "./components/dashboard/adminlookup/adminlookup.component";
 import { DashboardHeaderComponent } from "./components/dashboard/dashboard-header/dashboard-header.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
@@ -16,10 +15,10 @@ import { ModalComponent } from "./components/dashboard/modal/modal.component";
 import { SigninComponent } from "./components/dashboard/signin/signin.component";
 import { SignoutComponent } from "./components/dashboard/signout/signout.component";
 import { SignupComponent } from "./components/dashboard/signup/signup.component";
+import { SliderComponent } from "./components/dashboard/slider/slider.component";
 import { UserListComponent } from "./components/dashboard/user-list/user-list.component";
 import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 import { ApiInterceptor } from "./interceptors/api.interceptor";
-import { SliderComponent } from './components/dashboard/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,6 @@ import { SliderComponent } from './components/dashboard/slider/slider.component'
     AdminloginComponent,
     SignoutComponent,
     AdminlookupComponent,
-    AdminlogoutComponent,
     ModalComponent,
     SliderComponent,
   ],

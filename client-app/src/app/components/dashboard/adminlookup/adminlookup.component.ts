@@ -27,6 +27,10 @@ export class AdminlookupComponent implements OnInit {
     this.modalService.close(id);
     this.router.navigate(["dashboard", "adminlookup"]);
   }
+
+  onSignOutClick() {
+    this.router.navigate([""]);
+  }
   //onLookUpClick(){
 
   //}
