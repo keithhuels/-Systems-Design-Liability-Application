@@ -55,6 +55,10 @@
   margin-top: 1rem;
 }
 
+.button:disabled {
+  background-color: grey;
+}
+
 #firstName,
 #lastName,
 #company,
@@ -69,4 +73,53 @@
   margin-top: 4.25rem;
   text-align: center;
   text-decoration: underline;
+}
+
+.liability-waiver-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+.backButton {
+  font-size: 2rem;
+  color: #0c7e25;
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  font-size: 20px;
+}
+
+.openModal,
+.acceptFormAndClose {
+  background-color: #0c7e25;
+  color: white;
+  border-radius: 1rem;
+  width: 35rem;
+  height: 4rem;
+  font-size: 35px;
+  margin-top: 2rem;
+}
+
+.openModal {
+  margin-top: 12rem;
+}
+
+.acceptFormAndClose{
+  margin-left: 10rem;
+}
+
+.helpButton {
+  margin-top: 18.25rem;
+  text-align: center;
+  text-decoration: underline;
+}
+
+h5{
+  text-align: center;
 }

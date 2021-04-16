@@ -15,6 +15,9 @@ export class User {
   organization: string;
 
   @Prop()
+  username: string;
+
+  @Prop()
   email: string;
 
   @Prop()
@@ -22,6 +25,9 @@ export class User {
 
   @Prop()
   passwordHash: string;
+
+  @Prop()
+  waiverAccepted: boolean;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

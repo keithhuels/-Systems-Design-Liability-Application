@@ -1,13 +1,17 @@
 import { Component, OnInit } from "@angular/core";
+import {HttpClient} from '@angular/common/http';
 
 export enum UserStatus {
   LoggedIn,
   LoggedOut,
 }
 
-interface User {
-  name: string;
-  id: number;
+export interface User {
+  _id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  username: string;
   status: UserStatus;
 }
 
@@ -17,231 +21,12 @@ interface User {
   styleUrls: ["./user-list.component.scss"],
 })
 export class UserListComponent implements OnInit {
-  users: User[] = [
-    {
-      id: 0,
-      name: "John",
-      status: UserStatus.LoggedIn,
-    },
-    {
-      id: 1,
-      name: "Bob",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 2,
-      name: "Alice",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 3,
-      name: "Jane",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 0,
-      name: "John",
-      status: UserStatus.LoggedIn,
-    },
-    {
-      id: 1,
-      name: "Bob",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 2,
-      name: "Alice",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 3,
-      name: "Jane",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 0,
-      name: "John",
-      status: UserStatus.LoggedIn,
-    },
-    {
-      id: 1,
-      name: "Bob",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 2,
-      name: "Alice",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 3,
-      name: "Jane",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 0,
-      name: "John@yahoo.com",
-      status: UserStatus.LoggedIn,
-    },
-    {
-      id: 1,
-      name: "Bob",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 2,
-      name: "Alice",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 3,
-      name: "Jane",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 0,
-      name: "John",
-      status: UserStatus.LoggedIn,
-    },
-    {
-      id: 1,
-      name: "Bob",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 2,
-      name: "Alice",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 3,
-      name: "Jane",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 0,
-      name: "John",
-      status: UserStatus.LoggedIn,
-    },
-    {
-      id: 1,
-      name: "Bob",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 2,
-      name: "Alice",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 3,
-      name: "Jane",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 0,
-      name: "John",
-      status: UserStatus.LoggedIn,
-    },
-    {
-      id: 1,
-      name: "Bob",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 2,
-      name: "Alice",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 3,
-      name: "Jane",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 0,
-      name: "John",
-      status: UserStatus.LoggedIn,
-    },
-    {
-      id: 1,
-      name: "Bob",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 2,
-      name: "Alice",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 3,
-      name: "Jane",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 0,
-      name: "John",
-      status: UserStatus.LoggedIn,
-    },
-    {
-      id: 1,
-      name: "Bob",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 2,
-      name: "Alice",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 3,
-      name: "Jane",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 0,
-      name: "John",
-      status: UserStatus.LoggedIn,
-    },
-    {
-      id: 1,
-      name: "Bob",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 2,
-      name: "Alice",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 3,
-      name: "Jane",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 0,
-      name: "John",
-      status: UserStatus.LoggedIn,
-    },
-    {
-      id: 1,
-      name: "Bob",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 2,
-      name: "Alice",
-      status: UserStatus.LoggedOut,
-    },
-    {
-      id: 3,
-      name: "Jane",
-      status: UserStatus.LoggedOut,
-    },
-  ];
-  constructor() {}
+  users: User[] = [];
+  constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.http.get<User[]>('users').subscribe((res) => this.users = res);
+  }
 
   getUserStatus(user: User) {
     let status: string;
@@ -258,6 +43,10 @@ export class UserListComponent implements OnInit {
 
   checkedLoggedIn(user: User) {
     return user.status === UserStatus.LoggedIn;
+  }
+
+  getSingleUser(id: string) {
+    this.http.get<User>(`users/${id}`).subscribe((res) => console.log());
   }
 
   getStatusClasses(user: User) {

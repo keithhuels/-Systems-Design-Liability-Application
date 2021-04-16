@@ -5,7 +5,6 @@ import {AdminlogoutComponent} from './components/dashboard/adminlogout/adminlogo
 import {AdminlookupComponent} from './components/dashboard/adminlookup/adminlookup.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {DefaultDashboardComponent} from './components/dashboard/default-dashboard/default-dashboard.component.';
-import {LiabilityFormComponent} from './components/dashboard/liabilityForm/liabilityForm.component.';
 import {LogtimeComponent} from './components/dashboard/logtime/logtime.component';
 import {SigninComponent} from './components/dashboard/signin/signin.component';
 import {SignoutComponent} from './components/dashboard/signout/signout.component';
@@ -29,10 +28,6 @@ const routes: Routes = [
       {
         path: 'signin',
         component: SigninComponent,
-      },
-      {
-        path: 'form',
-        component: LiabilityFormComponent,
       },
       {
         path: 'logtime',
