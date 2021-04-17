@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ModalService } from '../modal/modal.service';
-
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { ModalService } from "../modal/modal.service";
 
 @Component({
-  selector: 'app-signout',
-  templateUrl: './signout.component.html',
-  styleUrls: ['./signout.component.scss']
+  selector: "app-signout",
+  templateUrl: "./signout.component.html",
+  styleUrls: ["./signout.component.scss"],
 })
 // const slider = new MDCSlider(document.querySelector('.mdc-slider'));
 export class SignoutComponent implements OnInit {
+  constructor(
+    private readonly router: Router,
+    private modalService: ModalService
+  ) {}
 
-  constructor(private readonly router: Router, private modalService: ModalService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   onBackClick() {
-  this.router.navigate(["dashboard"])
+    this.router.navigate(["dashboard"]);
   }
-  
+
   openModal(id: string) {
     this.modalService.open(id);
   }
@@ -28,10 +28,15 @@ export class SignoutComponent implements OnInit {
     this.modalService.close(id);
     this.router.navigate(["dashboard"]);
   }
-  
-  
 
-   // onNeedHelpClick() {
+  formatLabel(value: number) {
+    if (value >= 1) {
+      return Math.round(value / 1) + "min";
+    }
+
+    return value;
+  }
+  // onNeedHelpClick() {
   //   this.router.navigate()
   // }
 }
