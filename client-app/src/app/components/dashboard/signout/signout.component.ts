@@ -29,13 +29,6 @@ export class SignoutComponent implements OnInit {
     this.router.navigate(["dashboard"]);
   }
 
-  formatLabel(value: number) {
-    if (value >= 1) {
-      return Math.round(value / 1) + "min";
-    }
-
-    return value;
-  }
   // onNeedHelpClick() {
   //   this.router.navigate()
   // }

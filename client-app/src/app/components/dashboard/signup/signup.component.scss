@@ -2,6 +2,7 @@
   font-size: 2rem;
   color: #0c7e25;
   cursor: pointer;
+  margin-top: 1rem;
 }
 
 .usernamePassGroup {
@@ -81,19 +82,11 @@ jw-modal {
     text-decoration: underline;
   }
 
-  .liability-waiver-link {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-
   .backButton {
     font-size: 2rem;
     color: #0c7e25;
     cursor: pointer;
   }
-
-
 
   .openModal,
   .acceptFormAndClose {
@@ -110,7 +103,7 @@ jw-modal {
     margin-top: 12rem;
   }
 
-  .acceptFormAndClose{
+  .acceptFormAndClose {
     margin-left: 10rem;
   }
 }
@@ -123,11 +116,16 @@ jw-modal p {
 }
 
 .helpButton {
-  margin-top: 18.25rem;
   text-align: center;
   text-decoration: underline;
+  margin-top: 3rem;
 }
 
-h5{
+h2 {
   text-align: center;
+}
+
+.liability-waiver-link {
+  text-decoration: underline;
+  cursor: pointer;
 }

@@ -8,7 +8,10 @@ import { ModalService } from "../modal/modal.service";
   styleUrls: ["./adminlookup.component.scss"],
 })
 export class AdminlookupComponent implements OnInit {
-  constructor(private readonly router: Router, private modalService: ModalService) {}
+  constructor(
+    private readonly router: Router,
+    private modalService: ModalService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -22,7 +25,11 @@ export class AdminlookupComponent implements OnInit {
   //record form has been accepted, close modal, and either log guest in in user list or allow create user button to be clicked
   acceptAndCloseModal(id: string) {
     this.modalService.close(id);
-    this.router.navigate(["dashboard"]);
+    this.router.navigate(["dashboard", "adminlookup"]);
+  }
+
+  onSignOutClick() {
+    this.router.navigate([""]);
   }
   //onLookUpClick(){
 

@@ -3,7 +3,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {AdminloginComponent} from './components/dashboard/adminlogin/adminlogin.component';
-import {AdminlogoutComponent} from './components/dashboard/adminlogout/adminlogout.component';
 import {AdminlookupComponent} from './components/dashboard/adminlookup/adminlookup.component';
 import {DashboardHeaderComponent} from './components/dashboard/dashboard-header/dashboard-header.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
@@ -23,7 +22,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatSliderModule } from "@angular/material/slider";
-
+import { SliderComponent } from "./components/dashboard/slider/slider.component";
 
 @NgModule({
   declarations: [
@@ -38,8 +37,8 @@ import { MatSliderModule } from "@angular/material/slider";
     AdminloginComponent,
     SignoutComponent,
     AdminlookupComponent,
-    AdminlogoutComponent,
     ModalComponent,
+    SliderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatSliderModule],
   providers: [{

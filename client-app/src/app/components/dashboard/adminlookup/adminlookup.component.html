@@ -17,7 +17,9 @@
   <button class="button" (click)="openModal('custom-modal-2')">
     Look Up User
   </button>
-
+  <button class="button" (click)="onSignOutClick()">
+    Sign Out
+  </button>
   <jw-modal id="custom-modal-2">
     <h1 style="height: 100px">User Information</h1>
     <h3>
@@ -30,6 +32,7 @@
     >
       Close
     </button>
+    <div class="helpButtonModal">Need Help?</div>
   </jw-modal>
   <div class="helpButton">Need Help?</div>
 </div>

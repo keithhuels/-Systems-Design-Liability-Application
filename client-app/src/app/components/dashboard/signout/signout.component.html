@@ -32,7 +32,7 @@
 
   <jw-modal id="custom-modal-2">
     <div class="exerciseModal">
-      <h1 style="height: 100px">EXERCISE LOGGING</h1>
+      <h1 class="modalHeader">EXERCISE LOGGING</h1>
 
       <img
         class="bike"
@@ -64,19 +64,19 @@
         src="../../../assets/images/jumprope.jpeg"
         alt="jumprope."
       />
-
-      <mat-slider
-        thumbLabel
-        [displayWith]="formatLabel"
-        tickInterval="1000"
-        min="1"
-        max="100000"
-      ></mat-slider>
+      <div class="sliders">
+        <app-slider id="bikeSlider"></app-slider>
+        <app-slider id="treadmillSlider"></app-slider>
+        <app-slider id="weightSlider"></app-slider>
+        <app-slider id="rowerSlider"></app-slider>
+        <app-slider id="punchbagSlider"></app-slider>
+        <app-slider id="jumpropeSlider"></app-slider>
+      </div>
 
       <div class="weightAndRepetitions">
         <form>
           <input
-            class="weightAndReps"
+            class="weightAndReps1"
             id="weight"
             type="text"
             value=""
@@ -85,7 +85,7 @@
           />
           <br style="clear: both" />
           <input
-            class="weightAndReps"
+            class="weightAndReps1"
             id="reps"
             type="text"
             value=""
@@ -95,7 +95,7 @@
         </form>
         <form>
           <input
-            class="weightAndReps"
+            class="weightAndReps2"
             id="weight"
             type="text"
             value=""
@@ -104,7 +104,7 @@
           />
           <br style="clear: both" />
           <input
-            class="weightAndReps"
+            class="weightAndReps2"
             id="reps"
             type="text"
             value=""
@@ -121,7 +121,7 @@
         Log Exercises and Sign Out
       </button>
     </div>
-    <div></div>
+    <div class="helpButtonModal">Need Help?</div>
   </jw-modal>
 
   <div class="helpButton">Need Help?</div>
