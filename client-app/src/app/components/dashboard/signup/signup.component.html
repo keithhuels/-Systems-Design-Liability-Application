@@ -21,7 +21,7 @@
       name="lastName"
       placeholder="Last Name"
     />
-    <br style="clear: both" />
+    <br />
     <input
       formControlName="organization"
       class="textBox"
@@ -31,7 +31,7 @@
       name="company"
       placeholder="Company Affiliation"
     />
-    <br style="clear: both" />
+    <br />
     <input
       formControlName="email"
       class="textBox"
@@ -42,7 +42,7 @@
       placeholder="Your Email"
     />
 
-    <br style="clear: both" />
+    <br />
     <input
       formControlName="username"
       class="textBox"
@@ -52,7 +52,7 @@
       name="username"
       placeholder="Username"
     />
-    <br style="clear: both" />
+    <br />
     <input
       formControlName="password"
       class="textBox"
@@ -61,7 +61,7 @@
       value=""
       placeholder="Password"
     />
-    <br style="clear: both" />
+    <br />
 
     <div class="liabilityText">
       <input
@@ -76,15 +76,6 @@
       >.
     </div>
   </form>
-
-  <button
-    class="button"
-    [disabled]="!form.valid"
-    (click)="onCreateAccountClicked()"
-  >
-    Create Account
-  </button>
-
   <jw-modal id="custom-modal-2">
     <h1 style="height: 100px">Waiver of Liability Release Form</h1>
     <p>
@@ -118,7 +109,14 @@
     >
       Close
     </button>
-
-    <div class="helpButton">Need Help?</div>
   </jw-modal>
+  <button
+    class="button"
+    [disabled]="!form.valid"
+    (click)="onCreateAccountClicked()"
+  >
+    Create Account
+  </button>
+
+  <div class="helpButton">Need Help?</div>
 </div>

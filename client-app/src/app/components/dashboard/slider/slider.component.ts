@@ -16,4 +16,6 @@ export class SliderComponent implements OnInit {
 
     return value;
   }
+
+
 }
