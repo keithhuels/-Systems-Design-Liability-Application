@@ -13,7 +13,7 @@
       />
     </div>
 
-    <br style="clear: both"/>
+    <br style="clear: both" />
 
     <label class="textBoxLabel" for="password">Password</label>
     <input
@@ -34,16 +34,28 @@
     <div class="exerciseModal">
       <h1 class="modalHeader">EXERCISE LOGGING</h1>
       <form [formGroup]="form">
-
         <div class="row">
-          <div class="col">Dropdown</div>
+          <app-dropdown
+            [parentForm]="form"
+            controlName="equipmentName"
+          ></app-dropdown>
           <div class="col">
             Duration (Minutes)
-            <app-slider [parentForm]="form" controlName="duration" [min]="0" [max]="60"></app-slider>
+            <app-slider
+              [parentForm]="form"
+              controlName="duration"
+              [min]="0"
+              [max]="60"
+            ></app-slider>
           </div>
           <div class="col">
             Weight (lbs)
-            <app-slider [parentForm]="form" controlName="weight" [min]="0" [max]="500"></app-slider>
+            <app-slider
+              [parentForm]="form"
+              controlName="weight"
+              [min]="0"
+              [max]="500"
+            ></app-slider>
           </div>
 
           <div class="col">
@@ -81,11 +93,13 @@
               </div>
             </div>
           </div>
-          <div class="col">add</div>
+          <div class="col">
+           <button mat-raised-button (click)='addExercise()'>Add</button>
+          </div>
         </div>
       </form>
 
-      {{ form.value | json}}
+      {{ form.value | json }}
 
       <button
         class="logExerciseAndClose"
