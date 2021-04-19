@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 
-interface Animal {
+interface Machine {
   name: string;
 }
 
@@ -19,7 +19,7 @@ export class DropdownComponent implements OnInit {
   ngOnInit(): void {}
   animalControl = new FormControl("", Validators.required);
   selectFormControl = new FormControl("", Validators.required);
-  animals: Animal[] = [
+  machines: Machine[] = [
     { name: "Bike" },
     { name: "Treadmill" },
     { name: "Weights" },

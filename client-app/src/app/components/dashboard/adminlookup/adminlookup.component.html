@@ -11,15 +11,31 @@
         name="username"
       />
     </div>
+    <div class="">
+      <label class="textBoxLabel" for="startDate">Start Date</label>
+      <input
+        class="textBox2"
+        id="username"
+        type="text"
+        value=""
+        name="username"
+      />
+      <label class="textBoxLabel" for="startDate">End Date</label>
+      <input
+        class="textBox2"
+        id="username"
+        type="text"
+        value=""
+        name="username"
+      />
+    </div>
   </form>
 
   <!-- opens lookup modal, displays logs for past <days> -->
   <button class="button" (click)="openModal('custom-modal-2')">
     Look Up User
   </button>
-  <button class="button" (click)="onSignOutClick()">
-    Sign Out
-  </button>
+  <button class="button" (click)="onSignOutClick()">Sign Out</button>
   <jw-modal id="custom-modal-2">
     <h1 style="height: 100px">User Information</h1>
     <h3>
