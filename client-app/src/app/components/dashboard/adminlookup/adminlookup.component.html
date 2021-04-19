@@ -1,8 +1,7 @@
 <div class="backButton" (click)="onBackClick()">< Back</div>
 
-  <button class="addButtons">Add administator</button>
-  <button class="addButtons">Add/Delete Equipment</button>
-
+<button class="addButtons">Add/Delete Administator</button>
+<button class="addButtons">Add/Delete Equipment</button>
 
 <div class="signIn">
   <form name="message">
@@ -16,8 +15,8 @@
         name="username"
       />
     </div>
-    <div class="">
-      <label class="textBoxLabel" for="startDate">Start Date</label>
+    <div class="dates">
+      <label class="textBoxLabel2" for="startDate">Start Date</label>
       <input
         class="textBox2"
         id="username"
@@ -25,7 +24,7 @@
         value=""
         name="username"
       />
-      <label class="textBoxLabel" for="startDate">End Date</label>
+      <label class="textBoxLabel2" for="endDate">End Date</label>
       <input
         class="textBox2"
         id="username"
@@ -53,6 +52,9 @@
     >
       Close
     </button>
+    <br />
+    <button class="deleteButton" (click)="onDeleteClick()">Delete User</button>
+
     <div class="helpButtonModal">Need Help?</div>
   </jw-modal>
   <div class="helpButton">Need Help?</div>

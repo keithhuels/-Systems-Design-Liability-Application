@@ -1,7 +1,7 @@
 <div class="backButton" (click)="onBackClick()">< Back</div>
 
 <div class="signUp">
-  <h4>All Fields Are Required</h4>
+  <h4 class="usernamePassGroup">All Fields Are Required</h4>
   <form [formGroup]="form">
     <div class="row">
       <mat-form-field class="col-6">
@@ -92,31 +92,36 @@
       </mat-form-field>
     </div>
 
-    <mat-checkbox
-      color="primary"
-      formControlName="waiverAccepted"
-    ></mat-checkbox>
-    I agree to the terms of the
-    <span (click)="onLiabilityClick()" class="liability-waiver-link"
-      >liability waiver</span
-    >.
+    <div class="usernamePassGroup">
+      <mat-checkbox color="primary" formControlName="waiverAccepted"
+        >I agree to the terms of the</mat-checkbox
+      >
+    </div>
+
+    <div class="usernamePassGroup">
+      <div (click)="onLiabilityClick()" class="liability-waiver-link">
+        liability waiver.
+      </div>
+    </div>
   </form>
 
   <!--  {{ form.value | json}}-->
   <!--  Valid: {{ form.valid | json}}-->
   <!--  Touched: {{ form.touched | json}}-->
 
-  <button
-    mat-raised-button
-    color="primary"
-    class="button"
-    [disabled]="!form.valid"
-    (click)="onCreateAccountClicked()"
-  >
-    Create Account
-  </button>
+  <br />
+  <div class="usernamePassGroup col-12">
+    <button
+      mat-raised-button
+      color="primary"
+      class="button"
+      [disabled]="!form.valid"
+      (click)="onCreateAccountClicked()"
+    >
+      Create Account
+    </button>
+  </div>
 </div>
-
 <jw-modal id="custom-modal-2">
   <h1 style="height: 100px">Waiver of Liability Release Form</h1>
   <p>

@@ -94,7 +94,13 @@
             </div>
           </div>
           <div class="col">
-            <button mat-raised-button (click)="addExercise()">Add</button>
+            <button
+              mat-raised-button
+              (click)="addExercise()"
+              [disabled]="form.invalid"
+            >
+              Add
+            </button>
           </div>
         </div>
       </form>

@@ -1,6 +1,9 @@
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ModalService } from "../modal/modal.service";
+import { DialogComponent } from '../dialog/dialog.component';
+
 
 @Component({
   selector: "app-adminlookup",
@@ -10,7 +13,8 @@ import { ModalService } from "../modal/modal.service";
 export class AdminlookupComponent implements OnInit {
   constructor(
     private readonly router: Router,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {}
@@ -31,9 +35,12 @@ export class AdminlookupComponent implements OnInit {
   onSignOutClick() {
     this.router.navigate([""]);
   }
-  //onLookUpClick(){
 
-  //}
+
+
+  onDeleteClick() {
+   this.dialog.open(DialogComponent)
+  }
 
   // onNeedHelpClick() {
   //   this.router.navigate()

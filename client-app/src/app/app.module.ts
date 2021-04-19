@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatDialogModule } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
@@ -25,6 +26,8 @@ import { SliderComponent } from "./components/dashboard/slider/slider.component"
 import { UserListComponent } from "./components/dashboard/user-list/user-list.component";
 import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 import { ApiInterceptor } from "./interceptors/api.interceptor";
+import { DialogComponent } from './components/dashboard/dialog/dialog.component';
+import { AddMachineComponent } from './components/dashboard/add-machine/add-machine.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,8 @@ import { ApiInterceptor } from "./interceptors/api.interceptor";
     ModalComponent,
     SliderComponent,
     DropdownComponent,
+    DialogComponent,
+    AddMachineComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +60,7 @@ import { ApiInterceptor } from "./interceptors/api.interceptor";
     MatCheckboxModule,
     MatSliderModule,
     MatSelectModule,
+    MatDialogModule,
   ],
   providers: [
     {
