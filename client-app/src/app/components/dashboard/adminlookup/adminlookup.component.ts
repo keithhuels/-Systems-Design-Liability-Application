@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
+import { DialogComponent } from "../dialog/dialog.component";
 import { ModalService } from "../modal/modal.service";
 
 @Component({
@@ -8,12 +11,19 @@ import { ModalService } from "../modal/modal.service";
   styleUrls: ["./adminlookup.component.scss"],
 })
 export class AdminlookupComponent implements OnInit {
+  form: FormGroup;
+
   constructor(
     private readonly router: Router,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      addEquipment: new FormControl("", Validators.required),
+    });
+  }
 
   onBackClick() {
     this.router.navigate(["dashboard", "adminlogin"]);
@@ -31,10 +41,22 @@ export class AdminlookupComponent implements OnInit {
   onSignOutClick() {
     this.router.navigate([""]);
   }
-  //onLookUpClick(){
 
-  //}
+  onDeleteClick() {
+    this.dialog.open(DialogComponent);
+  }
 
+  onAddAdminClick() {
+    this.router.navigate(["dashboard", "addadmin"]);
+  }
+
+  addExercise() {
+   
+  }
+
+  onAddEquipmentClick(id: string) {
+    this.modalService.open(id);
+  }
   // onNeedHelpClick() {
   //   this.router.navigate()
   // }

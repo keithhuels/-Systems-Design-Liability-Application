@@ -34,16 +34,16 @@
       </mat-form-field>
 
       <mat-form-field class="col-6">
-        <mat-label>Organization</mat-label>
+        <mat-label>Title</mat-label>
         <input
           matInput
-          formControlName="organization"
-          id="organization"
+          formControlName="title"
+          id="title"
           type="text"
-          name="organization"
-          placeholder="Organization"
+          name="title"
+          placeholder="Title"
         />
-        <mat-error *ngIf="form.controls['organization'].invalid">{{
+        <mat-error *ngIf="form.controls['title'].invalid">{{
           getErrorMessage()
         }}</mat-error>
       </mat-form-field>
@@ -91,18 +91,6 @@
         }}</mat-error>
       </mat-form-field>
     </div>
-
-    <div class="usernamePassGroup">
-      <mat-checkbox color="primary" formControlName="waiverAccepted"
-        >I agree to the terms of the</mat-checkbox
-      >
-    </div>
-
-    <div class="usernamePassGroup">
-      <div (click)="onLiabilityClick()" class="liability-waiver-link">
-        liability waiver.
-      </div>
-    </div>
   </form>
 
   <!--  {{ form.value | json}}-->
@@ -118,45 +106,21 @@
       [disabled]="!form.valid"
       (click)="onCreateAccountClicked()"
     >
-      Create Account
+      Create Admin Account
+    </button>
+  </div>
+  <br>
+  <br>
+  <div class="usernamePassGroup col-12">
+    <button
+      mat-raised-button
+      color="secondary"
+      class="button"
+      [disabled]="!form.valid"
+      (click)="onCreateAccountClicked()"
+    >
+     Delete My Account
     </button>
   </div>
 </div>
-<jw-modal id="custom-modal-2">
-  <h1 style="height: 100px">Waiver of Liability Release Form</h1>
-  <p>
-    “I have enrolled the in gym use program offered through GDCI. I recognize
-    that I am responsible for my safety and well-being while using the gym and
-    the subsequent equipment. I hereby affirm that I am in good physical
-    condition and do not suffer from any known disability or condition which
-    would prevent or limit my ability to use the machines and equipment as
-    intended. I acknowledge that my enrollment and participation is purely
-    voluntary and in no way mandated by GDCI.” “In consideration of my
-    participation in the use of GDCI’s gym, I hereby release GDCI and its agents
-    from any claims, demands, and causes of action as a result of my voluntary
-    participation and enrollment.” “I fully understand that I may injure myself
-    as a result of my enrollment and subsequent participation in the use of this
-    gym and I hereby release GDCI and its agents from any liability now or in
-    the future for conditions that I may obtain. These conditions may include,
-    but are not limited to, heart attacks, muscle strains, muscle pulls, muscle
-    tears, broken bones, shin splints, heat prostration, injuries to knees,
-    injuries to back, injuries to foot, or any other illness or soreness that I
-    may incur, including death.”
-  </p>
-  <h2>
-    <b>
-      I HEREBY AFFIRM THAT I HAVE READ AND FULLY UNDERSTAND THE ABOVE
-      STATEMENTS.
-    </b>
-  </h2>
-  <button
-    mat-raised-button
-    color="warn"
-    class="acceptFormAndClose"
-    (click)="acceptAndCloseModal('custom-modal-2')"
-  >
-    Close
-  </button>
-</jw-modal>
-
 <div class="helpButton">Need Help?</div>

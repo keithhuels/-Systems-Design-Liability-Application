@@ -1,8 +1,12 @@
-<mat-slider
-  class="mat-slider"
-  thumbLabel
-  [displayWith]="formatLabel"
-  tickInterval="1"
-  min="0"
-  max="60"
-></mat-slider>
+<span [formGroup]="parentForm">
+    <mat-slider
+      class="mat-slider w-100"
+      thumbLabel
+      [displayWith]="formatLabel"
+      tickInterval="1"
+      [min]="min"
+      [max]="max"
+      [formControlName]="controlName">
+</mat-slider>
+</span>
+
