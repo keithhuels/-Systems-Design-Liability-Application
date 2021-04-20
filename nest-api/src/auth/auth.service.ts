@@ -20,5 +20,7 @@ export class AuthService {
     // 2. Add this response to the list.
     // 3. Save to session storage.  [ { userId: david, authenticated: boolean } , {userId: keith, authenticated: boolean }     ]
     return bcrypt.compareSync(loginVm.password, user.passwordHash);
+
+
   }
 }
