@@ -37,7 +37,7 @@ export class SignoutComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup({
       equipmentName: new FormControl("", [Validators.required]),
-      duration: new FormControl(),
+      duration: new FormControl("", [Validators.required]),
       weight: new FormControl(),
       sets: new FormControl(),
       reps: new FormControl(),
@@ -71,12 +71,14 @@ export class SignoutComponent implements OnInit {
       username: "dschwarb",
       routine: this.loggedExercises,
     };
-    this.http.post<Exercise>(`users/${request.username}/log-exercise`, request).subscribe(
-      (response) => console.log(response),
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.http
+      .post<Exercise>(`users/${request.username}/log-exercise`, request)
+      .subscribe(
+        (response) => console.log(response),
+        (err) => {
+          console.log(err);
+        }
+      );
 
     this.modalService.close(id);
     this.router.navigate(["dashboard"]);
