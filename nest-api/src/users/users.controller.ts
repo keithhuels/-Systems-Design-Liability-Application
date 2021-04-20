@@ -14,6 +14,8 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiResponse } from '@nestjs/swagger';
+import { WorkoutLog } from './schema/user.schema';
+import { UpdateExerciseLogDto } from './dto/update-exercise-log.dto';
 
 @Controller('users')
 export class UsersController {
@@ -31,6 +33,11 @@ export class UsersController {
   })
   findAll() {
     return this.usersService.findAll();
+  }
+
+  @Post('/log-exercise')
+  updateWorkout(@Body() updateWorkout: UpdateExerciseLogDto) {
+    return this.usersService.updateExerciseList(updateWorkout);
   }
 
   @Get(':id')

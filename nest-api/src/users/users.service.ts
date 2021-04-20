@@ -1,12 +1,13 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserDocument, UserStatus } from './schema/user.schema';
+import { Exercise, User, UserDocument, UserStatus } from './schema/user.schema';
 import { Model } from 'mongoose';
 import { CustomException } from '../exceptions/custom-exception';
 import { LoginError } from '../exceptions/error.enums';
 import * as bcrypt from 'bcrypt';
+import { UpdateExerciseLogDto } from './dto/update-exercise-log.dto';
 
 @Injectable()
 export class UsersService {
@@ -45,6 +46,12 @@ export class UsersService {
     });
   }
 
+  findOneByUsername(username: string) {
+    return this.userModel.findOne({ username: username }, (err, user) => {
+      this.logger.log('user ' + user, 'error: ' + err);
+    });
+  }
+
   update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
   }
@@ -57,5 +64,23 @@ export class UsersService {
     return this.userModel.findOne({ _id: id }, (err, user) => {
       this.logger.log('user ' + user, 'error: ' + err);
     });
+  }
+
+  async updateExerciseList(exerciseLogDto: UpdateExerciseLogDto) {
+    if (exerciseLogDto.routine === undefined || exerciseLogDto.routine === null) {
+      throw new BadRequestException(exerciseLogDto.routine, 'Parameter routine should not be null');
+    }
+    const user = await this.findOneByUsername(exerciseLogDto.username);
+
+    if (!user) {
+      throw new NotFoundException(exerciseLogDto.username,'User not found.');
+    }
+    const exercise: Exercise = {
+      endDate: new Date(),
+      routine: exerciseLogDto.routine
+    }
+    user.workouts.push(exercise);
+    user.save();
+    return user.workouts;
   }
 }

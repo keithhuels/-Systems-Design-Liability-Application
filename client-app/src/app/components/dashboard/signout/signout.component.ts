@@ -1,8 +1,8 @@
-import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import { ModalService } from "../modal/modal.service";
+import {HttpClient} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {ModalService} from '../modal/modal.service';
 
 export interface WorkoutLog {
   equipmentName: string;
@@ -18,9 +18,9 @@ export interface Exercise {
 }
 
 @Component({
-  selector: "app-signout",
-  templateUrl: "./signout.component.html",
-  styleUrls: ["./signout.component.scss"],
+  selector: 'app-signout',
+  templateUrl: './signout.component.html',
+  styleUrls: ['./signout.component.scss'],
 })
 // const slider = new MDCSlider(document.querySelector('.mdc-slider'));
 export class SignoutComponent implements OnInit {
@@ -32,7 +32,8 @@ export class SignoutComponent implements OnInit {
     private readonly router: Router,
     private modalService: ModalService,
     private readonly http: HttpClient
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -43,16 +44,17 @@ export class SignoutComponent implements OnInit {
       reps: new FormControl(),
     });
   }
+
   formatLabel(value: number) {
     if (value >= 1) {
-      return Math.round(value / 1) + "min";
+      return Math.round(value / 1) + 'min';
     }
 
     return value;
   }
 
   onBackClick() {
-    this.router.navigate(["dashboard"]);
+    this.router.navigate(['dashboard']);
   }
 
   openModal(id: string) {
@@ -68,20 +70,18 @@ export class SignoutComponent implements OnInit {
   //log exercise info in database, close modal and sign out in user list
   logAndCloseModal(id: string) {
     const request: Exercise = {
-      username: "dschwarb",
+      username: 'dschwarb',
       routine: this.loggedExercises,
     };
-    this.http
-      .post<Exercise>(`users/${request.username}/log-exercise`, request)
-      .subscribe(
-        (response) => console.log(response),
-        (err) => {
-          console.log(err);
-        }
-      );
+    this.http.post<Exercise>(`users/log-exercise`, request).subscribe(
+      (response) => console.log(response),
+      (err) => {
+        console.log(err);
+      }
+    );
 
     this.modalService.close(id);
-    this.router.navigate(["dashboard"]);
+    this.router.navigate(['dashboard']);
   }
 
   // onNeedHelpClick() {
