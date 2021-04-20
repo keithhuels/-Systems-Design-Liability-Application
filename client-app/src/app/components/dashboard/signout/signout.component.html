@@ -33,86 +33,78 @@
   <jw-modal id="custom-modal-2">
     <div class="exerciseModal">
       <h1 class="modalHeader">EXERCISE LOGGING</h1>
+      <form [formGroup]="form">
+        <div class="row">
+          <app-dropdown
+            [parentForm]="form"
+            controlName="equipmentName"
+          ></app-dropdown>
+          <div class="col">
+            Duration (Minutes)
+            <app-slider
+              [parentForm]="form"
+              controlName="duration"
+              [min]="0"
+              [max]="60"
+            ></app-slider>
+          </div>
+          <div class="col">
+            Weight (lbs)
+            <app-slider
+              [parentForm]="form"
+              controlName="weight"
+              [min]="0"
+              [max]="500"
+            ></app-slider>
+          </div>
 
-      <img
-        class="bike"
-        src="../../../assets/images/download.jpeg"
-        alt="bike."
-      />
-      <img
-        class="equipment"
-        src="../../../assets/images/treadmill.jpeg"
-        alt="bike."
-      />
-      <img
-        class="equipment"
-        src="../../../assets/images/weights.jpeg"
-        alt="weights"
-      />
-      <img
-        class="equipment"
-        src="../../../assets/images/rower.jpeg"
-        alt="rower"
-      />
-      <img
-        class="equipment"
-        src="../../../assets/images/punchbag.jpeg"
-        alt="punchbag."
-      />
-      <img
-        class="equipment"
-        src="../../../assets/images/jumprope.jpeg"
-        alt="jumprope."
-      />
-      <div class="sliders">
-        <app-slider id="bikeSlider"></app-slider>
-        <app-slider id="treadmillSlider"></app-slider>
-        <app-slider id="weightSlider"></app-slider>
-        <app-slider id="rowerSlider"></app-slider>
-        <app-slider id="punchbagSlider"></app-slider>
-        <app-slider id="jumpropeSlider"></app-slider>
-      </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-5">
+                <mat-form-field class="custom-width">
+                  <mat-label>Sets</mat-label>
+                  <input
+                    formControlName="sets"
+                    matInput
+                    id="sets"
+                    type="number"
+                    value=""
+                    name="sets"
+                    placeholder="Sets"
+                    min="0"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="offset-2"></div>
+              <div class="col-5 of-tag">
+                <mat-form-field class="custom-width">
+                  <mat-label>Reps</mat-label>
+                  <input
+                    formControlName="reps"
+                    matInput
+                    id="reps"
+                    type="number"
+                    value=""
+                    name="reps"
+                    placeholder="Reps"
+                    min="0"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <button
+              mat-raised-button
+              (click)="addExercise()"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </form>
 
-      <div class="weightAndRepetitions">
-        <form>
-          <input
-            class="weightAndReps1"
-            id="weight"
-            type="text"
-            value=""
-            name="weight"
-            placeholder="Weight (lbs)"
-          />
-          <br style="clear: both" />
-          <input
-            class="weightAndReps1"
-            id="reps"
-            type="text"
-            value=""
-            name="reps"
-            placeholder="Repetitions"
-          />
-        </form>
-        <form>
-          <input
-            class="weightAndReps2"
-            id="weight"
-            type="text"
-            value=""
-            name="weight"
-            placeholder="Weight (lbs)"
-          />
-          <br style="clear: both" />
-          <input
-            class="weightAndReps2"
-            id="reps"
-            type="text"
-            value=""
-            name="reps"
-            placeholder="Repititions"
-          />
-        </form>
-      </div>
+      {{ form.value | json }}
 
       <button
         class="logExerciseAndClose"

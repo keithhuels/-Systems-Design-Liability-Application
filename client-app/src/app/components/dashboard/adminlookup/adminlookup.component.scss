@@ -13,22 +13,40 @@ h1 {
   margin-top: 1rem;
 }
 
-.textBoxLabel {
-  font-size: 2rem;
-  margin-right: 26rem;
-  margin-bottom: 5px;
-}
-
 .textBox {
   width: 35rem;
   height: 4rem;
   border-radius: 1rem;
   margin: auto;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.textBoxLabel {
+  font-size: 2rem;
+  margin-right: 26rem;
+  margin-bottom: 5px;
+  margin: auto;
+}
+
+.textBoxLabel2 {
+  font-size: 1.5rem;
+
+  margin: auto;
+}
+
+.textBox2 {
+  border-radius: 1rem;
+  margin: auto;
+  width: 10rem;
+  height: 4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-right: 3rem;
 }
 
 .signIn {
   text-align: center;
-  margin-top: 4rem;
 }
 
 .button {
@@ -38,7 +56,35 @@ h1 {
   width: 35rem;
   height: 4rem;
   font-size: 35px;
-  margin-top: 4rem;
+  margin-top: 1rem;
+}
+
+.addButtons {
+  margin-left: 27rem;
+  font-size: 20px;
+  font-size: 20px;
+  background-color: #0c7e25;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.deleteUser {
+  margin-left: 30rem;
+  font-size: 20px;
+  font-size: 20px;
+  background-color: #0c7e25;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+
+.dates{
+display: flex;
+justify-content: space-between;
 }
 
 #username {
@@ -48,7 +94,7 @@ h1 {
 .helpButton {
   text-align: center;
   text-decoration: underline;
-  margin-top: 9.5rem;
+  margin-top: 6.5rem;
 }
 .helpButtonModal {
   text-align: center;
@@ -65,4 +111,16 @@ h1 {
   font-size: 35px;
   margin-top: 4rem;
   margin-left: 10rem;
+}
+
+.deleteButton{
+  margin-left: 24rem;
+  font-size: 20px;
+  font-size: 20px;
+  background-color: #0c7e25;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  color: white;
+  margin-top: 3rem;
 }

@@ -110,3 +110,18 @@ h1 {
   display: flex;
   justify-content: space-between;
 }
+
+.custom-width ::ng-deep .mat-form-field-infix {
+  width: auto!important;
+}
+
+.of-tag::before {
+  content: "of";
+  position: absolute;
+  right: 110%;
+  top: 18px;
+}
+
+::ng-deep .jw-modal {
+  z-index: 950!important;
+}
