@@ -28,6 +28,9 @@ export class User {
 
   @Prop()
   waiverAccepted: boolean;
+
+  @Prop()
+  workouts: Exercise[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
@@ -35,4 +38,18 @@ export const UserSchema = SchemaFactory.createForClass(User);
 export enum UserStatus {
   LoggedIn,
   LoggedOut,
+}
+
+export interface WorkoutLog {
+  equipmentName: string;
+  duration: number;
+  weight?: number;
+  sets?: number;
+  reps?: number;
+}
+
+export interface Exercise {
+  startDate?: Date;
+  endDate: Date;
+  routine: WorkoutLog[];
 }

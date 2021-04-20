@@ -118,6 +118,10 @@ h1 {
 .of-tag::before {
   content: "of";
   position: absolute;
-  right: 85px;
+  right: 110%;
   top: 18px;
+}
+
+::ng-deep .jw-modal {
+  z-index: 950!important;
 }
