@@ -1,8 +1,10 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -12,11 +14,13 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { AddAdminComponent } from "./components/dashboard/add-admin/add-admin.component";
 import { AdminloginComponent } from "./components/dashboard/adminlogin/adminlogin.component";
 import { AdminlookupComponent } from "./components/dashboard/adminlookup/adminlookup.component";
 import { DashboardHeaderComponent } from "./components/dashboard/dashboard-header/dashboard-header.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { DefaultDashboardComponent } from "./components/dashboard/default-dashboard/default-dashboard.component.";
+import { DialogComponent } from "./components/dashboard/dialog/dialog.component";
 import { DropdownComponent } from "./components/dashboard/dropdown/dropdown.component";
 import { ModalComponent } from "./components/dashboard/modal/modal.component";
 import { SigninComponent } from "./components/dashboard/signin/signin.component";
@@ -26,8 +30,6 @@ import { SliderComponent } from "./components/dashboard/slider/slider.component"
 import { UserListComponent } from "./components/dashboard/user-list/user-list.component";
 import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 import { ApiInterceptor } from "./interceptors/api.interceptor";
-import { DialogComponent } from './components/dashboard/dialog/dialog.component';
-import { AddMachineComponent } from './components/dashboard/add-machine/add-machine.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,7 @@ import { AddMachineComponent } from './components/dashboard/add-machine/add-mach
     SliderComponent,
     DropdownComponent,
     DialogComponent,
-    AddMachineComponent,
+    AddAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,8 @@ import { AddMachineComponent } from './components/dashboard/add-machine/add-mach
     MatSliderModule,
     MatSelectModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
   ],
   providers: [
     {

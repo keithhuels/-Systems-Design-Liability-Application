@@ -1,7 +1,11 @@
 <div class="backButton" (click)="onBackClick()">< Back</div>
 
-<button class="addButtons">Add/Delete Administator</button>
-<button class="addButtons">Add/Delete Equipment</button>
+<button class="addButtons" (click)="onAddAdminClick()">
+  Add/Delete Administator
+</button>
+<button class="addButtons" (click)="onAddEquipmentClick('custom-modal-3')">
+  Add/Delete Equipment
+</button>
 
 <div class="signIn">
   <form name="message">
@@ -15,24 +19,35 @@
         name="username"
       />
     </div>
-    <div class="dates">
-      <label class="textBoxLabel2" for="startDate">Start Date</label>
-      <input
-        class="textBox2"
-        id="username"
-        type="text"
-        value=""
-        name="username"
-      />
-      <label class="textBoxLabel2" for="endDate">End Date</label>
-      <input
-        class="textBox2"
-        id="username"
-        type="text"
-        value=""
-        name="username"
-      />
-    </div>
+
+    <jw-modal id="custom-modal-3">
+      <mat-form-field class="custom-width">
+        <mat-label>Equipment Name</mat-label>
+        <input
+          formControlName="addEquipment"
+          matInput
+          id="addEquipment"
+          type="string"
+          value=""
+          name="addEquipment"
+          placeholder="Equipment Name"
+          min="0"
+        />
+      </mat-form-field>
+      <div class="col">
+        <button mat-raised-button (click)="addExercise()">Add</button>
+      </div></jw-modal
+    >
+
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Start date" />
+        <input matEndDate placeholder="End date" />
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
   </form>
 
   <!-- opens lookup modal, displays logs for past <days> -->
