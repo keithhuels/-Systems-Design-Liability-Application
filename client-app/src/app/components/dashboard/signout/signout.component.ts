@@ -37,8 +37,8 @@ export class SignoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      equipmentName: new FormControl('', [Validators.required]),
-      duration: new FormControl(),
+      equipmentName: new FormControl("", [Validators.required]),
+      duration: new FormControl("", [Validators.required]),
       weight: new FormControl(),
       sets: new FormControl(),
       reps: new FormControl(),
