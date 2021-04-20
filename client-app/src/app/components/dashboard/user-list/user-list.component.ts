@@ -1,5 +1,6 @@
+import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import {HttpClient} from '@angular/common/http';
+import { UsersService } from "./../../shared/users.service";
 
 export enum UserStatus {
   LoggedIn,
@@ -21,11 +22,12 @@ export interface User {
   styleUrls: ["./user-list.component.scss"],
 })
 export class UserListComponent implements OnInit {
-  users: User[] = [];
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private usersService: UsersService) {}
 
-  ngOnInit(): void {
-    this.http.get<User[]>('users').subscribe((res) => this.users = res);
+  ngOnInit(): void {}
+
+  get users() {
+    return this.usersService.user$;
   }
 
   getUserStatus(user: User) {

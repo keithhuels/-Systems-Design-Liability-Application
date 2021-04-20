@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="user">
-    <div *ngFor="let user of users" class="usersInList">
+    <div *ngFor="let user of users | async" class="usersInList">
       <span>{{ user.username }}</span>
       <span class="inactive" [classList]="getStatusClasses(user)">
         {{ getUserStatus(user) }}
