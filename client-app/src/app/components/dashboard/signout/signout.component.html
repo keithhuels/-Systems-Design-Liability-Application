@@ -33,6 +33,23 @@
   <jw-modal id="custom-modal-2">
     <div class="exerciseModal">
       <h1 class="modalHeader">EXERCISE LOGGING</h1>
+      <table class="logTable">
+        <tr>
+          <th class="equip">Equipment</th>
+          <th class="duration">Duration (Minutes)</th>
+          <th class="weight">Weight (lbs)</th>
+          <th class="sets">Sets</th>
+          <th class="reps">Reps</th>
+        </tr>
+        <tr *ngFor="let log of loggedExercises">
+          <td>{{ log.equipmentName }}</td>
+          <td>{{ log.duration }}</td>
+          <td>{{ log.weight }}</td>
+          <td>{{ log.sets }}</td>
+          <td>{{ log.reps }}</td>
+        </tr>
+      </table>
+
       <form [formGroup]="form">
         <div class="row">
           <app-dropdown
@@ -40,7 +57,6 @@
             controlName="equipmentName"
           ></app-dropdown>
           <div class="col">
-            Duration (Minutes)
             <app-slider
               [parentForm]="form"
               controlName="duration"
@@ -49,7 +65,6 @@
             ></app-slider>
           </div>
           <div class="col">
-            Weight (lbs)
             <app-slider
               [parentForm]="form"
               controlName="weight"
@@ -62,7 +77,7 @@
             <div class="row">
               <div class="col-5">
                 <mat-form-field class="custom-width">
-                  <mat-label>Sets</mat-label>
+                  <mat-label></mat-label>
                   <input
                     formControlName="sets"
                     matInput
@@ -78,7 +93,7 @@
               <div class="offset-2"></div>
               <div class="col-5 of-tag">
                 <mat-form-field class="custom-width">
-                  <mat-label>Reps</mat-label>
+                  <mat-label></mat-label>
                   <input
                     formControlName="reps"
                     matInput
@@ -97,6 +112,7 @@
             <button
               mat-raised-button
               (click)="addExercise()"
+              [disabled]="!form.valid"
             >
               Add
             </button>
@@ -104,7 +120,7 @@
         </div>
       </form>
 
-      {{ form.value | json }}
+      <div></div>
 
       <button
         class="logExerciseAndClose"

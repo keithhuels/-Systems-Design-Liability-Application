@@ -78,6 +78,7 @@ h1 {
 .modalHeader {
   font-size: 45px;
   height: 100px;
+  margin-top: 2rem;
 }
 
 .helpButton {
@@ -112,7 +113,7 @@ h1 {
 }
 
 .custom-width ::ng-deep .mat-form-field-infix {
-  width: auto!important;
+  width: auto !important;
 }
 
 .of-tag::before {
@@ -123,5 +124,43 @@ h1 {
 }
 
 ::ng-deep .jw-modal {
-  z-index: 950!important;
+  z-index: 950 !important;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  margin-top: -4rem;
+}
+
+th {
+  font-size: 18px;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+
+  text-transform: capitalize;
+}
+.equip {
+  width: 27%;
+}
+
+.duration {
+  width: 26%;
+}
+
+.weight {
+  width: 25.5%;
+}
+
+.sets {
+  width: 15%;
+}
+
+.reps {
+  width: 10%;
 }
