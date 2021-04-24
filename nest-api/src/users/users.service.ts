@@ -25,7 +25,7 @@ export class UsersService {
     const createdUser = new this.userModel(createUserDto);
     createdUser.passwordHash = UsersService.hashPassword(createUserDto.password);
     createdUser.status = UserStatus.LoggedOut;
-    await this.mailService.sendUserConfirmation(user); //MAIL SERVICE, NEEDS TO BE IN CONTROLLER TOO???
+    await this.mailService.sendUserConfirmation(createdUser); //MAIL SERVICE, NEEDS TO BE IN CONTROLLER TOO or other place??? not getting user object, because it's not created?
     return createdUser.save();
   }
 
