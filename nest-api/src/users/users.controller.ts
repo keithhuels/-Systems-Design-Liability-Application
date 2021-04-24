@@ -1,26 +1,14 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  HttpException,
-  HttpStatus,
-  Param,
-  Patch,
-  Post,
-  ValidationPipe
-} from '@nestjs/common';
-import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { MailService } from './../mail/mail.service';
+import { Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
-import { WorkoutLog } from './schema/user.schema';
+import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateExerciseLogDto } from './dto/update-exercise-log.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { UsersService } from './users.service';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {
-  }
+  constructor(private readonly usersService: UsersService) {}
 
   @Post()
   create(@Body(new ValidationPipe()) createUserDto: CreateUserDto) {

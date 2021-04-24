@@ -1,33 +1,31 @@
 import { BadRequestException, Injectable, Logger, NotFoundException } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectModel } from '@nestjs/mongoose';
-import { Exercise, User, UserDocument, UserStatus } from './schema/user.schema';
+import * as bcrypt from 'bcrypt';
 import { Model } from 'mongoose';
 import { CustomException } from '../exceptions/custom-exception';
 import { LoginError } from '../exceptions/error.enums';
-import * as bcrypt from 'bcrypt';
+import { MailService } from './../mail/mail.service';
+import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateExerciseLogDto } from './dto/update-exercise-log.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { Exercise, User, UserDocument, UserStatus } from './schema/user.schema';
 
 @Injectable()
 export class UsersService {
   private readonly logger = new Logger(UsersService.name);
 
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {
-  }
+  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>, private mailService: MailService) {}
 
   async create(createUserDto: CreateUserDto) {
     const user = await this.findOneByEmail(createUserDto.email);
 
     if (user !== null) {
-      throw new CustomException(
-        'Email is already in use',
-        LoginError.LoginFailed
-      );
+      throw new CustomException('Email is already in use', LoginError.LoginFailed);
     }
     const createdUser = new this.userModel(createUserDto);
     createdUser.passwordHash = UsersService.hashPassword(createUserDto.password);
     createdUser.status = UserStatus.LoggedOut;
+    await this.mailService.sendUserConfirmation(user); //MAIL SERVICE, NEEDS TO BE IN CONTROLLER TOO???
     return createdUser.save();
   }
 
@@ -73,12 +71,12 @@ export class UsersService {
     const user = await this.findOneByUsername(exerciseLogDto.username);
 
     if (!user) {
-      throw new NotFoundException(exerciseLogDto.username,'User not found.');
+      throw new NotFoundException(exerciseLogDto.username, 'User not found.');
     }
     const exercise: Exercise = {
       endDate: new Date(),
-      routine: exerciseLogDto.routine
-    }
+      routine: exerciseLogDto.routine,
+    };
     user.workouts.push(exercise);
     user.save();
     return user.workouts;
