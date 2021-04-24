@@ -35,6 +35,7 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post('/log-exercise')
   updateWorkout(@Body() updateWorkout: UpdateExerciseLogDto) {
     return this.usersService.updateExerciseList(updateWorkout);

@@ -33,6 +33,9 @@ export class SigninComponent implements OnInit {
           () => {
             console.log("user is logged in");
             this.router.navigate(["dashboard", "logtime"]);
+          },
+          () => {
+            // Display Login Failed
           }
         );
     }
