@@ -31,6 +31,9 @@ export class User {
 
   @Prop()
   workouts: Exercise[];
+
+  @Prop()
+  roles: Role[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
@@ -53,3 +56,5 @@ export interface Exercise {
   endDate: Date;
   routine: WorkoutLog[];
 }
+
+export type Role = 'admin' | 'user';

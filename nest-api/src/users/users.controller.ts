@@ -7,15 +7,15 @@ import {
   HttpStatus,
   Param,
   Patch,
-  Post,
+  Post, Request, UseGuards,
   ValidationPipe
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiResponse } from '@nestjs/swagger';
-import { WorkoutLog } from './schema/user.schema';
 import { UpdateExerciseLogDto } from './dto/update-exercise-log.dto';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('users')
 export class UsersController {
@@ -38,6 +38,12 @@ export class UsersController {
   @Post('/log-exercise')
   updateWorkout(@Body() updateWorkout: UpdateExerciseLogDto) {
     return this.usersService.updateExerciseList(updateWorkout);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('workout-data')
+  getWorkoutData(@Request() req) {
+    return req.user
   }
 
   @Get(':id')

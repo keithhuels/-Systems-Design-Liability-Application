@@ -28,6 +28,7 @@ export class UsersService {
     const createdUser = new this.userModel(createUserDto);
     createdUser.passwordHash = UsersService.hashPassword(createUserDto.password);
     createdUser.status = UserStatus.LoggedOut;
+    createdUser.roles.push('user');
     return createdUser.save();
   }
 

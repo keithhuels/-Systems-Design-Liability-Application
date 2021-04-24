@@ -1,10 +1,11 @@
 <div class="backButton" (click)="onBackClick()">< Back</div>
 <div class="signIn">
   <h1>Please Sign In</h1>
-  <form name="message">
+  <form name="message" [formGroup]="form">
     <div>
       <label class="textBoxLabel" for="username">Username</label>
       <input
+        formControlName="username"
         class="textBox"
         id="username"
         type="text"
@@ -17,6 +18,7 @@
 
     <label class="textBoxLabel" for="password">Password</label>
     <input
+      formControlName="password"
       class="textBox"
       id="password"
       type="password"
@@ -26,7 +28,7 @@
   </form>
 
   <!-- will need (click) functions to authenticate user, change log in status on user list component, and take you to time log page -->
-  <button class="button" (click)="onSignInClick()">Log In</button>
+  <button mat-raised-button class="button" (click)="onSignInClick()" [disabled]="form.invalid">Log In</button>
   <div class="helpButton">Need Help?</div>
-  
+
 </div>

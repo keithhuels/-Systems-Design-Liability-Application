@@ -30,6 +30,11 @@ import { SliderComponent } from "./components/dashboard/slider/slider.component"
 import { UserListComponent } from "./components/dashboard/user-list/user-list.component";
 import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 import { ApiInterceptor } from "./interceptors/api.interceptor";
+import {JwtModule} from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return sessionStorage.getItem("id_token");
+}
 
 @NgModule({
   declarations: [
@@ -65,6 +70,9 @@ import { ApiInterceptor } from "./interceptors/api.interceptor";
     MatDialogModule,
     MatDatepickerModule,
     MatMomentDateModule,
+    JwtModule.forRoot({
+      config: {tokenGetter}
+    })
   ],
   providers: [
     {

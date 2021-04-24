@@ -10,6 +10,7 @@ import { SigninComponent } from "./components/dashboard/signin/signin.component"
 import { SignoutComponent } from "./components/dashboard/signout/signout.component";
 import { SignupComponent } from "./components/dashboard/signup/signup.component";
 import { LandingPageComponent } from "./components/landing-page/landing-page.component";
+import {AuthGuardService} from './services/auth/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -32,6 +33,7 @@ const routes: Routes = [
       {
         path: "logtime",
         component: LogtimeComponent,
+        canActivate: [AuthGuardService],
       },
       {
         path: "signup",
@@ -48,10 +50,18 @@ const routes: Routes = [
       {
         path: "adminlookup",
         component: AdminlookupComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          role: 'admin'
+        }
       },
       {
         path: "addadmin",
         component: AddAdminComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          role: 'admin'
+        }
       },
     ],
   },

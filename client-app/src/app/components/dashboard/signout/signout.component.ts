@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ModalService} from '../modal/modal.service';
+import {AuthService} from '../../../services/auth/auth.service';
 
 export interface WorkoutLog {
   equipmentName: string;
@@ -31,7 +32,8 @@ export class SignoutComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private modalService: ModalService,
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
+    private readonly authService: AuthService
   ) {
   }
 
@@ -58,6 +60,10 @@ export class SignoutComponent implements OnInit {
   }
 
   openModal(id: string) {
+    if (!this.authService.isAuthenticated()) {
+      console.log('Sorry This user is not authed');
+      return;
+    }
     this.modalService.open(id);
   }
 
