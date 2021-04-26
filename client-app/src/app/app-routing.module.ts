@@ -11,6 +11,7 @@ import { SignoutComponent } from "./components/dashboard/signout/signout.compone
 import { SignupComponent } from "./components/dashboard/signup/signup.component";
 import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 import {AuthGuardService} from './services/auth/auth-guard.service';
+import {LogExerciseComponent} from './components/dashboard/log-exercise/log-exercise.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,7 @@ const routes: Routes = [
         component: DefaultDashboardComponent,
       },
       {
-        path: "signin",
+        path: "checkin",
         component: SigninComponent,
       },
       {
@@ -40,8 +41,12 @@ const routes: Routes = [
         component: SignupComponent,
       },
       {
-        path: "signout",
+        path: "checkout",
         component: SignoutComponent,
+      },
+      {
+        path: "log-exercise",
+        component: LogExerciseComponent
       },
       {
         path: "adminlogin",

@@ -28,6 +28,13 @@ export class AuthService {
 
   }
 
+  hasRole(role: string) {
+    const token = this.jwtHelper.decodeToken(sessionStorage.getItem('id_token'));
+    const roles = token.roles as string[];
+    console.log(role, roles);
+    return roles.includes(role);
+  }
+
   private setSession(authResult) {
     sessionStorage.setItem('id_token', authResult.access_token);
     console.log(authResult);
@@ -35,5 +42,15 @@ export class AuthService {
 
   logout() {
     sessionStorage.removeItem('id_token');
+  }
+
+  getCurrentUserName(): string | undefined {
+    const token = this.jwtHelper.decodeToken(sessionStorage.getItem('id_token'));
+
+    if (token) {
+      return token.username;
+    }
+
+    return undefined;
   }
 }

@@ -1,5 +1,6 @@
+/* tslint:disable:no-string-literal */
 import { Injectable } from '@angular/core';
-import {ActivatedRoute, CanActivate, Router} from '@angular/router';
+import {ActivatedRoute, ActivatedRouteSnapshot, CanActivate, Route, Router} from '@angular/router';
 import {AuthService} from './auth.service';
 
 @Injectable({
@@ -7,13 +8,18 @@ import {AuthService} from './auth.service';
 })
 export class AuthGuardService implements CanActivate {
 
-  constructor(private readonly authService: AuthService, private readonly router: Router, private readonly activatedRoute: ActivatedRoute) { }
+  constructor(private readonly authService: AuthService, private readonly router: Router) { }
 
-  canActivate(): boolean {
+  canActivate(snapshot: ActivatedRouteSnapshot): boolean {
+    let hasRole = true;
+    if (snapshot.data && snapshot.data['role']) {
+      const roleToCheck = snapshot.data['role'];
+      hasRole = this.authService.hasRole(roleToCheck);
+    }
     if (!this.authService.isAuthenticated()) {
-      this.router.navigate(["dashboard", "signin"]);
+      this.router.navigate(["dashboard", "checkin"]);
       return false;
     }
-    return true;
+    return hasRole && this.authService.isAuthenticated();
   }
 }

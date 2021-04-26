@@ -39,8 +39,8 @@ export class User {
 export const UserSchema = SchemaFactory.createForClass(User);
 
 export enum UserStatus {
-  LoggedIn,
-  LoggedOut,
+  CheckedIn,
+  CheckedOut,
 }
 
 export interface WorkoutLog {

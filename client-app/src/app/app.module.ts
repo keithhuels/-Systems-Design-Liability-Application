@@ -31,6 +31,8 @@ import { UserListComponent } from "./components/dashboard/user-list/user-list.co
 import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 import { ApiInterceptor } from "./interceptors/api.interceptor";
 import {JwtModule} from '@auth0/angular-jwt';
+import {AuthInterceptor} from './interceptors/auth.interceptor';
+import { LogExerciseComponent } from './components/dashboard/log-exercise/log-exercise.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("id_token");
@@ -54,6 +56,7 @@ export function tokenGetter() {
     DropdownComponent,
     DialogComponent,
     AddAdminComponent,
+    LogExerciseComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +83,11 @@ export function tokenGetter() {
       useClass: ApiInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })
