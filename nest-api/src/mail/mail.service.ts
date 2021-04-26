@@ -13,9 +13,9 @@ export class MailService {
       to: user.email,
       // from: '"Support Team" <support@example.com>', // override default from
       subject: 'Welcome to the GDCI Gym App! Confirm your Email',
-      template: 'templates/confirmation', // `.hbs` extension is appended automatically
+      template: './confirmation', // `.hbs` extension is appended automatically
       context: {
-        name: user.lastName,
+        name: user.firstName,
       },
     });
   }
