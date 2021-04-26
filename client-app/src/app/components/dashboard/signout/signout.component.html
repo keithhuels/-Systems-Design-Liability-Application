@@ -33,22 +33,6 @@
   <jw-modal id="custom-modal-2">
     <div class="exerciseModal">
       <h1 class="modalHeader">EXERCISE LOGGING</h1>
-      <table class="logTable">
-        <tr>
-          <th class="equip">Equipment</th>
-          <th class="duration">Duration (Minutes)</th>
-          <th class="weight">Weight (lbs)</th>
-          <th class="sets">Sets</th>
-          <th class="reps">Reps</th>
-        </tr>
-        <tr *ngFor="let log of loggedExercises">
-          <td>{{ log.equipmentName }}</td>
-          <td>{{ log.duration }}</td>
-          <td>{{ log.weight }}</td>
-          <td>{{ log.sets }}</td>
-          <td>{{ log.reps }}</td>
-        </tr>
-      </table>
 
       <form [formGroup]="form">
         <div class="row">
@@ -57,6 +41,7 @@
             controlName="equipmentName"
           ></app-dropdown>
           <div class="col">
+            <label>Duration (min)</label>
             <app-slider
               [parentForm]="form"
               controlName="duration"
@@ -64,7 +49,9 @@
               [max]="60"
             ></app-slider>
           </div>
+
           <div class="col">
+            <label>Weight (lbs)</label>
             <app-slider
               [parentForm]="form"
               controlName="weight"
@@ -77,7 +64,7 @@
             <div class="row">
               <div class="col-5">
                 <mat-form-field class="custom-width">
-                  <mat-label></mat-label>
+                  <mat-label>Sets</mat-label>
                   <input
                     formControlName="sets"
                     matInput
@@ -93,7 +80,7 @@
               <div class="offset-2"></div>
               <div class="col-5 of-tag">
                 <mat-form-field class="custom-width">
-                  <mat-label></mat-label>
+                  <mat-label>Reps</mat-label>
                   <input
                     formControlName="reps"
                     matInput
@@ -121,6 +108,22 @@
       </form>
 
       <div></div>
+      <table class="logTable">
+        <tr>
+          <th class="equip">Equipment</th>
+          <th class="duration">Duration (Minutes)</th>
+          <th class="weight">Weight (lbs)</th>
+          <th class="sets">Sets</th>
+          <th class="reps">Reps</th>
+        </tr>
+        <tr *ngFor="let log of loggedExercises">
+          <td>{{ log.equipmentName }}</td>
+          <td>{{ log.duration }}</td>
+          <td>{{ log.weight }}</td>
+          <td>{{ log.sets }}</td>
+          <td>{{ log.reps }}</td>
+        </tr>
+      </table>
 
       <button
         class="logExerciseAndClose"
