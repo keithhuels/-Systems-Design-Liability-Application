@@ -1,6 +1,5 @@
 import { MailerModule } from '@nestjs-modules/mailer';
 import { Module } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { join } from 'path';
 import { MailService } from './mail.service';
 import {HandlebarsAdapter} from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter'
@@ -8,11 +7,7 @@ import {HandlebarsAdapter} from '@nestjs-modules/mailer/dist/adapters/handlebars
 @Module({
   imports: [
     MailerModule.forRoot({
-      // transport: 'smtps://user@example.com:topsecret@smtp.example.com',
-      // or
-      // useFactory: async (config: ConfigService) => ({
-        // transport: config.get("MAIL_TRANSPORT"),
-        // or
+ 
         transport: {
           host: 'smtp.sendgrid.net',
           secure: false,
@@ -32,8 +27,7 @@ import {HandlebarsAdapter} from '@nestjs-modules/mailer/dist/adapters/handlebars
             strict: true,
           },
         },
-    // }),
-      // inject: [ConfigService],
+ 
     }),
   ],
   providers: [MailService],
