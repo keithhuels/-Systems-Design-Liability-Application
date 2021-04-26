@@ -33,6 +33,7 @@
   <jw-modal id="custom-modal-2">
     <div class="exerciseModal">
       <h1 class="modalHeader">EXERCISE LOGGING</h1>
+
       <form [formGroup]="form">
         <div class="row">
           <app-dropdown
@@ -40,7 +41,7 @@
             controlName="equipmentName"
           ></app-dropdown>
           <div class="col">
-            Duration (Minutes)
+            <label>Duration (min)</label>
             <app-slider
               [parentForm]="form"
               controlName="duration"
@@ -48,8 +49,9 @@
               [max]="60"
             ></app-slider>
           </div>
+
           <div class="col">
-            Weight (lbs)
+            <label>Weight (lbs)</label>
             <app-slider
               [parentForm]="form"
               controlName="weight"
@@ -97,6 +99,7 @@
             <button
               mat-raised-button
               (click)="addExercise()"
+              [disabled]="!form.valid"
             >
               Add
             </button>
@@ -104,7 +107,23 @@
         </div>
       </form>
 
-      {{ form.value | json }}
+      <div></div>
+      <table class="logTable">
+        <tr>
+          <th class="equip">Equipment</th>
+          <th class="duration">Duration (Minutes)</th>
+          <th class="weight">Weight (lbs)</th>
+          <th class="sets">Sets</th>
+          <th class="reps">Reps</th>
+        </tr>
+        <tr *ngFor="let log of loggedExercises">
+          <td>{{ log.equipmentName }}</td>
+          <td>{{ log.duration }}</td>
+          <td>{{ log.weight }}</td>
+          <td>{{ log.sets }}</td>
+          <td>{{ log.reps }}</td>
+        </tr>
+      </table>
 
       <button
         class="logExerciseAndClose"
