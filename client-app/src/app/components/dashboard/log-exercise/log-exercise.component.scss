@@ -167,3 +167,170 @@ th {
 .large-font {
   font-size: 3rem;
 }
+
+input,
+label {
+  display: block;
+}
+h1 {
+  color: #0c7e25;
+  text-align: center;
+}
+
+.backButton {
+  font-size: 2rem;
+  color: #0c7e25;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.textBoxLabel {
+  font-size: 2rem;
+  margin-right: 26rem;
+  margin-bottom: 5px;
+}
+
+.textBox {
+  width: 35rem;
+  height: 4rem;
+  border-radius: 1rem;
+  margin: auto;
+}
+
+.signIn {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.button {
+  background-color: #0c7e25;
+  color: white;
+  border-radius: 1rem;
+  width: 35rem;
+  height: 4rem;
+  font-size: 35px;
+  margin-top: 4rem;
+}
+.mdc-slider {
+  width: 9rem;
+  color: green;
+}
+
+.weightAndRepetitions {
+  display: flex;
+  margin-left: 20rem;
+  margin-top: 1rem;
+}
+
+.weightAndReps1 {
+  width: 9rem;
+  margin-right: 10px;
+}
+.weightAndReps2 {
+  width: 9rem;
+}
+
+.logExerciseAndClose {
+  background-color: #0c7e25;
+  color: white;
+  border-radius: 1rem;
+  width: 35rem;
+  height: 4rem;
+  font-size: 35px;
+  margin-top: 4rem;
+  margin-left: 10rem;
+}
+#username,
+#password {
+  font-size: 2rem;
+}
+
+.modalHeader {
+  font-size: 45px;
+  height: 100px;
+  margin-top: 2rem;
+}
+
+.helpButton {
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 8rem;
+}
+
+.helpButtonModal {
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 4rem;
+}
+
+.equipment {
+  width: 8rem;
+  height: 10rem;
+  margin-left: 20px;
+  border-left: 3px solid black;
+}
+
+.bike {
+  width: 8rem;
+  height: 8rem;
+  margin-left: 20px;
+}
+
+.sliders {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.custom-width ::ng-deep .mat-form-field-infix {
+  width: auto !important;
+}
+
+.of-tag::before {
+  content: "of";
+  position: absolute;
+  right: 110%;
+  top: 18px;
+}
+
+::ng-deep .jw-modal {
+  z-index: 950 !important;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  margin-top: 1rem;
+}
+
+th {
+  font-size: 18px;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+
+  text-transform: capitalize;
+}
+.equip {
+  width: 27%;
+}
+
+.duration {
+  width: 26%;
+}
+
+.weight {
+  width: 25.5%;
+}
+
+.sets {
+  width: 15%;
+}
+
+.reps {
+  width: 10%;
+}

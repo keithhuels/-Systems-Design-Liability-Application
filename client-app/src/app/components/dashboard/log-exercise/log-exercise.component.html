@@ -106,9 +106,9 @@
       <tr *ngFor="let log of loggedExercises">
         <td>{{ log.equipmentName }}</td>
         <td>{{ log.duration }}</td>
-        <td>{{ log.weight }}</td>
-        <td>{{ log.sets }}</td>
-        <td>{{ log.reps }}</td>
+        <td>{{ log.weight ? log.weight : '--' }}</td>
+        <td>{{ log.sets ? log.sets : '--' }}</td>
+        <td>{{ log.reps ? log.reps : '--'}}</td>
       </tr>
     </table>
 
