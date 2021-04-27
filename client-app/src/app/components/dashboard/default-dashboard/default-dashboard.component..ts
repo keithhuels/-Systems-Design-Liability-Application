@@ -11,21 +11,12 @@ export class DefaultDashboardComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onCheckInClick() {
-    this.router.navigate(["dashboard", "checkin"]);
-  }
-
-  onCheckOutClick() {
-    this.router.navigate(["dashboard", "checkout"]);
-  }
-  onGuestAccessClick() {
-    this.router.navigate(["dashboard", "form"]);
-  }
-
   onSignUpClick() {
     this.router.navigate(["dashboard", "signup"]);
   }
-  // onNeedHelpClick() {
-  //   this.router.navigate()
-  // }
+
+  onSignInClick() {
+    this.router.navigate(["dashboard", "signin"]);
+
+  }
 }

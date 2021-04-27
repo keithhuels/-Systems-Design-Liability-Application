@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from '../../components/dashboard/user-list/user-list.component';
+import {User, UserStatus} from '../../components/dashboard/user-list/user-list.component';
 import {shareReplay, tap} from 'rxjs/operators';
 import * as moment from 'moment';
 import {JwtHelperService} from '@auth0/angular-jwt';

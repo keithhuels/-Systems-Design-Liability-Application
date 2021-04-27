@@ -17,7 +17,7 @@
 
       <!-- endtime based on data in log time -->
       <span *ngIf="checkedLoggedIn(user)" class="endTime"
-        >End Time: 6:00pm</span
+        >End Time: {{user.dailyTimeOut | date: 'h:mm a'}}</span
       >
     </div>
   </div>

@@ -16,6 +16,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiResponse } from '@nestjs/swagger';
 import { UpdateExerciseLogDto } from './dto/update-exercise-log.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { CheckInDto } from './dto/check-in-dto';
 
 @Controller('users')
 export class UsersController {
@@ -45,6 +46,18 @@ export class UsersController {
   @Get('workout-data')
   getWorkoutData(@Request() req) {
     return req.user
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('/checkin')
+  checkin(@Body() checkInDto: CheckInDto) {
+    return this.usersService.checkIn(checkInDto);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('/checkout')
+  checkout(@Body() updateWorkout: UpdateExerciseLogDto) {
+    return this.usersService.updateExerciseList(updateWorkout);
   }
 
   @Get(':id')

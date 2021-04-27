@@ -34,6 +34,9 @@ export class User {
 
   @Prop()
   roles: Role[];
+
+  @Prop()
+  dailyTimeOut: Date;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

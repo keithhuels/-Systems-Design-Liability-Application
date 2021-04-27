@@ -1,1 +1,106 @@
-<p>log-exercise works!</p>
+<div class="backButton" (click)="onBackClick()">< Back</div>
+<div class="signIn">
+  <!-- will need (click) functions to authenticate user, change log in status on user list component to signed out, and open exercise log modal-->
+  <div class="row">
+    <div class="col-12">
+      <button class="button mb-4" (click)="openModal('custom-modal-2')">
+        Log Daily Exercises
+      </button>
+    </div>
+    <div class="col-12 large-font">
+      or
+    </div>
+    <div class="col-12 mt-4">
+      <button class="button" (click)="justCheckOut()">
+        Just Log me Out
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<jw-modal id="custom-modal-2">
+  <div class="exerciseModal">
+    <h1 class="modalHeader">EXERCISE LOGGING</h1>
+    <form [formGroup]="form">
+      <div class="row">
+        <app-dropdown
+          [parentForm]="form"
+          controlName="equipmentName"
+        ></app-dropdown>
+        <div class="col">
+          Duration (Minutes)
+          <app-slider
+            [parentForm]="form"
+            controlName="duration"
+            [min]="0"
+            [max]="60"
+          ></app-slider>
+        </div>
+        <div class="col">
+          Weight (lbs)
+          <app-slider
+            [parentForm]="form"
+            controlName="weight"
+            [min]="0"
+            [max]="500"
+          ></app-slider>
+        </div>
+
+        <div class="col">
+          <div class="row">
+            <div class="col-5">
+              <mat-form-field class="custom-width">
+                <mat-label>Sets</mat-label>
+                <input
+                  formControlName="sets"
+                  matInput
+                  id="sets"
+                  type="number"
+                  value=""
+                  name="sets"
+                  placeholder="Sets"
+                  min="0"
+                />
+              </mat-form-field>
+            </div>
+            <div class="offset-2"></div>
+            <div class="col-5 of-tag">
+              <mat-form-field class="custom-width">
+                <mat-label>Reps</mat-label>
+                <input
+                  formControlName="reps"
+                  matInput
+                  id="reps"
+                  type="number"
+                  value=""
+                  name="reps"
+                  placeholder="Reps"
+                  min="0"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <button
+            mat-raised-button
+            (click)="addExercise()"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <button
+      class="logExerciseAndClose"
+      (click)="logAndCloseModal('custom-modal-2')"
+    >
+      Log Exercises and Sign Out
+    </button>
+  </div>
+  <div class="helpButtonModal">Need Help?</div>
+</jw-modal>
+
+<div class="helpButton">Need Help?</div>

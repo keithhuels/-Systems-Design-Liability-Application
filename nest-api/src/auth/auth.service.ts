@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { LoginVm } from '../models/viewmodels/LoginVm';
 import { UserDocument } from '../users/schema/user.schema';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import { CustomException } from '../exceptions/custom-exception';
 
 @Injectable()
 export class AuthService {
@@ -29,7 +30,7 @@ export class AuthService {
   }
 
   async login(user) {
-    const payload = {username: user._doc.username, sub: user._doc._id, roles: user._doc.roles, email: user._doc.email};
+    const payload = {username: user._doc.username, sub: user._doc._id, roles: user._doc.roles, email: user._doc.email, status: user._doc.status};
     return {
       access_token: this.jwtService.sign(payload)
     };

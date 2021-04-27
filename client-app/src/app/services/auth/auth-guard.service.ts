@@ -15,9 +15,12 @@ export class AuthGuardService implements CanActivate {
     if (snapshot.data && snapshot.data['role']) {
       const roleToCheck = snapshot.data['role'];
       hasRole = this.authService.hasRole(roleToCheck);
+      if (!hasRole) {
+        this.router.navigate(["dashboard", "signin"]);
+      }
     }
     if (!this.authService.isAuthenticated()) {
-      this.router.navigate(["dashboard", "checkin"]);
+      this.router.navigate(["dashboard", "signin"]);
       return false;
     }
     return hasRole && this.authService.isAuthenticated();

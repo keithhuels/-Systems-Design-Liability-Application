@@ -8,6 +8,8 @@ import { CustomException } from '../exceptions/custom-exception';
 import { LoginError } from '../exceptions/error.enums';
 import * as bcrypt from 'bcrypt';
 import { UpdateExerciseLogDto } from './dto/update-exercise-log.dto';
+import { CheckInDto } from './dto/check-in-dto';
+import { DateTime } from 'luxon';
 
 @Injectable()
 export class UsersService {
@@ -17,11 +19,11 @@ export class UsersService {
   }
 
   async create(createUserDto: CreateUserDto) {
-    const user = await this.findOneByEmail(createUserDto.email);
+    const user = await this.findOneByUsername(createUserDto.username);
 
     if (user !== null) {
       throw new CustomException(
-        'Email is already in use',
+        'Username is already in use',
         LoginError.LoginFailed
       );
     }
@@ -81,7 +83,35 @@ export class UsersService {
       routine: exerciseLogDto.routine
     }
     user.workouts.push(exercise);
+    user.status = this.toggleUserStatus(user.status);
     user.save();
     return user.workouts;
+  }
+
+  private toggleUserStatus(status: UserStatus) {
+    if (status === UserStatus.CheckedIn) {
+      return UserStatus.CheckedOut;
+    } else {
+      return UserStatus.CheckedIn;
+    }
+  }
+
+  async verifyUserStatus(body) {
+    const user: UserDocument = await this.findOneByUsername(body.username).exec();
+    if (body.userStatus === null || body.userStatus === undefined) {
+      throw new BadRequestException();
+    }
+    if (user.status === body.userStatus) {
+      throw new CustomException('Incorrect Status', '400');
+    }
+  }
+
+  async checkIn(checkInDto: CheckInDto) {
+    const user: UserDocument = await this.findOneByUsername(checkInDto.username).exec();
+    user.status = this.toggleUserStatus(user.status);
+    const checkOutTime = DateTime.now().plus({hours: checkInDto.hours, minutes: checkInDto.minutes});
+    user.dailyTimeOut = checkOutTime.toJSDate();
+    await user.save();
+    return user;
   }
 }
