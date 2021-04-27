@@ -27,6 +27,7 @@ export class LogtimeComponent implements OnInit {
   onSubmitTimeClick() {
     const currentUser = this.authService.getCurrentUserName();
     this.http.post<User>('users/checkin', {...this.form.value, username: currentUser}).subscribe(() => {
+      this.authService.logout();
       this.usersService.getUsers();
       this.router.navigate(['dashboard']);
     });
