@@ -1,3 +1,4 @@
+import { MailService } from './../mail/mail.service';
 import {
   Body,
   Controller,
@@ -11,17 +12,16 @@ import {
   ValidationPipe
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiResponse } from '@nestjs/swagger';
+import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateExerciseLogDto } from './dto/update-exercise-log.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CheckInDto } from './dto/check-in-dto';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {
-  }
+  constructor(private readonly usersService: UsersService) {}
 
   @Post()
   create(@Body(new ValidationPipe()) createUserDto: CreateUserDto) {

@@ -1,22 +1,22 @@
 import { BadRequestException, Injectable, Logger, NotFoundException } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectModel } from '@nestjs/mongoose';
-import { Exercise, User, UserDocument, UserStatus } from './schema/user.schema';
+import * as bcrypt from 'bcrypt';
 import { Model } from 'mongoose';
 import { CustomException } from '../exceptions/custom-exception';
 import { LoginError } from '../exceptions/error.enums';
-import * as bcrypt from 'bcrypt';
+import { MailService } from './../mail/mail.service';
+import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateExerciseLogDto } from './dto/update-exercise-log.dto';
 import { CheckInDto } from './dto/check-in-dto';
 import { DateTime } from 'luxon';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { Exercise, User, UserDocument, UserStatus } from './schema/user.schema';
 
 @Injectable()
 export class UsersService {
   private readonly logger = new Logger(UsersService.name);
 
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {
-  }
+  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>, private mailService: MailService) {}
 
   async create(createUserDto: CreateUserDto) {
     const user = await this.findOneByUsername(createUserDto.username);
@@ -31,6 +31,7 @@ export class UsersService {
     createdUser.passwordHash = UsersService.hashPassword(createUserDto.password);
     createdUser.status = UserStatus.CheckedOut;
     createdUser.roles.push('user');
+    await this.mailService.sendUserConfirmation(createdUser); //MAIL SERVICE, NEEDS TO BE IN CONTROLLER TOO or other place??? not getting user object, because it's not created?
     return createdUser.save();
   }
 
@@ -76,12 +77,12 @@ export class UsersService {
     const user = await this.findOneByUsername(exerciseLogDto.username);
 
     if (!user) {
-      throw new NotFoundException(exerciseLogDto.username,'User not found.');
+      throw new NotFoundException(exerciseLogDto.username, 'User not found.');
     }
     const exercise: Exercise = {
       endDate: new Date(),
-      routine: exerciseLogDto.routine
-    }
+      routine: exerciseLogDto.routine,
+    };
     user.workouts.push(exercise);
     user.status = this.toggleUserStatus(user.status);
     user.save();
