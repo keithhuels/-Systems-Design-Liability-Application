@@ -31,7 +31,6 @@ export class AuthService {
   hasRole(role: string) {
     const token = this.jwtHelper.decodeToken(sessionStorage.getItem('id_token'));
     const roles = token.roles as string[];
-    console.log(role, roles);
     return roles.includes(role);
   }
 
