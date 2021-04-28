@@ -7,6 +7,8 @@ import { LoginError } from '../exceptions/error.enums';
 import { MailService } from './../mail/mail.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateExerciseLogDto } from './dto/update-exercise-log.dto';
+import { CheckInDto } from './dto/check-in-dto';
+import { DateTime } from 'luxon';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { Exercise, User, UserDocument, UserStatus } from './schema/user.schema';
 
@@ -17,14 +19,18 @@ export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>, private mailService: MailService) {}
 
   async create(createUserDto: CreateUserDto) {
-    const user = await this.findOneByEmail(createUserDto.email);
+    const user = await this.findOneByUsername(createUserDto.username);
 
     if (user !== null) {
-      throw new CustomException('Email is already in use', LoginError.LoginFailed);
+      throw new CustomException(
+        'Username is already in use',
+        LoginError.LoginFailed
+      );
     }
     const createdUser = new this.userModel(createUserDto);
     createdUser.passwordHash = UsersService.hashPassword(createUserDto.password);
-    createdUser.status = UserStatus.LoggedOut;
+    createdUser.status = UserStatus.CheckedOut;
+    createdUser.roles.push('user');
     await this.mailService.sendUserConfirmation(createdUser); //MAIL SERVICE, NEEDS TO BE IN CONTROLLER TOO or other place??? not getting user object, because it's not created?
     return createdUser.save();
   }
@@ -78,7 +84,35 @@ export class UsersService {
       routine: exerciseLogDto.routine,
     };
     user.workouts.push(exercise);
+    user.status = this.toggleUserStatus(user.status);
     user.save();
     return user.workouts;
+  }
+
+  private toggleUserStatus(status: UserStatus) {
+    if (status === UserStatus.CheckedIn) {
+      return UserStatus.CheckedOut;
+    } else {
+      return UserStatus.CheckedIn;
+    }
+  }
+
+  async verifyUserStatus(body) {
+    const user: UserDocument = await this.findOneByUsername(body.username).exec();
+    if (body.userStatus === null || body.userStatus === undefined) {
+      throw new BadRequestException();
+    }
+    if (user.status === body.userStatus) {
+      throw new CustomException('Incorrect Status', '400');
+    }
+  }
+
+  async checkIn(checkInDto: CheckInDto) {
+    const user: UserDocument = await this.findOneByUsername(checkInDto.username).exec();
+    user.status = this.toggleUserStatus(user.status);
+    const checkOutTime = DateTime.now().plus({hours: checkInDto.hours, minutes: checkInDto.minutes});
+    user.dailyTimeOut = checkOutTime.toJSDate();
+    await user.save();
+    return user;
   }
 }

@@ -6,6 +6,9 @@
     </div>
   </div>
   <div class="user">
+  <div *ngIf="(users | async).length === 0" class="no-users">
+      No users found, click sign up to create a new user!
+    </div>
     <div *ngFor="let user of users | async" class="usersInList">
       <span>{{ user.username }}</span>
       <span class="inactive" [classList]="getStatusClasses(user)">
@@ -14,7 +17,7 @@
 
       <!-- endtime based on data in log time -->
       <span *ngIf="checkedLoggedIn(user)" class="endTime"
-        >End Time: 6:00pm</span
+        >End Time: {{user.dailyTimeOut | date: 'h:mm a'}}</span
       >
     </div>
   </div>

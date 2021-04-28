@@ -1,68 +1,91 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { AddAdminComponent } from "./components/dashboard/add-admin/add-admin.component";
-import { AdminloginComponent } from "./components/dashboard/adminlogin/adminlogin.component";
-import { AdminlookupComponent } from "./components/dashboard/adminlookup/adminlookup.component";
-import { DashboardComponent } from "./components/dashboard/dashboard.component";
-import { DefaultDashboardComponent } from "./components/dashboard/default-dashboard/default-dashboard.component.";
-import { LogtimeComponent } from "./components/dashboard/logtime/logtime.component";
-import { SigninComponent } from "./components/dashboard/signin/signin.component";
-import { SignoutComponent } from "./components/dashboard/signout/signout.component";
-import { SignupComponent } from "./components/dashboard/signup/signup.component";
-import { LandingPageComponent } from "./components/landing-page/landing-page.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AddAdminComponent} from './components/dashboard/add-admin/add-admin.component';
+import {AdminloginComponent} from './components/dashboard/adminlogin/adminlogin.component';
+import {AdminlookupComponent} from './components/dashboard/adminlookup/adminlookup.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {DefaultDashboardComponent} from './components/dashboard/default-dashboard/default-dashboard.component.';
+import {LogtimeComponent} from './components/dashboard/logtime/logtime.component';
+import {SigninComponent} from './components/dashboard/checkin/signin.component';
+import {CheckoutComponent} from './components/dashboard/checkout/checkout.component';
+import {SignupComponent} from './components/dashboard/signup/signup.component';
+import {LandingPageComponent} from './components/landing-page/landing-page.component';
+import {AuthGuardService} from './services/auth/auth-guard.service';
+import {LogExerciseComponent} from './components/dashboard/log-exercise/log-exercise.component';
+import {StatusMenuComponent} from './components/dashboard/status-menu/status-menu.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: LandingPageComponent,
   },
 
   {
-    path: "dashboard",
+    path: 'dashboard',
     component: DashboardComponent,
     children: [
       {
-        path: "",
+        path: '',
         component: DefaultDashboardComponent,
       },
       {
-        path: "signin",
+        path: 'signin',
         component: SigninComponent,
       },
       {
-        path: "logtime",
+        path: 'logtime',
         component: LogtimeComponent,
+        canActivate: [AuthGuardService],
       },
       {
-        path: "signup",
+        path: 'signup',
         component: SignupComponent,
       },
       {
-        path: "signout",
-        component: SignoutComponent,
+        path: 'checkout',
+        component: CheckoutComponent,
       },
       {
-        path: "adminlogin",
+        path: 'status-menu',
+        component: StatusMenuComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'log-exercise',
+        component: LogExerciseComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'adminlogin',
         component: AdminloginComponent,
       },
       {
-        path: "adminlookup",
+        path: 'adminlookup',
         component: AdminlookupComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          role: 'admin'
+        }
       },
       {
-        path: "addadmin",
+        path: 'addadmin',
         component: AddAdminComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          role: 'admin'
+        }
       },
     ],
   },
   {
-    path: "**",
-    redirectTo: "",
+    path: '**',
+    redirectTo: '',
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: "legacy" })],
+  imports: [RouterModule.forRoot(routes, {relativeLinkResolution: 'legacy'})],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

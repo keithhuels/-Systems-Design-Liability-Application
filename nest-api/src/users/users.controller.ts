@@ -1,10 +1,23 @@
 import { MailService } from './../mail/mail.service';
-import { Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+  Patch,
+  Post, Request, UseGuards,
+  ValidationPipe
+} from '@nestjs/common';
+import { UsersService } from './users.service';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiResponse } from '@nestjs/swagger';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateExerciseLogDto } from './dto/update-exercise-log.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { UsersService } from './users.service';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { CheckInDto } from './dto/check-in-dto';
 
 @Controller('users')
 export class UsersController {
@@ -23,8 +36,27 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post('/log-exercise')
   updateWorkout(@Body() updateWorkout: UpdateExerciseLogDto) {
+    return this.usersService.updateExerciseList(updateWorkout);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('workout-data')
+  getWorkoutData(@Request() req) {
+    return req.user
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('/checkin')
+  checkin(@Body() checkInDto: CheckInDto) {
+    return this.usersService.checkIn(checkInDto);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('/checkout')
+  checkout(@Body() updateWorkout: UpdateExerciseLogDto) {
     return this.usersService.updateExerciseList(updateWorkout);
   }
 

@@ -1,7 +1,7 @@
 <div class="backButton" (click)="onBackClick()">< Back</div>
 <div class="signIn">
-  <h1>Please Sign In</h1>
-  <form name="message">
+  <h1>Enter Your Username and Password to Check Out</h1>
+  <form name="message" [formGroup]="form">
     <div>
       <label class="textBoxLabel" for="username">Username</label>
       <input
@@ -9,6 +9,7 @@
         id="username"
         type="text"
         value=""
+        formControlName="username"
         name="username"
       />
     </div>
@@ -21,12 +22,14 @@
       id="password"
       type="password"
       value=""
+      formControlName="password"
       name="password"
     />
   </form>
 
-  <!-- will need (click) functions to authenticate user, change log in status on user list component, and take you to time log page -->
-  <button class="button" (click)="onSignInClick()">Log In</button>
-  <div class="helpButton">Need Help?</div>
-  
+  <!-- will need (click) functions to authenticate user, change log in status on user list component to signed out, and open exercise log modal-->
+  <button mat-raised-button class="button" (click)="beginCheckoutProcess()" [disabled]="form.invalid">
+    Log Exercise and/or Log Out
+  </button>
+
 </div>

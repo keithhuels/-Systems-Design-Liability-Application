@@ -3,8 +3,8 @@ import { Component, OnInit } from "@angular/core";
 import { UsersService } from "./../../shared/users.service";
 
 export enum UserStatus {
-  LoggedIn,
-  LoggedOut,
+  CheckedIn,
+  CheckedOut,
 }
 
 export interface User {
@@ -14,6 +14,7 @@ export interface User {
   lastName: string;
   username: string;
   status: UserStatus;
+  dailyTimeOut: Date;
 }
 
 @Component({
@@ -33,18 +34,18 @@ export class UserListComponent implements OnInit {
   getUserStatus(user: User) {
     let status: string;
     switch (user.status) {
-      case UserStatus.LoggedIn:
-        status = "Logged In";
+      case UserStatus.CheckedIn:
+        status = "Checked In";
         break;
-      case UserStatus.LoggedOut:
-        status = "Logged Out";
+      case UserStatus.CheckedOut:
+        status = "Checked Out";
         break;
     }
     return status;
   }
 
   checkedLoggedIn(user: User) {
-    return user.status === UserStatus.LoggedIn;
+    return user.status === UserStatus.CheckedIn;
   }
 
   getSingleUser(id: string) {
@@ -53,11 +54,11 @@ export class UserListComponent implements OnInit {
 
   getStatusClasses(user: User) {
     let classes: string[] = [];
-    if (user.status === UserStatus.LoggedIn) {
+    if (user.status === UserStatus.CheckedIn) {
       classes.push("active");
     }
     {
-      if (user.status === UserStatus.LoggedOut) {
+      if (user.status === UserStatus.CheckedOut) {
         classes.push("inactive");
       }
     }

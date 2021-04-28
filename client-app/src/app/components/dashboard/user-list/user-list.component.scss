@@ -6,7 +6,7 @@
   display: block;
   font-family: Lucida;
   background-color: white;
-  margin-left: 10rem;
+  text-align: center;
 }
 h1 {
   text-decoration: underline;
@@ -32,4 +32,8 @@ h1 {
   margin-top: 2.5rem;
   text-align: left;
   text-decoration: underline;
+}
+
+.no-users {
+  text-align: center;
 }
