@@ -31,13 +31,19 @@ export class User {
 
   @Prop()
   workouts: Exercise[];
+
+  @Prop()
+  roles: Role[];
+
+  @Prop()
+  dailyTimeOut: Date;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
 
 export enum UserStatus {
-  LoggedIn,
-  LoggedOut,
+  CheckedIn,
+  CheckedOut,
 }
 
 export interface WorkoutLog {
@@ -53,3 +59,5 @@ export interface Exercise {
   endDate: Date;
   routine: WorkoutLog[];
 }
+
+export type Role = 'admin' | 'user';
