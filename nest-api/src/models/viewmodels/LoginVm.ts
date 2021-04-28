@@ -1,8 +1,8 @@
-import { IsEmail, IsNotEmpty } from 'class-validator';
+import {  IsNotEmpty } from 'class-validator';
 
 export class LoginVm {
-  @IsEmail()
-  public email: string;
+  @IsNotEmpty()
+  public username: string;
   @IsNotEmpty()
   public password: string;
 }
