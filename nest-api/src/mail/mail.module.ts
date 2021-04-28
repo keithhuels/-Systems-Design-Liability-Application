@@ -14,7 +14,7 @@ import {HandlebarsAdapter} from '@nestjs-modules/mailer/dist/adapters/handlebars
       
           auth: {
             user: 'apikey',
-            password: //ASK KEITH OR DAVID FOR THIS
+            pass: 
           },
         },
         defaults: {

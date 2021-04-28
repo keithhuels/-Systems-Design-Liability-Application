@@ -24,7 +24,7 @@ export class MailService {
     await this.mailerService.sendMail({
       //to: user.email -- when logging is tied in with specific user??
       to: 'kah3dq@umsystem.edu',
-      subject: 'GDCI GYM Exercise log for' + exercise.endDate,
+      subject: 'GDCI GYM Exercise log for ' + exercise.endDate,
       template: './exerciseLog',
       context: {
         date: exercise.endDate,

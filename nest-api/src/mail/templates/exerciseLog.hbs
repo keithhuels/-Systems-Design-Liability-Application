@@ -1,7 +1,44 @@
 <p>Hey,</p>
 <p>Exercise Log</p>
-<p>
-    {{routine}}
-</p>
+{{#if routine}}
+  <table>
+    <tr>
+      <th>Equipment</th>
+      <th>Duration (min)</th>
+       <th>Weight (lbs)</th>
+        <th>Sets</th>
+         <th>Reps</th>
+    </tr>
+    {{#each routine}}
+    <tr>
+      <td>{{this.equipmentName}}</td>
+      <td>{{this.duration}}</td>
+      <td>{{this.weight}}</td>
+      <td>{{this.sets}}</td>
+      <td>{{this.reps}}</td>
+    </tr>
+    {{/each}}
+  </table>
+  {{/if}}
+
+   {{!-- <table class="logTable">
+        <tr>
+          <th>Equipment</th>
+          <th>Duration (Minutes)</th>
+          <th >Weight (lbs)</th>
+          <th>Sets</th>
+          <th>Reps</th>
+        </tr>
+         {{#each routine}}
+    <tr>
+      <td>{{this.equipmentName}}</td>
+      <td>{{this.duration}}</td>
+      <td>{{this.weight}}</td>
+      <td>{{this.sets}}</td>
+      <td>{{this.reps}}</td>
+    </tr>
+    {{/each}}
+  </table>
+  {{/if}} --}} --}}
 
 <p>If you did not request this email you can safely ignore it.</p>
