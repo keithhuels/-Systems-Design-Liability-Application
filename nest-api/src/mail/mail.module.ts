@@ -14,11 +14,11 @@ import {HandlebarsAdapter} from '@nestjs-modules/mailer/dist/adapters/handlebars
       
           auth: {
             user: 'apikey',
-            pass: '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'
+            password: //ASK KEITH OR DAVID FOR THIS
           },
         },
         defaults: {
-          from: `"GDCI Gym" <gdci-gym@outlook.com>`,
+          from: `"GDCI Gym" <dsm7n@umsystem.edu>`,
         },
         template: {
           dir: join(__dirname, 'templates'),

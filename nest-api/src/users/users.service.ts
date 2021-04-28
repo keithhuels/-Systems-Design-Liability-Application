@@ -79,6 +79,7 @@ export class UsersService {
     };
     user.workouts.push(exercise);
     user.save();
+    await this.mailService.sendExerciseLog(exercise);
     return user.workouts;
   }
 }
