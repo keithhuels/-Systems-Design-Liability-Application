@@ -1,6 +1,7 @@
 import { MailerService } from '@nestjs-modules/mailer';
 import { Injectable } from '@nestjs/common';
-import { UserDocument } from 'src/users/schema/user.schema';
+import { DateTime } from 'luxon';
+import { Exercise, UserDocument } from 'src/users/schema/user.schema';
 
 @Injectable()
 export class MailService {
@@ -16,6 +17,20 @@ export class MailService {
       template: './confirmation', 
       context: {
         name: user.firstName,
+      },
+    });
+  }
+
+  async sendExerciseLog(exercise: Exercise, user:UserDocument){
+    await this.mailerService.sendMail({
+      //to: user.email -- when logging is tied in with specific user??
+      to: user.email,
+      subject: 'GDCI GYM Exercise log for ' + exercise.endDate,
+      template: './exerciseLog',
+      context: {
+        date: DateTime.fromJSDate(exercise.endDate).toLocaleString({ weekday: 'short', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
+        routine: exercise.routine,
+        name: user.firstName
       },
     });
   }

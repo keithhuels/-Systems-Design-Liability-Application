@@ -1,0 +1,27 @@
+<p>Hey, {{name}}</p>
+<p>Here is your exercise log for {{date}}</p>
+
+{{#if routine}}
+  <table>
+    <tr>
+      <th>Equipment</th>
+      <th>Duration (min)</th>
+       <th>Weight (lbs)</th>
+        <th>Sets</th>
+         <th>Reps</th>
+    </tr>
+    {{#each routine}}
+    <tr>
+      <td>{{this.equipmentName}}</td>
+      <td>{{this.duration}}</td>
+      <td>{{#if this.weight}} {{this.weight}} {{else}} --- {{/if}}</td>
+      <td>{{#if this.sets}} {{this.sets}} {{else}} --- {{/if}}</td>
+      <td>{{#if this.reps}} {{this.reps}} {{else}} --- {{/if}}</td>
+    </tr>
+    {{/each}}
+  </table>
+  {{/if}}
+
+
+
+<p>If you did not request this email you can safely ignore it.</p>
