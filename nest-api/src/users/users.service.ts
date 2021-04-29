@@ -31,7 +31,7 @@ export class UsersService {
     createdUser.passwordHash = UsersService.hashPassword(createUserDto.password);
     createdUser.status = UserStatus.CheckedOut;
     createdUser.roles.push('user');
-    // await this.mailService.sendUserConfirmation(createdUser); //MAIL SERVICE, NEEDS TO BE IN CONTROLLER TOO or other place??? not getting user object, because it's not created?
+    await this.mailService.sendUserConfirmation(createdUser); 
     return createdUser.save();
   }
 
@@ -86,7 +86,9 @@ export class UsersService {
     user.workouts.push(exercise);
     user.status = this.toggleUserStatus(user.status);
     user.save();
-    await this.mailService.sendExerciseLog(exercise);
+    if(exercise.routine.length !== 0){
+      await this.mailService.sendExerciseLog(exercise, user);
+    }
     return user.workouts;
   }
 
