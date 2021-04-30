@@ -1,3 +1,4 @@
+import { HelpdocumentComponent } from './components/helpdocument/helpdocument.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AddAdminComponent} from './components/dashboard/add-admin/add-admin.component';
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path: '',
     component: LandingPageComponent,
+  },
+
+  {
+    path: 'help',
+    component: HelpdocumentComponent,
   },
 
   {
