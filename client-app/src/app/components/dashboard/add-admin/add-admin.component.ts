@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import {User} from '../user-list/user-list.component';
 
 @Component({
   selector: "app-add-admin",
@@ -23,7 +24,7 @@ export class AddAdminComponent implements OnInit {
       password: new FormControl("", [Validators.required]),
       firstName: new FormControl("", [Validators.required]),
       lastName: new FormControl("", [Validators.required]),
-      title: new FormControl("", [Validators.required]),
+      organization: new FormControl("", [Validators.required]),
     });
   }
 
@@ -32,9 +33,9 @@ export class AddAdminComponent implements OnInit {
   }
 
   onCreateAccountClicked() {
-    // this.http.post<User>('users', this.form.value).subscribe((response) => console.log(response), (err) => {
-    //   console.log(err);
-    // });
+    this.http.post<User>('admin/create-admin', this.form.value).subscribe((response) => console.log(response), (err) => {
+      console.log(err);
+    });
   }
 
   // onNeedHelpClick() {

@@ -1,76 +1,81 @@
 <div class="backButton" (click)="onBackClick()">< Back</div>
+<mat-tab-group class="mt-2">
+  <mat-tab label="Manage Users">
+    <form name="message" class="mt-2 overflow-hidden" [formGroup]="usersWorkoutForm">
+      <div class="row">
+        <mat-form-field class="col-6">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            formControlName="username"
+            id="username"
+            type="text"
+            name="username"
+            placeholder="Enter a username"
+          />
+          <mat-error *ngIf="usersWorkoutForm.controls['username'].invalid">{{
+            getErrorMessage()
+            }}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col-6">
+          <mat-label>Gym Usage Dates</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input formControlName="fromDate" matStartDate placeholder="Start date"/>
+            <input formControlName="toDate" matEndDate placeholder="End date"/>
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+      {{usersWorkoutForm.value | json}}
+    </form>
 
-<button class="addButtons" (click)="onAddAdminClick()">
-  Add/Delete Administator
-</button>
-<button class="addButtons" (click)="onAddEquipmentClick('custom-modal-3')">
-  Add/Delete Equipment
-</button>
-
-<div class="signIn">
-  <form name="message">
-    <div>
-      <label class="textBoxLabel" for="username">Username</label>
-      <input
-        class="textBox"
-        id="username"
-        type="text"
-        value=""
-        name="username"
-      />
-    </div>
-
-    <jw-modal id="custom-modal-3">
-      <mat-form-field class="custom-width">
-        <mat-label>Equipment Name</mat-label>
-        <input
-          formControlName="addEquipment"
-          matInput
-          id="addEquipment"
-          type="string"
-          value=""
-          name="addEquipment"
-          placeholder="Equipment Name"
-          min="0"
-        />
-      </mat-form-field>
-      <div class="col">
-        <button mat-raised-button (click)="addExercise()">Add</button>
-      </div></jw-modal
-    >
-
-    <mat-form-field appearance="fill">
-      <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate placeholder="Start date" />
-        <input matEndDate placeholder="End date" />
-      </mat-date-range-input>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
-    </mat-form-field>
-  </form>
-
-  <!-- opens lookup modal, displays logs for past <days> -->
-  <button class="button" (click)="openModal('custom-modal-2')">
-    Look Up User
-  </button>
-  <button class="button" (click)="onSignOutClick()">Sign Out</button>
-  <jw-modal id="custom-modal-2">
-    <h1 style="height: 100px">User Information</h1>
-    <h3>
-      <!-- populated by database data -->
-      THIS WILL BE POPULATED BY DATABASE DATA FOR SPECIFIC USER
-    </h3>
-    <button
-      class="logExerciseAndClose"
-      (click)="acceptAndCloseModal('custom-modal-2')"
-    >
-      Close
+    <!-- opens lookup modal, displays logs for past <days> -->
+    <button [disabled]="usersWorkoutForm.invalid" mat-raised-button class="button" (click)="submitUserWorkoutForm()">
+      Look Up User
     </button>
-    <br />
-    <button class="deleteButton" (click)="onDeleteClick()">Delete User</button>
+    <button mat-raised-button class="button" (click)="onSignOutClick()">Sign Out</button>
 
     <div class="helpButtonModal">Need Help?</div>
-  </jw-modal>
-  <div class="helpButton">Need Help?</div>
-</div>
+  </mat-tab>
+  <mat-tab label="Manage Admins">
+    <app-add-admin class="mt-2"></app-add-admin>
+  </mat-tab>
+  <mat-tab label="Manage Equipment">
+    <mat-form-field class="custom-width mt-2">
+      <mat-label>Equipment Name</mat-label>
+      <input
+        formControlName="addEquipment"
+        matInput
+        id="addEquipment"
+        type="string"
+        value=""
+        name="addEquipment"
+        placeholder="Equipment Name"
+        min="0"
+      />
+    </mat-form-field>
+    <div class="col mb-2">
+      <button mat-raised-button (click)="addExercise()">Add</button>
+    </div>
+    <div class="helpButtonModal">Need Help?</div>
+  </mat-tab>
+</mat-tab-group>
+
+<jw-modal id="custom-modal-2">
+  <h1 style="height: 100px">User Information</h1>
+  <h3>
+    <!-- populated by database data -->
+    THIS WILL BE POPULATED BY DATABASE DATA FOR SPECIFIC USER
+  </h3>
+  <button mat-raised-button
+          class="logExerciseAndClose"
+          (click)="acceptAndCloseModal('custom-modal-2')"
+  >
+    Close
+  </button>
+  <br/>
+  <button mat-raised-button class="deleteButton" (click)="onDeleteClick()">Delete User</button>
+
+  <div class="helpButtonModal">Need Help?</div>
+</jw-modal>

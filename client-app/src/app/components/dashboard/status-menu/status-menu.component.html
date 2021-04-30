@@ -1,14 +1,22 @@
 <div *ngIf="idToken">
-  <div *ngIf="userStatus.CheckedIn === idToken.status">
-    <h2>It looks like you are checked in, click the button to begin checking out!</h2>
-    <div class="signInButtons">
-      <button mat-raised-button class="button1" (click)="onCheckOutClick()">Check Out</button>
+  <div *ngIf="!hasRole('admin')">
+    <div *ngIf="userStatus.CheckedIn === idToken.status">
+      <h2>It looks like you are checked in, click the button to begin checking out!</h2>
+      <div class="signInButtons">
+        <button mat-raised-button class="button1" (click)="onCheckOutClick()">Check Out</button>
+      </div>
+    </div>
+    <div *ngIf="userStatus.CheckedOut === idToken.status">
+      <div class="signInButtons">
+        <h2>It looks like you are checked out, click the button to begin checking in!</h2>
+        <button mat-raised-button class="button1" (click)="onCheckInClick()">Check In</button>
+      </div>
     </div>
   </div>
-  <div *ngIf="userStatus.CheckedOut === idToken.status">
+  <div *ngIf="hasRole('admin')">
     <div class="signInButtons">
-      <h2>It looks like you are checked out, click the button to begin checking in!</h2>
-      <button mat-raised-button class="button1" (click)="onCheckInClick()">Check In</button>
+      <h2>Welcome Admin User!</h2>
+      <button mat-raised-button class="button1" (click)="onViewAdminClick()">View Admin Dashboard</button>
     </div>
   </div>
 </div>

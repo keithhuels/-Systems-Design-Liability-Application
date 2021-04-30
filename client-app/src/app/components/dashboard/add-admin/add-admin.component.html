@@ -1,6 +1,5 @@
-<div class="backButton" (click)="onBackClick()">< Back</div>
-
 <div class="signUp">
+  <h2>Create an Admin Account</h2>
   <h4 class="usernamePassGroup">All Fields Are Required</h4>
   <form [formGroup]="form">
     <div class="row">
@@ -16,7 +15,7 @@
         />
         <mat-error *ngIf="form.controls['firstName'].invalid">{{
           getErrorMessage()
-        }}</mat-error>
+          }}</mat-error>
       </mat-form-field>
       <mat-form-field class="col-6">
         <mat-label>Last Name</mat-label>
@@ -30,22 +29,22 @@
         />
         <mat-error *ngIf="form.controls['lastName'].invalid">{{
           getErrorMessage()
-        }}</mat-error>
+          }}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="col-6">
-        <mat-label>Title</mat-label>
+        <mat-label>Organization</mat-label>
         <input
           matInput
-          formControlName="title"
-          id="title"
+          formControlName="organization"
+          id="organization"
           type="text"
-          name="title"
-          placeholder="Title"
+          name="organization"
+          placeholder="Organization"
         />
-        <mat-error *ngIf="form.controls['title'].invalid">{{
+        <mat-error *ngIf="form.controls['organization'].invalid">{{
           getErrorMessage()
-        }}</mat-error>
+          }}</mat-error>
       </mat-form-field>
       <mat-form-field class="col-6">
         <mat-label>Email</mat-label>
@@ -59,7 +58,7 @@
         />
         <mat-error *ngIf="form.controls['email'].invalid">{{
           getErrorMessage()
-        }}</mat-error>
+          }}</mat-error>
       </mat-form-field>
     </div>
     <div class="usernamePassGroup col-12">
@@ -75,7 +74,7 @@
         />
         <mat-error *ngIf="form.controls['username'].invalid">{{
           getErrorMessage()
-        }}</mat-error>
+          }}</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Password</mat-label>
@@ -88,7 +87,7 @@
         />
         <mat-error *ngIf="form.controls['password'].invalid">{{
           getErrorMessage()
-        }}</mat-error>
+          }}</mat-error>
       </mat-form-field>
     </div>
   </form>
@@ -97,7 +96,7 @@
   <!--  Valid: {{ form.valid | json}}-->
   <!--  Touched: {{ form.touched | json}}-->
 
-  <br />
+  <br/>
   <div class="usernamePassGroup col-12">
     <button
       mat-raised-button
@@ -111,16 +110,5 @@
   </div>
   <br>
   <br>
-  <div class="usernamePassGroup col-12">
-    <button
-      mat-raised-button
-      color="secondary"
-      class="button"
-      [disabled]="!form.valid"
-      (click)="onCreateAccountClicked()"
-    >
-     Delete My Account
-    </button>
-  </div>
 </div>
 <div class="helpButton">Need Help?</div>

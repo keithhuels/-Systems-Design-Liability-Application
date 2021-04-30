@@ -36,6 +36,7 @@ import {LogExerciseComponent} from './components/dashboard/log-exercise/log-exer
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {StatusMenuComponent} from './components/dashboard/status-menu/status-menu.component';
 import {LogtimeComponent} from './components/dashboard/logtime/logtime.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 export function tokenGetter() {
   return sessionStorage.getItem('id_token');
@@ -78,6 +79,7 @@ export function tokenGetter() {
     MatSnackBarModule,
     MatDialogModule,
     MatDatepickerModule,
+    MatTabsModule,
     MatMomentDateModule,
     JwtModule.forRoot({
       config: {tokenGetter}
