@@ -28,14 +28,19 @@ export class AdminService {
     if (!searchWorkoutsDto.toDate && !searchWorkoutsDto.fromDate) {
       return { matchedWorkouts: user.workouts, username: searchWorkoutsDto.username };
     }
+
+    const fromDateTime = DateTime.fromHTTP(searchWorkoutsDto.fromDate);
+    const toDateTime = DateTime.fromHTTP(searchWorkoutsDto.toDate);
+
     matchedWorkouts = user.workouts.filter(e => {
+      const endDateTime = DateTime.fromJSDate(e.endDate);
       if (searchWorkoutsDto.fromDate && !searchWorkoutsDto.toDate) {
-        return DateTime.fromISO(searchWorkoutsDto.fromDate) < DateTime.fromJSDate(e.endDate);
+        return fromDateTime < endDateTime;
       }
       if (searchWorkoutsDto.toDate && !searchWorkoutsDto.fromDate) {
-        return DateTime.fromISO(searchWorkoutsDto.toDate) > DateTime.fromJSDate(e.endDate);
+        return toDateTime > endDateTime;
       }
-      return DateTime.fromISO(searchWorkoutsDto.fromDate) < DateTime.fromJSDate(e.endDate) && DateTime.fromISO(searchWorkoutsDto.toDate) > DateTime.fromJSDate(e.endDate);
+      return fromDateTime < endDateTime && toDateTime > endDateTime;
     });
     return { matchedWorkouts: matchedWorkouts, username: searchWorkoutsDto.username };
   }

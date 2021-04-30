@@ -78,13 +78,13 @@ export class AdminlookupComponent implements OnInit {
   }
 
   submitUserWorkoutForm() {
-    const params = new HttpParams()
+    let params = new HttpParams()
       .set('username', this.usersWorkoutForm.controls.username.value);
     if (this.usersWorkoutForm.controls.fromDate.value) {
-      params.set('fromDate', this.usersWorkoutForm.controls.fromDate.value);
+      params = params.set('fromDate', this.usersWorkoutForm.controls.fromDate.value);
     }
     if (this.usersWorkoutForm.controls.toDate.value) {
-      params.set('toDate', this.usersWorkoutForm.controls.toDate.value);
+      params = params.set('toDate', this.usersWorkoutForm.controls.toDate.value);
     }
 
     this.http.get('admin/search-workouts', {params}).subscribe(res => {
