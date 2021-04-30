@@ -41,7 +41,5 @@ export class SigninComponent implements OnInit {
     }
   }
 
-  // onNeedHelpClick() {
-  //   this.router.navigate()
-  // }
+
 }
