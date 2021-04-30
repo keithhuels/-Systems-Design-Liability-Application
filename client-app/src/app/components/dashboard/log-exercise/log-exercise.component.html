@@ -119,7 +119,9 @@
       Log Exercises and Sign Out
     </button>
   </div>
-  <div class="helpButtonModal">Need Help?</div>
+  <div class="helpButton"><a [routerLink]="['/help']" fragment="logexercises"class="helpButtonModal">Need Help?</a></div> 
 </jw-modal>
 
-<div class="helpButton">Need Help?</div>
+<div class="helpButton">
+  <a [routerLink]="['/help']" fragment="logout">Need Help?</a>
+</div>
