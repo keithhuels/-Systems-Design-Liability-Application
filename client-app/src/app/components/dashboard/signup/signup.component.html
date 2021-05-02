@@ -56,10 +56,13 @@
           type="text"
           name="email"
           placeholder="user@example.com"
+         
+          pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required
         />
-        <mat-error *ngIf="form.controls['email'].invalid">{{
+        <mat-error *ngIf="form.controls['email'].hasError('required')">{{
           getErrorMessage()
-        }}</mat-error>
+          }}</mat-error>
+        <mat-error *ngIf="form.controls['email'].hasError('email')">Invalid email format</mat-error>
       </mat-form-field>
     </div>
     <div class="usernamePassGroup col-12">

@@ -1,8 +1,6 @@
 import { HelpdocumentComponent } from './components/helpdocument/helpdocument.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AddAdminComponent} from './components/dashboard/add-admin/add-admin.component';
-import {AdminloginComponent} from './components/dashboard/adminlogin/adminlogin.component';
 import {AdminlookupComponent} from './components/dashboard/adminlookup/adminlookup.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {DefaultDashboardComponent} from './components/dashboard/default-dashboard/default-dashboard.component.';
@@ -62,20 +60,8 @@ const routes: Routes = [
         canActivate: [AuthGuardService]
       },
       {
-        path: 'adminlogin',
-        component: AdminloginComponent,
-      },
-      {
         path: 'adminlookup',
         component: AdminlookupComponent,
-        canActivate: [AuthGuardService],
-        data: {
-          role: 'admin'
-        }
-      },
-      {
-        path: 'addadmin',
-        component: AddAdminComponent,
         canActivate: [AuthGuardService],
         data: {
           role: 'admin'

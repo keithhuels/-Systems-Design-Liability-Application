@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Role } from '../../auth/role.enum';
 import { Document } from 'mongoose';
 
 export type UserDocument = User & Document;
@@ -59,5 +60,3 @@ export interface Exercise {
   endDate: Date;
   routine: WorkoutLog[];
 }
-
-export type Role = 'admin' | 'user';

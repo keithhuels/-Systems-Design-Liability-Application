@@ -27,6 +27,7 @@
         <app-dropdown
           [parentForm]="form"
           controlName="equipmentName"
+          [machines]="machines"
         ></app-dropdown>
         <div class="col">
           <label>Duration (min)</label>
@@ -95,7 +96,8 @@
     </form>
 
     <div></div>
-    <table class="logTable">
+    <div *ngIf="loggedExercises.length === 0">No exercises added yet.</div>
+    <table class="logTable" *ngIf="loggedExercises.length !== 0">
       <tr>
         <th class="equip">Equipment</th>
         <th class="duration">Duration (Minutes)</th>

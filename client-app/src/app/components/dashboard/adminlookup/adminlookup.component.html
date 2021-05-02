@@ -1,76 +1,151 @@
-<div class="backButton" (click)="onBackClick()">< Back</div>
+<div class="row">
+  <div class="col d-flex justify-content-between">
+    <div class="backButton d-inline-block align-items-center" (click)="onBackClick()">< Back</div>
+    <button mat-raised-button class="sign-out-button" (click)="onSignOutClick()">Sign Out As Admin</button>
+  </div>
+</div>
+<mat-tab-group class="mt-2">
+  <mat-tab label="Manage Users">
+    <form name="message" class="mt-2 overflow-hidden" [formGroup]="usersWorkoutForm">
+      <div class="row">
+        <mat-form-field class="col-6">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            formControlName="username"
+            id="username"
+            type="text"
+            name="username"
+            placeholder="Enter a username"
+          />
+          <mat-error *ngIf="usersWorkoutForm.controls['username'].invalid">{{
+            getErrorMessage()
+            }}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col-6">
+          <mat-label>Gym Usage Dates</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input formControlName="fromDate" matStartDate placeholder="Start date"/>
+            <input formControlName="toDate" matEndDate placeholder="End date"/>
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+    </form>
 
-<button class="addButtons" (click)="onAddAdminClick()">
-  Add/Delete Administator
-</button>
-<button class="addButtons" (click)="onAddEquipmentClick('custom-modal-3')">
-  Add/Delete Equipment
-</button>
+    <!-- opens lookup modal, displays logs for past <days> -->
+    <button [disabled]="usersWorkoutForm.invalid" mat-raised-button class="button" (click)="submitUserWorkoutForm()">
+      Look Up User
+    </button>
 
-<div class="signIn">
-  <form name="message">
-    <div>
-      <label class="textBoxLabel" for="username">Username</label>
-      <input
-        class="textBox"
-        id="username"
-        type="text"
-        value=""
-        name="username"
-      />
+    <div class="helpButtonModal">Need Help?</div>
+  </mat-tab>
+  <mat-tab label="Manage Admins">
+    <app-add-admin class="mt-2"></app-add-admin>
+  </mat-tab>
+  <mat-tab label="Manage Equipment">
+    <div class="row">
+      <div class="col d-flex justify-content-center align-items-center">
+        <form [formGroup]="equipmentForm" class="col d-flex justify-content-center align-items-center">
+          <mat-form-field class="custom-width mt-2">
+            <mat-label>Equipment Name</mat-label>
+            <input
+              formControlName="name"
+              matInput
+              id="addEquipment"
+              name="addEquipment"
+              placeholder="Equipment Name"
+            />
+          </mat-form-field>
+          <div class="mb-2 ml-2">
+            <button color="primary" mat-raised-button (click)="addWorkoutMachine()" [disabled]="equipmentForm.invalid">
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+    <div class="row d-flex justify-content-center">
+      <div class="col" *ngIf="(machine$ | async).length === 0">
+        No machines added yet. Add one with the form above.
+      </div>
+      <mat-list>
+        <ng-container *ngFor="let machine of machine$ | async">
+          <mat-list-item>
+            {{machine.name}}
+            <button color="warn" mat-icon-button (click)="removeMachine(machine._id, machine.name)" class="ml-auto">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </ng-container>
+      </mat-list>
 
-    <jw-modal id="custom-modal-3">
-      <mat-form-field class="custom-width">
-        <mat-label>Equipment Name</mat-label>
-        <input
-          formControlName="addEquipment"
-          matInput
-          id="addEquipment"
-          type="string"
-          value=""
-          name="addEquipment"
-          placeholder="Equipment Name"
-          min="0"
-        />
-      </mat-form-field>
-      <div class="col">
-        <button mat-raised-button (click)="addExercise()">Add</button>
-      </div></jw-modal
-    >
+    </div>
+    <div class="helpButtonModal">Need Help?</div>
+  </mat-tab>
+</mat-tab-group>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate placeholder="Start date" />
-        <input matEndDate placeholder="End date" />
-      </mat-date-range-input>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
-    </mat-form-field>
-  </form>
+<jw-modal id="user-info">
+  <ng-container *ngIf="workoutResponse">
+    <div class="gdciGreen header row">
+      Workout Data Logs for {{workoutResponse.username}}&nbsp;
+      <span *ngIf="workoutResponse.fromDate || workoutResponse.toDate">
+        <ng-container *ngIf="workoutResponse.fromDate">
+          From {{workoutResponse.fromDate | date}}
+        </ng-container>
+        <ng-container *ngIf="workoutResponse.toDate">
+         Until {{workoutResponse.toDate | date}}
+        </ng-container>
+      </span>
+      <button mat-raised-button class="deleteButton ml-auto" (click)="onDeleteClick(workoutResponse.username)">Delete
+        User
+      </button>
+    </div>
+    <mat-accordion class="example-headers-align" multi>
+      <div *ngIf="workoutResponse.matchedWorkouts.length === 0">
+        No Workouts found for the given user / date filters
+      </div>
+      <mat-expansion-panel hideToggle *ngFor="let matchedWorkout of workoutResponse.matchedWorkouts">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{matchedWorkout.endDate | date: 'short'}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{matchedWorkout.routine.length === 0 ? 'Didn\'t Log Exercise' : 'Logged Exercise'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <table class="logTable" *ngIf="matchedWorkout.routine.length !== 0">
+            <tr>
+              <th class="equip">Equipment</th>
+              <th class="duration">Duration (Minutes)</th>
+              <th class="weight">Weight (lbs)</th>
+              <th class="sets">Sets</th>
+              <th class="reps">Reps</th>
+            </tr>
+            <tr *ngFor="let log of matchedWorkout.routine">
+              <td>{{ log.equipmentName }}</td>
+              <td>{{ log.duration }}</td>
+              <td>{{ log.weight ? log.weight : '--' }}</td>
+              <td>{{ log.sets ? log.sets : '--' }}</td>
+              <td>{{ log.reps ? log.reps : '--'}}</td>
+            </tr>
+          </table>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
 
-  <!-- opens lookup modal, displays logs for past <days> -->
-  <button class="button" (click)="openModal('custom-modal-2')">
-    Look Up User
-  </button>
-  <button class="button" (click)="onSignOutClick()">Sign Out</button>
-  <jw-modal id="custom-modal-2">
-    <h1 style="height: 100px">User Information</h1>
-    <h3>
-      <!-- populated by database data -->
-      THIS WILL BE POPULATED BY DATABASE DATA FOR SPECIFIC USER
-    </h3>
-    <button
-      class="logExerciseAndClose"
-      (click)="acceptAndCloseModal('custom-modal-2')"
+
+    <button mat-raised-button
+            class="logExerciseAndClose"
+            (click)="closeModal('user-info')"
     >
       Close
     </button>
-    <br />
-    <button class="deleteButton" (click)="onDeleteClick()">Delete User</button>
-
+    <br/>
     <div class="helpButtonModal">Need Help?</div>
-  </jw-modal>
-  <div class="helpButton">Need Help?</div>
-</div>
+  </ng-container>
+</jw-modal>
+

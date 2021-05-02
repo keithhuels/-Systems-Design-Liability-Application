@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { UsersService } from "./../../shared/users.service";
+import {map} from 'rxjs/operators';
 
 export enum UserStatus {
   CheckedIn,
@@ -8,6 +9,7 @@ export enum UserStatus {
 }
 
 export interface User {
+  roles: string[];
   _id: string;
   email: string;
   firstName: string;
