@@ -2,11 +2,12 @@ input,
 label {
   display: block;
 }
-h1 {
+h1, .gdciGreen {
   color: #0c7e25;
 }
 
 .backButton {
+  width: 110px;
   font-size: 2rem;
   color: #0c7e25;
   cursor: pointer;
@@ -47,6 +48,13 @@ h1 {
 
 .signIn {
   text-align: center;
+}
+
+.sign-out-button {
+  margin-top: 5px;
+  background-color: #0c7e25;
+  color: white;
+  border-radius: 1rem;
 }
 
 .button {
@@ -94,12 +102,11 @@ justify-content: space-between;
 .helpButton {
   text-align: center;
   text-decoration: underline;
-  margin-top: 6.5rem;
+  margin-top: 2.5rem;
 }
 .helpButtonModal {
   text-align: center;
   text-decoration: underline;
-  margin-top: 4rem;
 }
 
 .logExerciseAndClose {
@@ -116,11 +123,28 @@ justify-content: space-between;
 .deleteButton{
   margin-left: 24rem;
   font-size: 20px;
-  font-size: 20px;
   background-color: #0c7e25;
   border-radius: 1rem;
   cursor: pointer;
   margin-bottom: 1rem;
   color: white;
-  margin-top: 3rem;
+}
+
+.header {
+  font-size: 1.5rem;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  margin-top: 1rem;
+}
+
+::ng-deep .mat-tab-body-content {
+  overflow-x: hidden!important;
+}
+::ng-deep .mat-list-base {
+  overflow: scroll!important;
+  height: 420px!important;
 }

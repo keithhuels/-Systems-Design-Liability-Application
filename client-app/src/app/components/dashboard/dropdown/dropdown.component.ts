@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
+import {HttpClient} from '@angular/common/http';
 
-interface Machine {
+export interface Machine {
   name: string;
-  value: string;
+  _id: string;
 }
 
 @Component({
@@ -14,24 +15,14 @@ interface Machine {
 export class DropdownComponent implements OnInit {
   @Input() parentForm: FormGroup;
   @Input() controlName: string;
+  @Input() machines: Machine[];
 
-  constructor() {}
+  constructor(private readonly http: HttpClient) {}
 
-  ngOnInit(): void {}
-  // machineControl = new FormControl("", Validators.required);
-  // selectFormControl = new FormControl("", Validators.required);
-  machines: Machine[] = [
-    {
-      name: "Bike",
-      value: "bike",
-    },
-    {
-      name: "Treadmill",
-      value: "treadmill",
-    },
-    { name: "Weights", value: "weights" },
-    { name: "Rower", value: "rower" },
-    { name: "Punching Bag", value: "punching-bag" },
-    { name: "Jump Rope", value: "jump-rope" },
-  ];
+  ngOnInit(): void {
+    this.http.get<Machine[]>('workout-equipment').subscribe(res => {
+      this.machines = res;
+    });
+  }
+
 }
