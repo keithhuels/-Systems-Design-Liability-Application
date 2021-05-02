@@ -1,9 +1,9 @@
-<span [formGroup]="parentForm">
+<span [formGroup]="parentForm" *ngIf="machines">
   <mat-form-field appearance="fill">
     <mat-label>Equipment Used</mat-label>
     <mat-select [formControlName]="controlName">
       <mat-option>--</mat-option>
-      <mat-option *ngFor="let machine of machines" [value]="machine.value">
+      <mat-option *ngFor="let machine of machines" [value]="machine.name">
         {{ machine.name }}
       </mat-option>
     </mat-select>

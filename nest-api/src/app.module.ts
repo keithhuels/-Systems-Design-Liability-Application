@@ -7,6 +7,7 @@ import { MailModule } from './mail/mail.module';
 import { ConfigModule } from '@nestjs/config';
 import { AdminModule } from './admin/admin.module';
 import { UsersModule } from './users/users.module';
+import { WorkoutEquipmentModule } from './workout-equipment/workout-equipment.module';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { UsersModule } from './users/users.module';
     AuthModule,
     MailModule,
     AdminModule,
-    UsersModule
+    UsersModule,
+    WorkoutEquipmentModule
   ],
   controllers: [AppController],
   providers: [AppService],

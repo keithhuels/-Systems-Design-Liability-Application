@@ -30,7 +30,7 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {}
 
   get users() {
-    return this.usersService.user$.value.filter(u => !u.roles.includes('admin'));
+    return this.usersService.user$;
   }
 
   getUserStatus(user: User) {

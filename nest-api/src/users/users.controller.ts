@@ -38,6 +38,12 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @Get('/standard-users')
+  findStandardUsers() {
+    return this.usersService.findStandardUsers();
+  }
+
+
   @UseGuards(JwtAuthGuard)
   @Post('/log-exercise')
   updateWorkout(@Body() updateWorkout: UpdateExerciseLogDto) {

@@ -1,4 +1,9 @@
-<div class="backButton" (click)="onBackClick()">< Back</div>
+<div class="row">
+  <div class="col d-flex justify-content-between">
+    <div class="backButton d-inline-block align-items-center" (click)="onBackClick()">< Back</div>
+    <button mat-raised-button class="sign-out-button" (click)="onSignOutClick()">Sign Out As Admin</button>
+  </div>
+</div>
 <mat-tab-group class="mt-2">
   <mat-tab label="Manage Users">
     <form name="message" class="mt-2 overflow-hidden" [formGroup]="usersWorkoutForm">
@@ -30,11 +35,9 @@
     </form>
 
     <!-- opens lookup modal, displays logs for past <days> -->
-      <button [disabled]="usersWorkoutForm.invalid" mat-raised-button class="button" (click)="submitUserWorkoutForm()">
-        Look Up User
-      </button>
-      <button mat-raised-button class="button" (click)="onSignOutClick()">Sign Out</button>
-
+    <button [disabled]="usersWorkoutForm.invalid" mat-raised-button class="button" (click)="submitUserWorkoutForm()">
+      Look Up User
+    </button>
 
     <div class="helpButtonModal">Need Help?</div>
   </mat-tab>
@@ -42,20 +45,43 @@
     <app-add-admin class="mt-2"></app-add-admin>
   </mat-tab>
   <mat-tab label="Manage Equipment">
-    <mat-form-field class="custom-width mt-2">
-      <mat-label>Equipment Name</mat-label>
-      <input
-        matInput
-        id="addEquipment"
-        type="string"
-        value=""
-        name="addEquipment"
-        placeholder="Equipment Name"
-        min="0"
-      />
-    </mat-form-field>
-    <div class="col mb-2">
-      <button mat-raised-button (click)="addExercise()">Add</button>
+    <div class="row">
+      <div class="col d-flex justify-content-center align-items-center">
+        <form [formGroup]="equipmentForm" class="col d-flex justify-content-center align-items-center">
+          <mat-form-field class="custom-width mt-2">
+            <mat-label>Equipment Name</mat-label>
+            <input
+              formControlName="name"
+              matInput
+              id="addEquipment"
+              name="addEquipment"
+              placeholder="Equipment Name"
+            />
+          </mat-form-field>
+          <div class="mb-2 ml-2">
+            <button color="primary" mat-raised-button (click)="addWorkoutMachine()" [disabled]="equipmentForm.invalid">
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="col" *ngIf="(machine$ | async).length === 0">
+        No machines added yet. Add one with the form above.
+      </div>
+      <mat-list>
+        <ng-container *ngFor="let machine of machine$ | async">
+          <mat-list-item>
+            {{machine.name}}
+            <button color="warn" mat-icon-button (click)="removeMachine(machine._id, machine.name)" class="ml-auto">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </ng-container>
+      </mat-list>
+
     </div>
     <div class="helpButtonModal">Need Help?</div>
   </mat-tab>
@@ -73,7 +99,9 @@
          Until {{workoutResponse.toDate | date}}
         </ng-container>
       </span>
-      <button mat-raised-button class="deleteButton ml-auto" (click)="onDeleteClick(workoutResponse.username)">Delete User</button>
+      <button mat-raised-button class="deleteButton ml-auto" (click)="onDeleteClick(workoutResponse.username)">Delete
+        User
+      </button>
     </div>
     <mat-accordion class="example-headers-align" multi>
       <div *ngIf="workoutResponse.matchedWorkouts.length === 0">

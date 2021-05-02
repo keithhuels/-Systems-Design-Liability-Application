@@ -6,6 +6,7 @@ import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../../../services/auth/auth.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {UsersService} from '../../shared/users.service';
+import {Machine} from '../dropdown/dropdown.component';
 
 export interface WorkoutLog {
   equipmentName: string;
@@ -28,8 +29,9 @@ export interface Exercise {
 export class LogExerciseComponent implements OnInit {
 
   form: FormGroup;
-
   loggedExercises: WorkoutLog[] = [];
+  machines: Machine[] = [];
+
 
   constructor(
     private readonly router: Router,
@@ -48,6 +50,9 @@ export class LogExerciseComponent implements OnInit {
       weight: new FormControl(),
       sets: new FormControl(),
       reps: new FormControl(),
+    });
+    this.http.get<Machine[]>('workout-equipment').subscribe(res => {
+      this.machines = res;
     });
   }
 

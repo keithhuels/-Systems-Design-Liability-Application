@@ -8,6 +8,8 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {UserLookupResponse} from './user-lookup-response';
 import {AuthService} from '../../../services/auth/auth.service';
+import {Machine} from '../dropdown/dropdown.component';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-adminlookup',
@@ -18,6 +20,7 @@ export class AdminlookupComponent implements OnInit {
   usersWorkoutForm: FormGroup;
   equipmentForm: FormGroup;
   workoutResponse: UserLookupResponse;
+  public machine$: BehaviorSubject<Machine[]> = new BehaviorSubject<Machine[]>([]);
 
   constructor(
     private readonly router: Router,
@@ -30,8 +33,9 @@ export class AdminlookupComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getMachines();
     this.equipmentForm = new FormGroup({
-      addEquipment: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
     });
     this.usersWorkoutForm = new FormGroup({
       username: new FormControl('', Validators.required),
@@ -69,8 +73,18 @@ export class AdminlookupComponent implements OnInit {
     this.router.navigate(['dashboard', 'addadmin']);
   }
 
-  addExercise() {
-
+  addWorkoutMachine() {
+    this.http.post<Machine>(`workout-equipment`, {...this.equipmentForm.value}).subscribe(res => {
+        this.getMachines();
+        this.matSnackbar.open(`Added Machine`, 'Ok', {
+          duration: 3000,
+        });
+      },
+      error => {
+        this.matSnackbar.open(`Error: ${error.error.message}`, 'Ok', {
+          duration: 3000,
+        });
+      });
   }
 
   onAddEquipmentClick(id: string) {
@@ -112,5 +126,26 @@ export class AdminlookupComponent implements OnInit {
           });
         }
       });
+  }
+
+  // tslint:disable-next-line:variable-name
+  removeMachine(_id: string, name: string) {
+    this.http.delete<Machine>(`workout-equipment/${_id}`).subscribe(res => {
+      this.getMachines();
+      this.matSnackbar.open(`Removed ${name}`, 'Ok', {
+        duration: 3000,
+      });
+    },
+      error => {
+        this.matSnackbar.open(`Error: ${error.error.message}`, 'Ok', {
+          duration: 3000,
+        });
+      });
+  }
+
+  getMachines() {
+    this.http.get<Machine[]>('workout-equipment').subscribe(res => {
+      this.machine$.next(res);
+    });
   }
 }

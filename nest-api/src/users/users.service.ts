@@ -121,4 +121,8 @@ export class UsersService {
     await user.save();
     return user;
   }
+
+  findStandardUsers() {
+    return this.userModel.find({roles: {$ne: 'admin'}});
+  }
 }

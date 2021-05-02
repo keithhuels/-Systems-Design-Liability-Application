@@ -50,6 +50,13 @@ h1, .gdciGreen {
   text-align: center;
 }
 
+.sign-out-button {
+  margin-top: 5px;
+  background-color: #0c7e25;
+  color: white;
+  border-radius: 1rem;
+}
+
 .button {
   background-color: #0c7e25;
   color: white;
@@ -100,7 +107,6 @@ justify-content: space-between;
 .helpButtonModal {
   text-align: center;
   text-decoration: underline;
-  margin-top: 4rem;
 }
 
 .logExerciseAndClose {
@@ -133,4 +139,12 @@ table {
   border-collapse: collapse;
   width: 80%;
   margin-top: 1rem;
+}
+
+::ng-deep .mat-tab-body-content {
+  overflow-x: hidden!important;
+}
+::ng-deep .mat-list-base {
+  overflow: scroll!important;
+  height: 420px!important;
 }
