@@ -95,7 +95,8 @@
     </form>
 
     <div></div>
-    <table class="logTable">
+    <div *ngIf="loggedExercises.length === 0">No exercises added yet.</div>
+    <table class="logTable" *ngIf="loggedExercises.length !== 0">
       <tr>
         <th class="equip">Equipment</th>
         <th class="duration">Duration (Minutes)</th>

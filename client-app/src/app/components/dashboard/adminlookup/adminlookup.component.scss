@@ -2,7 +2,7 @@ input,
 label {
   display: block;
 }
-h1 {
+h1, .gdciGreen {
   color: #0c7e25;
 }
 
@@ -122,5 +122,15 @@ justify-content: space-between;
   cursor: pointer;
   margin-bottom: 1rem;
   color: white;
-  margin-top: 3rem;
+}
+
+.header {
+  font-size: 1.5rem;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  margin-top: 1rem;
 }

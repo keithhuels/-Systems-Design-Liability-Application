@@ -11,6 +11,7 @@ import { CheckInDto } from './dto/check-in-dto';
 import { DateTime } from 'luxon';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { Exercise, User, UserDocument, UserStatus } from './schema/user.schema';
+import jwt_decode from 'jwt-decode';
 
 @Injectable()
 export class UsersService {
@@ -60,8 +61,13 @@ export class UsersService {
     return `This action updates a #${id} user`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  removeByUsername(username: string, req) {
+    const token = req.headers.authorization;
+    const decodedToken: any = jwt_decode(token);
+    if (username === decodedToken.username) {
+      throw new BadRequestException(username, 'User cannot remove own account');
+    }
+    return this.userModel.deleteOne({username: username});
   }
 
   findOneById(id: string) {

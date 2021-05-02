@@ -27,14 +27,14 @@
           <mat-date-range-picker #picker></mat-date-range-picker>
         </mat-form-field>
       </div>
-      {{usersWorkoutForm.value | json}}
     </form>
 
     <!-- opens lookup modal, displays logs for past <days> -->
-    <button [disabled]="usersWorkoutForm.invalid" mat-raised-button class="button" (click)="submitUserWorkoutForm()">
-      Look Up User
-    </button>
-    <button mat-raised-button class="button" (click)="onSignOutClick()">Sign Out</button>
+      <button [disabled]="usersWorkoutForm.invalid" mat-raised-button class="button" (click)="submitUserWorkoutForm()">
+        Look Up User
+      </button>
+      <button mat-raised-button class="button" (click)="onSignOutClick()">Sign Out</button>
+
 
     <div class="helpButtonModal">Need Help?</div>
   </mat-tab>
@@ -61,20 +61,63 @@
   </mat-tab>
 </mat-tab-group>
 
-<jw-modal id="custom-modal-2">
-  <h1 style="height: 100px">User Information</h1>
-  <h3>
-    <!-- populated by database data -->
-    THIS WILL BE POPULATED BY DATABASE DATA FOR SPECIFIC USER
-  </h3>
-  <button mat-raised-button
-          class="logExerciseAndClose"
-          (click)="acceptAndCloseModal('custom-modal-2')"
-  >
-    Close
-  </button>
-  <br/>
-  <button mat-raised-button class="deleteButton" (click)="onDeleteClick()">Delete User</button>
+<jw-modal id="user-info">
+  <ng-container *ngIf="workoutResponse">
+    <div class="gdciGreen header row">
+      Workout Data Logs for {{workoutResponse.username}}&nbsp;
+      <span *ngIf="workoutResponse.fromDate || workoutResponse.toDate">
+        <ng-container *ngIf="workoutResponse.fromDate">
+          From {{workoutResponse.fromDate | date}}
+        </ng-container>
+        <ng-container *ngIf="workoutResponse.toDate">
+         Until {{workoutResponse.toDate | date}}
+        </ng-container>
+      </span>
+      <button mat-raised-button class="deleteButton ml-auto" (click)="onDeleteClick(workoutResponse.username)">Delete User</button>
+    </div>
+    <mat-accordion class="example-headers-align" multi>
+      <div *ngIf="workoutResponse.matchedWorkouts.length === 0">
+        No Workouts found for the given user / date filters
+      </div>
+      <mat-expansion-panel hideToggle *ngFor="let matchedWorkout of workoutResponse.matchedWorkouts">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{matchedWorkout.endDate | date: 'short'}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{matchedWorkout.routine.length === 0 ? 'Didn\'t Log Exercise' : 'Logged Exercise'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <table class="logTable" *ngIf="matchedWorkout.routine.length !== 0">
+            <tr>
+              <th class="equip">Equipment</th>
+              <th class="duration">Duration (Minutes)</th>
+              <th class="weight">Weight (lbs)</th>
+              <th class="sets">Sets</th>
+              <th class="reps">Reps</th>
+            </tr>
+            <tr *ngFor="let log of matchedWorkout.routine">
+              <td>{{ log.equipmentName }}</td>
+              <td>{{ log.duration }}</td>
+              <td>{{ log.weight ? log.weight : '--' }}</td>
+              <td>{{ log.sets ? log.sets : '--' }}</td>
+              <td>{{ log.reps ? log.reps : '--'}}</td>
+            </tr>
+          </table>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
 
-  <div class="helpButtonModal">Need Help?</div>
+
+    <button mat-raised-button
+            class="logExerciseAndClose"
+            (click)="closeModal('user-info')"
+    >
+      Close
+    </button>
+    <br/>
+    <div class="helpButtonModal">Need Help?</div>
+  </ng-container>
 </jw-modal>
+

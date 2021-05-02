@@ -18,8 +18,6 @@ export class DropdownComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-  // machineControl = new FormControl("", Validators.required);
-  // selectFormControl = new FormControl("", Validators.required);
   machines: Machine[] = [
     {
       name: "Bike",

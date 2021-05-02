@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import {User} from '../user-list/user-list.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: "app-add-admin",
@@ -12,7 +13,8 @@ import {User} from '../user-list/user-list.component';
 export class AddAdminComponent implements OnInit {
   constructor(
     private readonly router: Router,
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
+    private readonly matSnackBar: MatSnackBar
   ) {}
 
   form: FormGroup;
@@ -33,8 +35,11 @@ export class AddAdminComponent implements OnInit {
   }
 
   onCreateAccountClicked() {
-    this.http.post<User>('admin/create-admin', this.form.value).subscribe((response) => console.log(response), (err) => {
-      console.log(err);
+    this.http.post<User>('admin/create-admin', {...this.form.value}).subscribe((response) => {
+      this.form.reset();
+      this.matSnackBar.open(`Created Admin User: ${response.username}`, 'Ok', {duration: 3000} );
+    }, (err) => {
+      this.matSnackBar.open(`Failed to create admin user.`, 'Ok', {duration: 3000});
     });
   }
 

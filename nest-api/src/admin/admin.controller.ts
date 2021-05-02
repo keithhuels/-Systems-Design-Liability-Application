@@ -15,11 +15,13 @@ export class AdminController {
     return this.adminService.searchUserWorkouts(req);
   }
 
+  @Roles('admin')
   @Post('create-admin')
   createAdminUser(@Body() req: CreateUserDto) {
     this.adminService.createAdminUser(req);
   }
 
+  @Roles('admin')
   @Delete('remove-user')
   removeUser(@Request() req: Request) {
 

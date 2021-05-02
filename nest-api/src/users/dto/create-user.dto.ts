@@ -13,6 +13,5 @@ export class CreateUserDto {
   lastName: string;
   @IsNotEmpty()
   organization: string;
-  @IsNotEmpty()
   waiverAccepted: boolean;
 }

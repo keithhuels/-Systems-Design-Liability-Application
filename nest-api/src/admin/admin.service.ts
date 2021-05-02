@@ -8,11 +8,12 @@ import { Model } from 'mongoose';
 import * as bcrypt from 'bcrypt';
 import { UsersService } from '../users/users.service';
 import { SearchWorkoutsDto } from './dto/search-workouts-dto';
-import { DateTime } from 'luxon';
+import { DateTime, Settings } from 'luxon';
 
 @Injectable()
 export class AdminService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>, private usersService: UsersService) {
+    Settings.throwOnInvalid = true;
   }
 
   async searchUserWorkouts(searchWorkoutsDto: SearchWorkoutsDto) {
@@ -29,20 +30,23 @@ export class AdminService {
       return { matchedWorkouts: user.workouts, username: searchWorkoutsDto.username };
     }
 
-    const fromDateTime = DateTime.fromHTTP(searchWorkoutsDto.fromDate);
-    const toDateTime = DateTime.fromHTTP(searchWorkoutsDto.toDate);
+
 
     matchedWorkouts = user.workouts.filter(e => {
       const endDateTime = DateTime.fromJSDate(e.endDate);
       if (searchWorkoutsDto.fromDate && !searchWorkoutsDto.toDate) {
-        return fromDateTime < endDateTime;
+        const fromDateTime = DateTime.fromISO(searchWorkoutsDto.fromDate);
+        return fromDateTime <= endDateTime;
       }
       if (searchWorkoutsDto.toDate && !searchWorkoutsDto.fromDate) {
-        return toDateTime > endDateTime;
+        const toDateTime = DateTime.fromISO(searchWorkoutsDto.toDate);
+        return toDateTime >= endDateTime;
       }
-      return fromDateTime < endDateTime && toDateTime > endDateTime;
+      const fromDateTime = DateTime.fromISO(searchWorkoutsDto.fromDate);
+      const toDateTime = DateTime.fromISO(searchWorkoutsDto.toDate);
+      return fromDateTime <= endDateTime && toDateTime >= endDateTime;
     });
-    return { matchedWorkouts: matchedWorkouts, username: searchWorkoutsDto.username };
+    return { matchedWorkouts: matchedWorkouts, ...searchWorkoutsDto };
   }
 
   async createAdminUser(createUserDto: CreateUserDto) {

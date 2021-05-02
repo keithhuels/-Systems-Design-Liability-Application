@@ -18,6 +18,8 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateExerciseLogDto } from './dto/update-exercise-log.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CheckInDto } from './dto/check-in-dto';
+import { RolesGuard } from '../auth/roles.guard';
+import { Roles } from '../auth/roles.decorator';
 
 @Controller('users')
 export class UsersController {
@@ -74,8 +76,9 @@ export class UsersController {
     return this.usersService.update(+id, updateUserDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
+  @Roles('admin')
+  @Delete(':username')
+  remove(@Param('username') username: string, @Request() req) {
+    return this.usersService.removeByUsername(username, req);
   }
 }

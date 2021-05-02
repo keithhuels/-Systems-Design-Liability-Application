@@ -6,6 +6,8 @@ import {DialogComponent} from '../dialog/dialog.component';
 import {ModalService} from '../modal/modal.service';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {UserLookupResponse} from './user-lookup-response';
+import {AuthService} from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-adminlookup',
@@ -15,13 +17,15 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class AdminlookupComponent implements OnInit {
   usersWorkoutForm: FormGroup;
   equipmentForm: FormGroup;
+  workoutResponse: UserLookupResponse;
 
   constructor(
     private readonly router: Router,
     private modalService: ModalService,
     private dialog: MatDialog,
     private http: HttpClient,
-    private matSnackbar: MatSnackBar
+    private matSnackbar: MatSnackBar,
+    private authService: AuthService
   ) {
   }
 
@@ -44,18 +48,21 @@ export class AdminlookupComponent implements OnInit {
     this.modalService.open(id);
   }
 
-  //record form has been accepted, close modal, and either log guest in in user list or allow create user button to be clicked
-  acceptAndCloseModal(id: string) {
+  closeModal(id: string) {
     this.modalService.close(id);
-    this.router.navigate(['dashboard', 'adminlookup']);
   }
 
   onSignOutClick() {
-    this.router.navigate(['']);
+    this.authService.logout();
+    this.router.navigate(['dashboard']);
   }
 
-  onDeleteClick() {
-    this.dialog.open(DialogComponent);
+  onDeleteClick(username: string) {
+    this.dialog.open(DialogComponent, {
+      data: {
+        username
+      }
+    });
   }
 
   onAddAdminClick() {
@@ -81,14 +88,17 @@ export class AdminlookupComponent implements OnInit {
     let params = new HttpParams()
       .set('username', this.usersWorkoutForm.controls.username.value);
     if (this.usersWorkoutForm.controls.fromDate.value) {
-      params = params.set('fromDate', this.usersWorkoutForm.controls.fromDate.value);
+      const fromDate  = this.usersWorkoutForm.controls.fromDate.value as Date;
+      params = params.set('fromDate', fromDate.toISOString());
     }
     if (this.usersWorkoutForm.controls.toDate.value) {
-      params = params.set('toDate', this.usersWorkoutForm.controls.toDate.value);
+      const toDate  = this.usersWorkoutForm.controls.toDate.value as Date;
+      params = params.set('toDate', toDate.toISOString());
     }
 
-    this.http.get('admin/search-workouts', {params}).subscribe(res => {
-        console.log(res);
+    this.http.get<UserLookupResponse>('admin/search-workouts', {params}).subscribe(res => {
+        this.workoutResponse = res;
+        this.modalService.open('user-info');
       },
       err => {
         console.log(err);
