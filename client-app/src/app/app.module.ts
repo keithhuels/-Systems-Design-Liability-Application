@@ -27,6 +27,7 @@ import {SigninComponent} from './components/dashboard/checkin/signin.component';
 import {CheckoutComponent} from './components/dashboard/checkout/checkout.component';
 import {SignupComponent} from './components/dashboard/signup/signup.component';
 import {SliderComponent} from './components/dashboard/slider/slider.component';
+import {HelpdocumentComponent} from './components/helpdocument/helpdocument.component';
 import {UserListComponent} from './components/dashboard/user-list/user-list.component';
 import {LandingPageComponent} from './components/landing-page/landing-page.component';
 import {ApiInterceptor} from './interceptors/api.interceptor';
@@ -43,7 +44,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 
 export function tokenGetter() {
-  return sessionStorage.getItem('id_token');
+  return sessionStorage.getItem("id_token");
 }
 
 @NgModule({
@@ -67,6 +68,7 @@ export function tokenGetter() {
     LogExerciseComponent,
     StatusMenuComponent,
     LogtimeComponent,
+    HelpdocumentComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,6 +76,9 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
+  
+
+ 
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
@@ -90,8 +95,8 @@ export function tokenGetter() {
     MatTabsModule,
     MatMomentDateModule,
     JwtModule.forRoot({
-      config: {tokenGetter}
-    })
+      config: { tokenGetter },
+    }),
   ],
   providers: [
     {
@@ -102,10 +107,9 @@ export function tokenGetter() {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

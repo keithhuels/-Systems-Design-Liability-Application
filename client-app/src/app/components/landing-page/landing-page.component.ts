@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
+
 @Component({
   selector: "app-landing-page",
   templateUrl: "./landing-page.component.html",
@@ -19,7 +20,4 @@ export class LandingPageComponent implements OnInit {
     this.router.navigate(["dashboard", "adminlogin"]);
   }
 
-  // onNeedHelpClick() {
-  //   this.router.navigate()
-  // }
 }

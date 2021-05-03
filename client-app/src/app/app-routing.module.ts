@@ -1,3 +1,4 @@
+import { HelpdocumentComponent } from './components/helpdocument/helpdocument.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AdminlookupComponent} from './components/dashboard/adminlookup/adminlookup.component';
@@ -16,6 +17,11 @@ const routes: Routes = [
   {
     path: '',
     component: LandingPageComponent,
+  },
+
+  {
+    path: 'help',
+    component: HelpdocumentComponent,
   },
 
   {

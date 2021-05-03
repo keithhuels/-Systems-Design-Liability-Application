@@ -1,0 +1,33 @@
+.document {
+  width: 65rem;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.header {
+  position: sticky;
+  height: 2rem;
+}
+
+h1 {
+  font-size: 35px;
+  text-decoration: underline;
+  border-top: 2px dashed black;
+  border-bottom-width: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+
+p {
+  font-size: 24px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pictures {
+  height: 30rem;
+  width: 50rem;
+}
