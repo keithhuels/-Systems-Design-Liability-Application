@@ -42,6 +42,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 export function tokenGetter() {
   return sessionStorage.getItem("id_token");
@@ -76,9 +77,8 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-  
 
- 
+
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
@@ -95,8 +95,9 @@ export function tokenGetter() {
     MatTabsModule,
     MatMomentDateModule,
     JwtModule.forRoot({
-      config: { tokenGetter },
+      config: {tokenGetter},
     }),
+    MatTooltipModule,
   ],
   providers: [
     {

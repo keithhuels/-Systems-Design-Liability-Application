@@ -62,6 +62,7 @@
                   name="sets"
                   placeholder="Sets"
                   min="0"
+                  (keydown)="preventNegative($event)"
                 />
               </mat-form-field>
             </div>
@@ -121,9 +122,9 @@
       Log/Email Exercises and Sign Out
     </button>
   </div>
-  <div class="helpButton"><a [routerLink]="['/help']" fragment="logexercises"class="helpButtonModal">Need Help?</a></div> 
+  <div class="helpButton" [routerLink]="['/help']" fragment="logexercises"class="helpButtonModal">Need Help?</div>
 </jw-modal>
 
-<div class="helpButton">
-  <a [routerLink]="['/help']" fragment="logout">Need Help?</a>
+<div class="helpButton"
+   [routerLink]="['/help']" fragment="logout">Need Help?
 </div>

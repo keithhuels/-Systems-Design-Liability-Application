@@ -56,13 +56,15 @@
           type="text"
           name="email"
           placeholder="user@example.com"
-         
-          pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required
+          pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+          required
         />
         <mat-error *ngIf="form.controls['email'].hasError('required')">{{
           getErrorMessage()
-          }}</mat-error>
-        <mat-error *ngIf="form.controls['email'].hasError('email')">Invalid email format</mat-error>
+        }}</mat-error>
+        <mat-error *ngIf="form.controls['email'].hasError('email')"
+          >Invalid email format</mat-error
+        >
       </mat-form-field>
     </div>
     <div class="usernamePassGroup col-12">
@@ -92,6 +94,20 @@
         <mat-error *ngIf="form.controls['password'].invalid">{{
           getErrorMessage()
         }}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Confirm Password</mat-label>
+        <input
+          matInput
+          formControlName="confirmPassword"
+          id="confirmPassword"
+          type="password"
+          name="confirmPassword"
+        />
+        <mat-error *ngIf="form.controls['confirmPassword'].hasError('required')">{{
+          getErrorMessage()
+        }}</mat-error>
+        <mat-error *ngIf="form.controls['confirmPassword'].hasError('passwordMismatch')">Your passwords do not match.</mat-error>
       </mat-form-field>
     </div>
 
@@ -162,8 +178,11 @@
   </button>
 </jw-modal>
 
-<div class="helpButton">
-  <a [routerLink]="['/help']" fragment="signup" class="helpButton"
-    >Need Help?</a
-  >
+<div
+  class="helpButton"
+  [routerLink]="['/help']"
+  fragment="signup"
+  class="helpButton"
+>
+  Need Help?
 </div>

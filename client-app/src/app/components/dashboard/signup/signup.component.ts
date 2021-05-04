@@ -1,10 +1,17 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from "@angular/forms";
 import { Router } from "@angular/router";
 import { ModalService } from "../modal/modal.service";
 import { User } from "../user-list/user-list.component";
+import { PasswordValidationService } from "./../../../../password-validation.service";
 import { UsersService } from "./../../shared/users.service";
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: "app-signup",
@@ -16,24 +23,36 @@ export class SignupComponent implements OnInit {
     private readonly router: Router,
     private readonly modalService: ModalService,
     private readonly http: HttpClient,
-    private readonly usersService: UsersService
+    private readonly usersService: UsersService,
+    private readonly passwordValidator: PasswordValidationService,
+    private formBuilder: FormBuilder,
+    private readonly matSnackBar: MatSnackBar
   ) {}
 
   form: FormGroup;
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      username: new FormControl("", [Validators.required]),
-      email: new FormControl("", [Validators.required, Validators.email]),
-      password: new FormControl("", [Validators.required]),
-      firstName: new FormControl("", [Validators.required]),
-      lastName: new FormControl("", [Validators.required]),
-      organization: new FormControl("", [Validators.required]),
-      waiverAccepted: new FormControl(false, [
-        Validators.required,
-        Validators.requiredTrue,
-      ]),
-    });
+    this.form = this.formBuilder.group(
+      {
+        username: new FormControl("", [Validators.required]),
+        email: new FormControl("", [Validators.required, Validators.email]),
+        password: new FormControl("", [Validators.required]),
+        confirmPassword: new FormControl("", [Validators.required]),
+        firstName: new FormControl("", [Validators.required]),
+        lastName: new FormControl("", [Validators.required]),
+        organization: new FormControl("", [Validators.required]),
+        waiverAccepted: new FormControl(false, [
+          Validators.required,
+          Validators.requiredTrue,
+        ]),
+      },
+      {
+        validator: this.passwordValidator.passwordMatchValidator(
+          "password",
+          "confirmPassword"
+        ),
+      }
+    );
   }
 
   onBackClick() {
@@ -49,16 +68,19 @@ export class SignupComponent implements OnInit {
       (response) => {
         this.usersService.getUsers();
         this.router.navigate(["dashboard"]);
+        this.matSnackBar.open(`${response.username} has been created`, 'Ok', {
+          duration: 3000,
+        });
       },
       (err) => {
-        console.log(err);
+        this.matSnackBar.open(`Error creating user: ${err.error.message}`, 'Ok', {
+          duration: 3000,
+        });
       }
     );
   }
 
-  // onNeedHelpClick() {
-  //   this.router.navigate()
-  // }
+
   acceptAndCloseModal(id: string) {
     this.modalService.close(id);
   }

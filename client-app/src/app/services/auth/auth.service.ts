@@ -39,7 +39,6 @@ export class AuthService {
 
   private setSession(authResult) {
     sessionStorage.setItem('id_token', authResult.access_token);
-    console.log(authResult);
   }
 
   logout() {

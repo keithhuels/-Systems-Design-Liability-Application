@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
+import {Location} from '@angular/common';
 
 @Component({
   selector: "app-helpdocument",
@@ -7,7 +8,7 @@ import { NavigationEnd, Router } from "@angular/router";
   styleUrls: ["./helpdocument.component.scss"],
 })
 export class HelpdocumentComponent implements OnInit {
-  constructor(router: Router) {
+  constructor(router: Router, private location: Location) {
     router.events.subscribe((s) => {
       if (s instanceof NavigationEnd) {
         const tree = router.parseUrl(router.url);
@@ -22,4 +23,8 @@ export class HelpdocumentComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  onBackClicked() {
+    this.location.back();
+  }
 }
