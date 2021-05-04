@@ -50,9 +50,6 @@ export class UserListComponent implements OnInit {
     return user.status === UserStatus.CheckedIn;
   }
 
-  getSingleUser(id: string) {
-    this.http.get<User>(`users/${id}`).subscribe((res) => console.log());
-  }
 
   getStatusClasses(user: User) {
     let classes: string[] = [];
