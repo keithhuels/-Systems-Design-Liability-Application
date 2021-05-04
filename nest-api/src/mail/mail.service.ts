@@ -21,9 +21,24 @@ export class MailService {
     });
   }
 
+  async sendAdminConfirmation(user: UserDocument) {
+    
+
+    await this.mailerService.sendMail({
+      to: user.email,
+      
+      subject: 'Welcome to the GDCI Gym App! Confirm your Email',
+      template: './adminConfirmation', 
+      context: {
+        firstName: user.firstName,
+        lastName: user.lastName
+
+      },
+    });
+  }
+
   async sendExerciseLog(exercise: Exercise, user:UserDocument){
     await this.mailerService.sendMail({
-      //to: user.email -- when logging is tied in with specific user??
       to: user.email,
       subject: 'GDCI GYM Exercise log for ' + exercise.endDate,
       template: './exerciseLog',

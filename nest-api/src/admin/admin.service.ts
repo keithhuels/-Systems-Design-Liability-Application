@@ -9,10 +9,11 @@ import * as bcrypt from 'bcrypt';
 import { UsersService } from '../users/users.service';
 import { SearchWorkoutsDto } from './dto/search-workouts-dto';
 import { DateTime, Settings } from 'luxon';
+import { MailService } from 'src/mail/mail.service';
 
 @Injectable()
 export class AdminService {
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>, private usersService: UsersService) {
+  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>, private usersService: UsersService, private mailService: MailService) {
     Settings.throwOnInvalid = true;
   }
 
@@ -63,7 +64,7 @@ export class AdminService {
     createdUser.status = UserStatus.CheckedOut;
     createdUser.roles.push('user');
     createdUser.roles.push('admin');
-    // await this.mailService.sendUserConfirmation(createdUser); //MAIL SERVICE, NEEDS TO BE IN CONTROLLER TOO or other place??? not getting user object, because it's not created?
+    await this.mailService.sendAdminConfirmation(createdUser); //MAIL SERVICE, NEEDS TO BE IN CONTROLLER TOO or other place??? not getting user object, because it's not created?
     return createdUser.save();
   }
 
