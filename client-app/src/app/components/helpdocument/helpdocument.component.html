@@ -10,9 +10,9 @@
   <p>
   Tap anywhere on the tablet screen to be brought to the main dashboard page of the app.
   </p>
- 
- 
- 
+
+
+
   <img
     class="pictures"
     src="../../../assets/images/helpDocument/Screenshot (115).png"
@@ -98,15 +98,15 @@
   <br>
   <h1 id="checkin">Check In our Out</h1>
   <p>If you are checked out, you will see a prompt that allows you the check in. If you are currently checked in, you will see a prompt that allows you to check out.</p>
-  
+
   <br>
- <p>**FOR USERS**</p> 
+ <p>**FOR USERS**</p>
 
   <p>Press the button accordingly.</p>
 <br>
 <br>
   <p>**FOR ADMINS**</p>
- 
+
   <p>You will be taken to a page to view the Admin dashboard. Click the button to enter the admin dashboard.</p>
 
   <br>
@@ -122,7 +122,7 @@
 <h1 id='checkedInOrOut'> User List </h1>
 <p>The User List displays all currently created accounts, their status (Checked in or Checked Out) and estimated end times for active users.</p>
 
-<p>After entering your estimated time in the gym, 
+<p>After entering your estimated time in the gym,
 you will see your username “Checked In” on the right side of the dashboard with the estimated time you will be done using the gym.</p>
 <img
 class="pictures"
@@ -162,7 +162,7 @@ src="../../../assets/images/helpDocument/Screenshot (117).png"
 <p> You can add multiple exercises by clicking the "Add" button</p>
 
 
-<p>When you have logged your routine, clicking the "Log/Email Exercises and Sign Out" button will save your exercise routine, 
+<p>When you have logged your routine, clicking the "Log/Email Exercises and Sign Out" button will save your exercise routine,
   send you an email of your daily routine and check you out.</p>
 
 <h1 id="admin">Admin Login</h1>
@@ -175,7 +175,7 @@ src="../../../assets/images/helpDocument/image010.png"
 
 <h1 id="manageusers">Manage Users</h1>
 
-<p>The Manage Users tab allows admins to enter a username, 
+<p>The Manage Users tab allows admins to enter a username,
 select a date range and view the exercise logs for that user during the given date range.</p>
 <img
 class="pictures"
@@ -184,7 +184,7 @@ src="../../../assets/images/helpDocument/Screenshot (110).png"
 
 <h1 id="manageadmins">Manage Admins</h1>
 
-<p>The Manage Admins tab allows admins to create a new admin account. 
+<p>The Manage Admins tab allows admins to create a new admin account.
   The process is the same as creating a new user, except this account will have administrative privileges.</p>
 
 <img
@@ -194,9 +194,9 @@ src="../../../assets/images/helpDocument/Screenshot (111).png"
 
 <h1 id="manageequipment">Manage Equipment </h1>
 
-<p>The Manage Equipment tab allows admins to add new equipment to the app by typing in the name of the equipment and clicking the "Add" button. 
-  The list of created equipment will be listed and the red trashcan icons to the right allow you to delete the equipment. 
-  When new equipment is added or deleted, the list of available equipment in the dropdown menu of the "Exercise Logging" 
+<p>The Manage Equipment tab allows admins to add new equipment to the app by typing in the name of the equipment and clicking the "Add" button.
+  The list of created equipment will be listed and the red trashcan icons to the right allow you to delete the equipment.
+  When new equipment is added or deleted, the list of available equipment in the dropdown menu of the "Exercise Logging"
   modal will reflect the list on this page.</p>
 
 <img
@@ -206,7 +206,7 @@ src="../../../assets/images/helpDocument/Screenshot (112).png"
 
 <h1 id="userlogs">User Logs</h1>
 
-<p> When an admin looks up a user, 
+<p> When an admin looks up a user,
    the "Workout Data Logs" modal will pop up with a list of drop down menus of the logged exercise routines for the user and the given date range. The admin also has the authority to delete a user's account on this page. </p>
 
    <img
@@ -221,5 +221,10 @@ src="../../../assets/images/helpDocument/Screenshot (113).png"
 <br>
 <br>
 <br>
+  <div class="floatButton">
+    <button mat-fab color="primary" matTooltip="Go Back To Previous Page" (click)="onBackClicked()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
 </div>
 

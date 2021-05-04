@@ -58,7 +58,7 @@ export class AddAdminComponent implements OnInit {
         (response) => {
           this.form.reset();
           this.matSnackBar.open(
-            `Created Admin User: ${response.username}`,
+            `Created Admin User`,
             "Ok",
             { duration: 3000 }
           );
