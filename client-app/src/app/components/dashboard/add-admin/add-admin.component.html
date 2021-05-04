@@ -15,7 +15,7 @@
         />
         <mat-error *ngIf="form.controls['firstName'].invalid">{{
           getErrorMessage()
-          }}</mat-error>
+        }}</mat-error>
       </mat-form-field>
       <mat-form-field class="col-6">
         <mat-label>Last Name</mat-label>
@@ -29,7 +29,7 @@
         />
         <mat-error *ngIf="form.controls['lastName'].invalid">{{
           getErrorMessage()
-          }}</mat-error>
+        }}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="col-6">
@@ -44,7 +44,7 @@
         />
         <mat-error *ngIf="form.controls['organization'].invalid">{{
           getErrorMessage()
-          }}</mat-error>
+        }}</mat-error>
       </mat-form-field>
       <mat-form-field class="col-6">
         <mat-label>Email</mat-label>
@@ -58,8 +58,10 @@
         />
         <mat-error *ngIf="form.controls['email'].hasError('required')">{{
           getErrorMessage()
-          }}</mat-error>
-        <mat-error *ngIf="form.controls['email'].hasError('email')">Invalid email format</mat-error>
+        }}</mat-error>
+        <mat-error *ngIf="form.controls['email'].hasError('email')"
+          >Invalid email format</mat-error
+        >
       </mat-form-field>
     </div>
     <div class="usernamePassGroup col-12">
@@ -74,7 +76,7 @@
         />
         <mat-error *ngIf="form.controls['username'].invalid">{{
           getErrorMessage()
-          }}</mat-error>
+        }}</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Password</mat-label>
@@ -87,7 +89,20 @@
         />
         <mat-error *ngIf="form.controls['password'].invalid">{{
           getErrorMessage()
-          }}</mat-error>
+        }}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Confirm Password</mat-label>
+        <input
+          matInput
+          formControlName="confirmPassword"
+          id="confirmPassword"
+          type="password"
+          name="confirmPassword"
+        />
+        <mat-error *ngIf="form.controls['password'].invalid">{{
+          getErrorMessage()
+        }}</mat-error>
       </mat-form-field>
     </div>
   </form>
@@ -96,7 +111,7 @@
   <!--  Valid: {{ form.valid | json}}-->
   <!--  Touched: {{ form.touched | json}}-->
 
-  <br/>
+  <br />
   <div class="usernamePassGroup col-12">
     <button
       mat-raised-button
@@ -108,7 +123,9 @@
       Create Admin Account
     </button>
   </div>
-  <br>
-  <br>
+  <br />
+  <br />
 </div>
-<div  [routerLink]="['/help']" fragment="manageadmins" class="helpButton">Need Help?</div>
+<div [routerLink]="['/help']" fragment="manageadmins" class="helpButton">
+  Need Help?
+</div>
