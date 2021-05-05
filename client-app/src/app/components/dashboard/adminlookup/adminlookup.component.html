@@ -39,7 +39,7 @@
       Look Up User
     </button>
 
-    <div [routerLink]="['/help']" fragment="manageusers" class="helpButton">Need Help?</div>
+    <button mat-raised-button [routerLink]="['/help']" fragment="manageusers" class="helpButton">Need Help?</button>
   </mat-tab>
   <mat-tab label="Manage Admins">
     <app-add-admin class="mt-2"></app-add-admin>
@@ -83,7 +83,7 @@
       </mat-list>
 
     </div>
-    <div [routerLink]="['/help']" fragment="manageequipment" class="helpButtonModal">Need Help?</div>
+    <button mat-raised-button [routerLink]="['/help']" fragment="manageequipment" class="manageEquipmentHelp">Need Help?</button>
   </mat-tab>
 </mat-tab-group>
 
@@ -145,7 +145,7 @@
       Close
     </button>
     <br/>
-    <div [routerLink]="['/help']" fragment="userlogs" class="helpButton">Need Help?</div>
+    <button mat-raised-button [routerLink]="['/help']" fragment="userlogs" class="helpButtonModal">Need Help?</button>
   </ng-container>
 </jw-modal>
 

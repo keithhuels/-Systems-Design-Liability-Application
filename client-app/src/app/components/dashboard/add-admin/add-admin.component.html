@@ -1,5 +1,5 @@
 <div class="signUp">
-  <h2>Create an Admin Account</h2>
+  <h2 class="col-6">Create an Admin Account</h2>
   <h4 class="usernamePassGroup">All Fields Are Required</h4>
   <form [formGroup]="form">
     <div class="row">
@@ -126,7 +126,9 @@
   </div>
   <br />
   <br />
+ 
 </div>
-<div [routerLink]="['/help']" fragment="manageadmins" class="helpButton">
+
+<button mat-raised-button [routerLink]="['/help']" fragment="manageadmins" class="helpButton">
   Need Help?
-</div>
+</button>
