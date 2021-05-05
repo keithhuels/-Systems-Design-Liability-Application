@@ -26,14 +26,17 @@ export class AdminService {
     if (!user) {
       throw new NotFoundException();
     }
+    const sortedWorkouts = user.workouts.sort((a, b) => {
+      return DateTime.fromJSDate(b.endDate) < DateTime.fromJSDate(a.endDate) ? -1 :  DateTime.fromJSDate(a.endDate) > DateTime.fromJSDate(b.endDate) ? 1 : 0;
+    })
 
     if (!searchWorkoutsDto.toDate && !searchWorkoutsDto.fromDate) {
-      return { matchedWorkouts: user.workouts, username: searchWorkoutsDto.username };
+      return { matchedWorkouts: sortedWorkouts, username: searchWorkoutsDto.username };
     }
 
 
 
-    matchedWorkouts = user.workouts.filter(e => {
+    matchedWorkouts = sortedWorkouts.filter(e => {
       const endDateTime = DateTime.fromJSDate(e.endDate);
       if (searchWorkoutsDto.fromDate && !searchWorkoutsDto.toDate) {
         const fromDateTime = DateTime.fromISO(searchWorkoutsDto.fromDate);
