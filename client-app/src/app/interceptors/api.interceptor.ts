@@ -6,17 +6,16 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
-  private API_URL = 'http://localhost:3000';
 
   constructor() {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const apiRequest = request.clone({
-      url: `${(this.API_URL)}/${request.url}`
-      // http://localhost:3000/users
+      url: `${(environment.apiUrl)}/${request.url}`
     });
     return next.handle(apiRequest);
   }
