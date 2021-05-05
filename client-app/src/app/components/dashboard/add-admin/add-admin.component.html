@@ -100,9 +100,10 @@
           type="password"
           name="confirmPassword"
         />
-        <mat-error *ngIf="form.controls['password'].invalid">{{
+        <mat-error *ngIf="form.controls['confirmPassword'].hasError('required')">{{
           getErrorMessage()
-        }}</mat-error>
+          }}</mat-error>
+        <mat-error *ngIf="form.controls['confirmPassword'].hasError('passwordMismatch')">Your passwords do not match.</mat-error>
       </mat-form-field>
     </div>
   </form>

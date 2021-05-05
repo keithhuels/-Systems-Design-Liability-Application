@@ -43,7 +43,6 @@ export class CheckoutComponent implements OnInit {
       this.authService.login(formVal.username, formVal.password).subscribe(() => {
         this.router.navigate(['dashboard', 'log-exercise']);
       }, (err) => {
-        console.log(err);
         this.matSnackbar.open('Invalid Username or Password', 'Ok', {
           duration: 3000
         });

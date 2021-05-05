@@ -33,7 +33,6 @@ export class SigninComponent implements OnInit {
       this.authService.login(formVal.username, formVal.password).subscribe(() => {
         this.router.navigate(['dashboard', 'status-menu']);
       }, (err) => {
-        console.log(err);
         this.matSnackbar.open('Invalid Username or Password', 'Ok', {
           duration: 3000
         });

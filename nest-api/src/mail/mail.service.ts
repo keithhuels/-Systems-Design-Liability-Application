@@ -13,7 +13,7 @@ export class MailService {
     await this.mailerService.sendMail({
       to: user.email,
       
-      subject: 'Welcome to the GDCI Gym App! Confirm your Email',
+      subject: 'Welcome to the GDCI Gym App! Email Confirmation.',
       template: './confirmation', 
       context: {
         name: user.firstName,
@@ -21,11 +21,26 @@ export class MailService {
     });
   }
 
+  async sendAdminConfirmation(user: UserDocument) {
+    
+
+    await this.mailerService.sendMail({
+      to: user.email,
+      
+      subject: 'Welcome to the GDCI Gym App! Email Confirmation.',
+      template: './adminConfirmation', 
+      context: {
+        firstName: user.firstName,
+        lastName: user.lastName
+
+      },
+    });
+  }
+
   async sendExerciseLog(exercise: Exercise, user:UserDocument){
     await this.mailerService.sendMail({
-      //to: user.email -- when logging is tied in with specific user??
       to: user.email,
-      subject: 'GDCI GYM Exercise log for ' + exercise.endDate,
+      subject: 'GDCI GYM Exercise log for ' + DateTime.fromJSDate(exercise.endDate).toLocaleString({ weekday: 'short', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
       template: './exerciseLog',
       context: {
         date: DateTime.fromJSDate(exercise.endDate).toLocaleString({ weekday: 'short', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }),

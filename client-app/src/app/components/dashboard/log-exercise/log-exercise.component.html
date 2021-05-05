@@ -62,6 +62,7 @@
                   name="sets"
                   placeholder="Sets"
                   min="0"
+                  (keydown)="preventNegative($event)"
                 />
               </mat-form-field>
             </div>

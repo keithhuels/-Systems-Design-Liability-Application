@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ModalService} from '../modal/modal.service';
@@ -45,8 +45,8 @@ export class LogExerciseComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      equipmentName: new FormControl("", [Validators.required]),
-      duration: new FormControl("", [Validators.required]),
+      equipmentName: new FormControl('', [Validators.required]),
+      duration: new FormControl('', [Validators.required]),
       weight: new FormControl(),
       sets: new FormControl(),
       reps: new FormControl(),
@@ -70,7 +70,6 @@ export class LogExerciseComponent implements OnInit {
 
   openModal(id: string) {
     if (!this.authService.isAuthenticated()) {
-      console.log('Sorry This user is not authed');
       return;
     }
     this.modalService.open(id);
@@ -78,7 +77,6 @@ export class LogExerciseComponent implements OnInit {
 
   addExercise() {
     this.loggedExercises.push(this.form.value);
-    console.log(this.loggedExercises);
     this.form.reset();
   }
 
@@ -100,7 +98,9 @@ export class LogExerciseComponent implements OnInit {
         });
       },
       (err) => {
-        console.log(err);
+        this.matSnackbar.open(`Error: ${request.username} could not be checked out`, 'Ok', {
+          duration: 3000,
+        });
       }
     );
 
@@ -123,7 +123,7 @@ export class LogExerciseComponent implements OnInit {
         });
       },
       (err) => {
-        this.matSnackbar.open(`Error found: ${JSON.stringify(err?.message)}`,'Ok', {
+        this.matSnackbar.open(`Error found: ${JSON.stringify(err?.message)}`, 'Ok', {
           duration: 3000,
         });
       }
@@ -133,4 +133,11 @@ export class LogExerciseComponent implements OnInit {
   // onNeedHelpClick() {
   //   this.router.navigate()
   // }
+  preventNegative(e: KeyboardEvent) {
+    if (!((e.keyCode > 95 && e.keyCode < 106)
+      || (e.keyCode > 47 && e.keyCode < 58)
+      || e.keyCode === 8)) {
+      return false;
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';
@@ -75,6 +75,7 @@ export class AdminlookupComponent implements OnInit {
 
   addWorkoutMachine() {
     this.http.post<Machine>(`workout-equipment`, {...this.equipmentForm.value}).subscribe(res => {
+        this.equipmentForm.reset();
         this.getMachines();
         this.matSnackbar.open(`Added Machine`, 'Ok', {
           duration: 3000,
@@ -115,7 +116,6 @@ export class AdminlookupComponent implements OnInit {
         this.modalService.open('user-info');
       },
       err => {
-        console.log(err);
         if (err.status === 404) {
           this.matSnackbar.open(`User not found`, 'Ok', {
             duration: 3000,

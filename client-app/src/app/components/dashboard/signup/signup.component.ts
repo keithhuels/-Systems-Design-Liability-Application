@@ -11,6 +11,7 @@ import { ModalService } from "../modal/modal.service";
 import { User } from "../user-list/user-list.component";
 import { PasswordValidationService } from "./../../../../password-validation.service";
 import { UsersService } from "./../../shared/users.service";
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: "app-signup",
@@ -24,7 +25,8 @@ export class SignupComponent implements OnInit {
     private readonly http: HttpClient,
     private readonly usersService: UsersService,
     private readonly passwordValidator: PasswordValidationService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private readonly matSnackBar: MatSnackBar
   ) {}
 
   form: FormGroup;
@@ -66,16 +68,19 @@ export class SignupComponent implements OnInit {
       (response) => {
         this.usersService.getUsers();
         this.router.navigate(["dashboard"]);
+        this.matSnackBar.open(`${response.username} has been created`, 'Ok', {
+          duration: 3000,
+        });
       },
       (err) => {
-        console.log(err);
+        this.matSnackBar.open(`Error creating user: ${err.error.message}`, 'Ok', {
+          duration: 3000,
+        });
       }
     );
   }
 
-  // onNeedHelpClick() {
-  //   this.router.navigate()
-  // }
+
   acceptAndCloseModal(id: string) {
     this.modalService.close(id);
   }
