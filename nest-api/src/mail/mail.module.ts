@@ -22,7 +22,7 @@ import {ConfigService} from '@nestjs/config';
           from: `"GDCI Gym" <${config.get('MAIL_FROM')}>`,
         },
         template: {
-          dir: join(__dirname, 'templates'),
+          dir: join(__dirname, '../../mail/templates'),
           adapter: new HandlebarsAdapter(),
           options: {
             strict: true,
