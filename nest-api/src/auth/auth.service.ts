@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { LoginVm } from '../models/viewmodels/LoginVm';
 import { UserDocument } from '../users/schema/user.schema';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { CustomException } from '../exceptions/custom-exception';
 

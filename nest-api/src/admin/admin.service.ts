@@ -5,7 +5,7 @@ import { LoginError } from '../exceptions/error.enums';
 import { Exercise, User, UserDocument, UserStatus } from '../users/schema/user.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import { UsersService } from '../users/users.service';
 import { SearchWorkoutsDto } from './dto/search-workouts-dto';
 import { DateTime, Settings } from 'luxon';
