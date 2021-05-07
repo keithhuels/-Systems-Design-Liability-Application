@@ -4,7 +4,6 @@ import {
   Controller,
   Delete,
   Get,
-  HttpException,
   HttpStatus,
   Param,
   Patch,
@@ -13,12 +12,10 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { ApiResponse } from '@nestjs/swagger';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateExerciseLogDto } from './dto/update-exercise-log.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CheckInDto } from './dto/check-in-dto';
-import { RolesGuard } from '../auth/roles.guard';
 import { Roles } from '../auth/roles.decorator';
 
 @Controller('users')
@@ -31,9 +28,6 @@ export class UsersController {
   }
 
   @Get()
-  @ApiResponse({
-    status: 201,
-  })
   findAll() {
     return this.usersService.findAll();
   }

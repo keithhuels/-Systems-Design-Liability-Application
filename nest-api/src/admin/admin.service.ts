@@ -31,7 +31,7 @@ export class AdminService {
     })
 
     if (!searchWorkoutsDto.toDate && !searchWorkoutsDto.fromDate) {
-      return { matchedWorkouts: sortedWorkouts, username: searchWorkoutsDto.username };
+      return { matchedWorkouts: sortedWorkouts, username: searchWorkoutsDto.username, firstName: user.firstName, lastName: user.lastName, organization: user.organization, email: user.email };
     }
 
 
@@ -50,7 +50,7 @@ export class AdminService {
       const toDateTime = DateTime.fromISO(searchWorkoutsDto.toDate);
       return fromDateTime <= endDateTime && toDateTime >= endDateTime;
     });
-    return { matchedWorkouts: matchedWorkouts, ...searchWorkoutsDto };
+    return { matchedWorkouts: matchedWorkouts, ...searchWorkoutsDto, firstName: user.firstName, lastName: user.lastName, organization: user.organization, email: user.email};
   }
 
   async createAdminUser(createUserDto: CreateUserDto) {

@@ -34,12 +34,15 @@
       </div>
     </form>
 
-    <!-- opens lookup modal, displays logs for past <days> -->
-    <button [disabled]="usersWorkoutForm.invalid" mat-raised-button class="button" (click)="submitUserWorkoutForm()">
-      Look Up User
-    </button>
+    <div class="row justify-content-center">
+      <button [disabled]="usersWorkoutForm.invalid" mat-raised-button class="button" (click)="submitUserWorkoutForm()">
+        Look Up User
+      </button>
+    </div>
+    <div class="row justify-content-center">
+      <button mat-raised-button [routerLink]="['/help']" fragment="manageusers" class="helpButton">Need Help?</button>
+    </div>
 
-    <button mat-raised-button [routerLink]="['/help']" fragment="manageusers" class="helpButton">Need Help?</button>
   </mat-tab>
   <mat-tab label="Manage Admins">
     <app-add-admin class="mt-2"></app-add-admin>
@@ -83,7 +86,11 @@
       </mat-list>
 
     </div>
-    <button mat-raised-button [routerLink]="['/help']" fragment="manageequipment" class="manageEquipmentHelp">Need Help?</button>
+    <div class="row justify-content-center">
+      <button mat-raised-button [routerLink]="['/help']" fragment="manageequipment" class="manageEquipmentHelp my-1">Need
+        Help?
+      </button>
+    </div>
   </mat-tab>
 </mat-tab-group>
 
@@ -103,6 +110,31 @@
         User
       </button>
     </div>
+    <mat-card class="mb-2">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>person</mat-icon>
+        <mat-card-title>
+          User Details
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row mt-2">
+          <div class="col">
+            <span class="font-weight-bold">Name:</span>
+            {{workoutResponse.firstName}} {{workoutResponse.lastName}}
+          </div>
+          <div class="col">
+            <span class="font-weight-bold">Email:</span>
+            {{workoutResponse.email}}
+          </div>
+          <div class="col">
+            <span class="font-weight-bold">Organization:</span>
+            {{workoutResponse.organization}}
+          </div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
     <mat-accordion class="example-headers-align" multi>
       <div *ngIf="workoutResponse.matchedWorkouts.length === 0">
         No Workouts found for the given user / date filters
@@ -137,15 +169,18 @@
       </mat-expansion-panel>
     </mat-accordion>
 
-
-    <button mat-raised-button
-            class="logExerciseAndClose"
-            (click)="closeModal('user-info')"
-    >
-      Close
-    </button>
+    <div class="row justify-content-center">
+      <button mat-raised-button
+              class="logExerciseAndClose"
+              (click)="closeModal('user-info')"
+      >
+        Close
+      </button>
+    </div>
     <br/>
-    <button mat-raised-button [routerLink]="['/help']" fragment="userlogs" class="helpButtonModal">Need Help?</button>
+    <div class="row justify-content-center">
+      <button mat-raised-button [routerLink]="['/help']" fragment="userlogs" class="helpButtonModal">Need Help?</button>
+    </div>
   </ng-container>
 </jw-modal>
 

@@ -7,6 +7,10 @@ export class MatchedWorkout {
 
 export class UserLookupResponse {
   matchedWorkouts: MatchedWorkout[];
+  firstName: string;
+  lastName: string;
+  email: string;
+  organization: string;
   username: string;
   fromDate: string;
   toDate: string;

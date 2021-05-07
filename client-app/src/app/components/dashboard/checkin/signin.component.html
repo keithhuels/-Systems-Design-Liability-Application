@@ -28,14 +28,16 @@
   </form>
 
   <!-- will need (click) functions to authenticate user, change log in status on user list component, and take you to time log page -->
-  <button
-    mat-raised-button
-    class="button"
-    (click)="onSignInClick()"
-    [disabled]="form.invalid"
-  >
-    Log In
-  </button>
+  <div class="row justify-content-center">
+    <button
+      mat-raised-button
+      class="button"
+      (click)="onSignInClick()"
+      [disabled]="form.invalid"
+    >
+      Log In
+    </button>
+  </div>
   <button mat-raised-button [routerLink]="['/help']" fragment="signin" class="helpButton">
     Need Help?
   </button>
